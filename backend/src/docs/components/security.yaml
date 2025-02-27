@@ -1,0 +1,7 @@
+# docs/components/security.yaml
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

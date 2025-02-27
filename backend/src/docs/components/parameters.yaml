@@ -1,0 +1,9 @@
+# docs/components/parameters.yaml
+components:
+  parameters:
+    activeParam:
+      in: query
+      name: active
+      schema:
+        type: boolean
+      description: Filter by active status

@@ -1,0 +1,283 @@
+# docs/schemas/auth.yaml
+components:
+  schemas:
+    RegistrationRequest:
+      type: object
+      required:
+        - organization
+        - admin
+        - plan
+      properties:
+        organization:
+          type: object
+          required:
+            - name
+            - industry
+            - address
+            - contact
+          properties:
+            name:
+              type: string
+              example: "Acme Corporation"
+            industry:
+              type: string
+              example: "Technology"
+            address:
+              type: object
+              required:
+                - street
+                - city
+                - state
+                - country
+                - postalCode
+              properties:
+                street:
+                  type: string
+                  example: "123 Business St"
+                city:
+                  type: string
+                  example: "San Francisco"
+                state:
+                  type: string
+                  example: "CA"
+                country:
+                  type: string
+                  example: "USA"
+                postalCode:
+                  type: string
+                  example: "94105"
+            contact:
+              type: object
+              required:
+                - email
+                - phone
+              properties:
+                email:
+                  type: string
+                  format: email
+                  example: "contact@acme.com"
+                phone:
+                  type: string
+                  pattern: "^\\+?[\\d\\s-]{10,}$"
+                  example: "+1-555-1234567"
+                website:
+                  type: string
+                  format: uri
+                  example: "https://www.acme.com"
+        admin:
+          type: object
+          required:
+            - email
+            - password
+            - firstName
+            - lastName
+          properties:
+            email:
+              type: string
+              format: email
+              example: "admin@acme.com"
+            password:
+              type: string
+              minLength: 8
+              description: "Must contain uppercase, lowercase, number and special character"
+              example: "StrongP@ss123"
+            firstName:
+              type: string
+              example: "John"
+            lastName:
+              type: string
+              example: "Doe"
+        plan:
+          type: string
+          enum:
+            - basic
+            - professional
+            - enterprise
+          example: "professional"
+
+    LoginRequest:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          format: email
+          example: "john.doe@acme.com"
+        password:
+          type: string
+          example: "StrongP@ss123"
+
+    LoginResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: "success"
+        data:
+          type: object
+          properties:
+            token:
+              type: string
+              example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+            user:
+              $ref: '#/components/schemas/User'
+
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "507f1f77bcf86cd799439011"
+        email:
+          type: string
+          format: email
+          example: "john.doe@acme.com"
+        firstName:
+          type: string
+          example: "John"
+        lastName:
+          type: string
+          example: "Doe"
+        role:
+          type: string
+          enum:
+            - superadmin
+            - admin
+            - manager
+            - user
+          example: "manager"
+        status:
+          type: string
+          enum:
+            - active
+            - inactive
+            - suspended
+            - pending
+          example: "active"
+        profile:
+          type: object
+          properties:
+            phone:
+              type: string
+              example: "+1-555-1234567"
+            avatar:
+              type: string
+              example: "https://example.com/avatars/john.jpg"
+            jobTitle:
+              type: string
+              example: "Senior Manager"
+            department:
+              type: string
+              example: "Engineering"
+        preferences:
+          type: object
+          properties:
+            language:
+              type: string
+              example: "en"
+            timezone:
+              type: string
+              example: "America/New_York"
+            notifications:
+              type: object
+              properties:
+                email:
+                  type: boolean
+                  example: true
+                push:
+                  type: boolean
+                  example: true
+        lastLogin:
+          type: object
+          properties:
+            timestamp:
+              type: string
+              format: date-time
+              example: "2024-02-21T08:00:00Z"
+            ip:
+              type: string
+              example: "192.168.1.1"
+            userAgent:
+              type: string
+              example: "Mozilla/5.0..."
+
+    ForgotPasswordRequest:
+      type: object
+      required:
+        - email
+      properties:
+        email:
+          type: string
+          format: email
+          example: "john.doe@acme.com"
+
+    ResetPasswordRequest:
+      type: object
+      required:
+        - token
+        - newPassword
+      properties:
+        token:
+          type: string
+          example: "reset-token-123..."
+        newPassword:
+          type: string
+          minLength: 8
+          description: "Must contain uppercase, lowercase, number and special character"
+          example: "NewStrongP@ss123"
+
+    Verify2FARequest:
+      type: object
+      required:
+        - code
+      properties:
+        code:
+          type: string
+          minLength: 6
+          maxLength: 6
+          example: "123456"
+
+    Enable2FAResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: "success"
+        data:
+          type: object
+          properties:
+            secret:
+              type: string
+              example: "JBSWY3DPEHPK3PXP"
+            qrCode:
+              type: string
+              example: "data:image/png;base64,..."
+
+    RegistrationResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: "success"
+        data:
+          type: object
+          properties:
+            organization:
+              type: object
+              properties:
+                id:
+                  type: string
+                  example: "507f1f77bcf86cd799439011"
+                name:
+                  type: string
+                  example: "Acme Corporation"
+                industry:
+                  type: string
+                  example: "Technology"
+            user:
+              $ref: '#/components/schemas/User'
+            token:
+              type: string
+              example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."

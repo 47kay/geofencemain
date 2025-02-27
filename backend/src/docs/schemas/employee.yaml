@@ -1,0 +1,352 @@
+# docs/schemas/employee.yaml
+components:
+  schemas:
+    Employee:
+      type: object
+      properties:
+        _id:
+          type: string
+          example: "507f1f77bcf86cd799439011"
+        user:
+          type: string
+          description: Reference to User model
+          example: "507f1f77bcf86cd799439012"
+        organization:
+          type: string
+          description: Reference to Organization model
+          example: "507f1f77bcf86cd799439013"
+        employeeId:
+          type: string
+          example: "EMP001"
+        personalInfo:
+          type: object
+          properties:
+            dateOfBirth:
+              type: string
+              format: date
+              example: "1990-01-01"
+            gender:
+              type: string
+              enum: [male, female, other, prefer_not_to_say]
+              example: "male"
+            address:
+              type: object
+              properties:
+                street:
+                  type: string
+                  example: "123 Main St"
+                city:
+                  type: string
+                  example: "San Francisco"
+                state:
+                  type: string
+                  example: "CA"
+                country:
+                  type: string
+                  example: "USA"
+                postalCode:
+                  type: string
+                  example: "94105"
+            emergencyContact:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: "Jane Doe"
+                relationship:
+                  type: string
+                  example: "Spouse"
+                phone:
+                  type: string
+                  example: "+1-555-0123"
+        employmentDetails:
+          type: object
+          required:
+            - department
+            - position
+            - employmentType
+            - startDate
+          properties:
+            department:
+              type: string
+              example: "Engineering"
+            position:
+              type: string
+              example: "Software Engineer"
+            supervisor:
+              type: string
+              description: Reference to Employee model
+              example: "507f1f77bcf86cd799439014"
+            employmentType:
+              type: string
+              enum: [full-time, part-time, contract, intern]
+              example: "full-time"
+            startDate:
+              type: string
+              format: date
+              example: "2024-01-01"
+            endDate:
+              type: string
+              format: date
+              example: "2025-01-01"
+            workSchedule:
+              type: object
+              properties:
+                type:
+                  type: string
+                  enum: [fixed, flexible, shifts]
+                  example: "fixed"
+                hours:
+                  type: object
+                  properties:
+                    start:
+                      type: string
+                      example: "09:00"
+                    end:
+                      type: string
+                      example: "17:00"
+                workDays:
+                  type: array
+                  items:
+                    type: string
+                    enum: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+                  example: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+        attendance:
+          type: object
+          properties:
+            lastCheckIn:
+              type: object
+              properties:
+                timestamp:
+                  type: string
+                  format: date-time
+                  example: "2024-02-21T09:00:00Z"
+                geofence:
+                  type: string
+                  description: Reference to Geofence model
+                  example: "507f1f77bcf86cd799439015"
+                location:
+                  $ref: '#/components/schemas/Location'
+            lastCheckOut:
+              type: object
+              properties:
+                timestamp:
+                  type: string
+                  format: date-time
+                  example: "2024-02-21T17:00:00Z"
+                geofence:
+                  type: string
+                  example: "507f1f77bcf86cd799439015"
+                location:
+                  $ref: '#/components/schemas/Location'
+            currentStatus:
+              type: string
+              enum: [checked-in, checked-out, on-break]
+              example: "checked-out"
+        settings:
+          type: object
+          properties:
+            locationTracking:
+              type: boolean
+              example: true
+            notifications:
+              type: object
+              properties:
+                checkIn:
+                  type: boolean
+                  example: true
+                checkOut:
+                  type: boolean
+                  example: true
+                schedule:
+                  type: boolean
+                  example: true
+            autoCheckIn:
+              type: boolean
+              example: false
+        status:
+          type: string
+          enum: [active, inactive, on_leave, terminated]
+          example: "active"
+        metadata:
+          type: object
+          properties:
+            totalWorkHours:
+              type: number
+              example: 160
+            averageCheckInTime:
+              type: string
+              example: "09:05"
+            averageCheckOutTime:
+              type: string
+              example: "17:15"
+            lastLocationUpdate:
+              type: string
+              format: date-time
+              example: "2024-02-21T16:45:00Z"
+            createdBy:
+              type: string
+              description: Reference to User model
+              example: "507f1f77bcf86cd799439016"
+
+    Location:
+      type: object
+      properties:
+        type:
+          type: string
+          enum: [Point]
+          example: "Point"
+        coordinates:
+          type: array
+          items:
+            type: number
+          example: [-122.4194, 37.7749]
+
+    CreateEmployeeRequest:
+      type: object
+      required:
+        - employeeId
+        - personalInfo
+        - employmentDetails
+      properties:
+        employeeId:
+          type: string
+          example: "EMP001"
+        personalInfo:
+          $ref: '#/components/schemas/PersonalInfo'
+        employmentDetails:
+          $ref: '#/components/schemas/EmploymentDetails'
+
+    UpdateEmployeeRequest:
+      type: object
+      properties:
+        personalInfo:
+          $ref: '#/components/schemas/PersonalInfo'
+        employmentDetails:
+          $ref: '#/components/schemas/EmploymentDetails'
+        settings:
+          $ref: '#/components/schemas/EmployeeSettings'
+        status:
+          type: string
+          enum: [active, inactive, on_leave, terminated]
+
+    CheckInRequest:
+      type: object
+      required:
+        - geofenceId
+        - location
+      properties:
+        geofenceId:
+          type: string
+          example: "507f1f77bcf86cd799439015"
+        location:
+          $ref: '#/components/schemas/Location'
+
+    CheckOutRequest:
+      type: object
+      required:
+        - geofenceId
+        - location
+      properties:
+        geofenceId:
+          type: string
+          example: "507f1f77bcf86cd799439015"
+        location:
+          $ref: '#/components/schemas/Location'
+
+    LocationUpdateRequest:
+      type: object
+      required:
+        - location
+      properties:
+        location:
+          $ref: '#/components/schemas/Location'
+
+    # Response schemas
+    EmployeeResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: "success"
+        data:
+          $ref: '#/components/schemas/Employee'
+
+    AttendanceResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: "success"
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              date:
+                type: string
+                format: date
+                example: "2024-02-21"
+              checkIn:
+                type: string
+                format: date-time
+                example: "2024-02-21T09:00:00Z"
+              checkOut:
+                type: string
+                format: date-time
+                example: "2024-02-21T17:00:00Z"
+              duration:
+                type: number
+                example: 8
+              isOnTime:
+                type: boolean
+                example: true
+              location:
+                $ref: '#/components/schemas/Location'
+
+    StatisticsResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: "success"
+        data:
+          type: object
+          properties:
+            totalDays:
+              type: number
+              example: 20
+            presentDays:
+              type: number
+              example: 18
+            absentDays:
+              type: number
+              example: 2
+            lateDays:
+              type: number
+              example: 3
+            totalWorkHours:
+              type: number
+              example: 144
+            averageWorkHours:
+              type: number
+              example: 8
+            onTimePercentage:
+              type: number
+              example: 85
+
+    Pagination:
+      type: object
+      properties:
+        page:
+          type: number
+          example: 1
+        limit:
+          type: number
+          example: 10
+        totalPages:
+          type: number
+          example: 5
+        totalRecords:
+          type: number
+          example: 48

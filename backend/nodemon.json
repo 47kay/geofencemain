@@ -1,0 +1,15 @@
+{
+    "verbose": false,
+    "watch": ["src"],
+    "ext": "js,json",
+    "ignore": [
+      "src/logs/*",
+      "src/**/*.test.js",
+      "src/**/*.spec.js",
+      "node_modules/**/node_modules"
+    ],
+    "env": {
+      "NODE_ENV": "development"
+    },
+    "exec": "node -r dotenv/config ./src/server.js"
+  }
