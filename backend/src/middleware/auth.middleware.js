@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
-const config = require('../config/auth');
+// const config = require('../config/auth');
+const config = require('../config/env');
 const logger = require('../utils/logger');
 const { UnauthorizedError, ForbiddenError } = require('../utils/errors');
 
@@ -20,7 +21,7 @@ const authenticate = async (req, res, next) => {
     }
 
     // Verify token
-    const decoded = jwt.verify(token, config.jwtSecret);
+    const decoded = jwt.verify(token, config.jwt.secret);
     req.user = {
       userId: decoded.userId,
       organizationId: decoded.organizationId,
