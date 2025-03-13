@@ -1,9 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const authController = require('../controllers/auth.controller');
+const AuthController = require('../controllers/auth.controller');
 const { validate, sanitizeRequest } = require('../middleware/validation.middleware');
 const { authenticate } = require('../middleware/auth.middleware');
 const { asyncHandler } = require('../middleware/error.middleware');
+
+const authController = new AuthController();
+
+
 
 // Apply sanitization to all routes
 router.use(sanitizeRequest);
@@ -13,9 +17,13 @@ router.use(sanitizeRequest);
  * @desc    Register a new organization and admin user
  * @access  Public
  */
+// router.post('/register',
+//   validate.registration,
+//   asyncHandler(authController.register)
+// );
 router.post('/register',
   validate.registration,
-  asyncHandler(authController.register)
+  asyncHandler(authController.register.bind(authController))
 );
 
 /**
