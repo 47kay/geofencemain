@@ -1,71 +1,29 @@
 const express = require('express');
 const router = express.Router();
-const authController = require('../controllers/auth.controller');
+const AuthController = require('../controllers/auth.controller');
 const { validate, sanitizeRequest } = require('../middleware/validation.middleware');
 const { authenticate } = require('../middleware/auth.middleware');
 const { asyncHandler } = require('../middleware/error.middleware');
 
+const authController = new AuthController();
+
+
+
 // Apply sanitization to all routes
 router.use(sanitizeRequest);
 
-/**
- * @route   POST /api/auth/register
- * @desc    Register a new organization and admin user
- * @access  Public
- */
-router.post('/register',
-  validate.registration,
-  asyncHandler(authController.register)
-);
 
-/**
- * @route   POST /api/auth/login
- * @desc    Authenticate user & get token
- * @access  Public
- */
-router.post('/login',
-  validate.login,
-  asyncHandler(authController.login)
-);
 
-/**
- * @route   POST /api/auth/forgot-password
- * @desc    Request password reset email
- * @access  Public
- */
-router.post('/forgot-password',
-  validate.forgotPassword,
-  asyncHandler(authController.forgotPassword)
-);
 
-/**
- * @route   POST /api/auth/reset-password
- * @desc    Reset password using token
- * @access  Public
- */
-router.post('/reset-password',
-  validate.passwordReset,
-  asyncHandler(authController.resetPassword)
-);
 
-/**
- * @route   POST /api/auth/refresh-token
- * @desc    Get new access token using refresh token
- * @access  Public
- */
-router.post('/refresh-token',
-  asyncHandler(authController.refreshToken)
-);
+router.post('/register', validate.registration, asyncHandler(authController.register.bind(authController)));
+router.post('/login', authController.login.bind(authController));
+router.post('/forgot-password', validate.forgotPassword, asyncHandler(authController.forgotPassword.bind(authController)));
+router.post('/reset-password', validate.passwordReset, asyncHandler(authController.resetPassword.bind(authController)));
+router.post('/refresh-token', asyncHandler(authController.refreshToken.bind(authController)));
+router.post('/logout', authenticate, asyncHandler(authController.logout.bind(authController)));
 
-/**
- * @route   POST /api/auth/logout
- * @desc    Logout user and invalidate tokens
- * @access  Private
- */
-router.post('/logout',
-  authenticate,
-  asyncHandler(authController.logout)
-);
+
 
 /**
  * @route   GET /api/auth/verify-email/:token
@@ -101,9 +59,8 @@ router.post('/verify-2fa',
  * @desc    Enable 2FA for user
  * @access  Private
  */
-router.post('/enable-2fa',
-  authenticate,
-  asyncHandler(authController.enable2FA)
+router.post('/verify-2fa',
+  asyncHandler(authController.verify2FA)
 );
 
 /**

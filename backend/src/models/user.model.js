@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const crypto = require('crypto');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
@@ -114,7 +115,7 @@ const userSchema = new Schema({
   timestamps: true,
   toJSON: { 
     virtuals: true,
-    transform: function(doc, ret) {
+    transform: function(_, ret) {
       delete ret.password;
       delete ret.tokens;
       delete ret.security;
@@ -148,13 +149,18 @@ userSchema.methods.verifyPassword = async function(password) {
 };
 
 userSchema.methods.generatePasswordResetToken = function() {
-  const resetToken = crypto.randomBytes(32).toString('hex');
-  this.security.passwordResetToken = crypto
-    .createHash('sha256')
-    .update(resetToken)
-    .digest('hex');
-  this.security.passwordResetExpires = Date.now() + 3600000; // 1 hour
-  return resetToken;
+  try {
+    const resetToken = crypto.randomBytes(32).toString('hex');
+    this.security.passwordResetToken = crypto
+      .createHash('sha256')
+      .update(resetToken)
+      .digest('hex');
+    this.security.passwordResetExpires = Date.now() + 3600000; // 1 hour
+    return resetToken;
+  } catch (error) {
+    console.error('Error in generatePasswordResetToken:', error);
+    throw error; // Bubble up for better debugging
+  }
 };
 
 userSchema.methods.recordLogin = function(ip, userAgent) {
