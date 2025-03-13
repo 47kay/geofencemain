@@ -1,55 +1,107 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
+const mongoose = require('mongoose');
 const User = require('../models/user.model');
 const Organization = require('../models/organization.model');
 const { UnauthorizedError, NotFoundError } = require('../utils/errors');
-const config = require('../config/auth');
-const NotificationService = require('./notification.service');
+const config = require('../config/env');
+// const config = require('../config/auth');
+// const NotificationService = require('./notification.service');
+
+
+
+class NotificationService {
+  async sendVerificationEmail(email, token) {
+    console.log(`[STUB] Sending verification email to ${email} with token ${token}`);
+  }
+}
 
 class AuthService {
   constructor() {
     this.notificationService = new NotificationService();
   }
 
-  /**
-   * Register a new organization and admin user
-   */
+
+
   async registerOrganization(organizationData, adminData, planData) {
-    // Create organization
-    const organization = new Organization({
-      ...organizationData,
-      subscription: planData
-    });
-    await organization.save();
+    let session;
+    try {
+      console.log('Starting registerOrganization with transaction...');
 
-    // Create admin user
-    const hashedPassword = await bcrypt.hash(adminData.password, 12);
-    const admin = new User({
-      ...adminData,
-      password: hashedPassword,
-      organization: organization._id,
-      role: 'admin',
-      status: 'active'
-    });
-    await admin.save();
+      // Check if user with this email already exists
+      const existingUser = await User.findOne({ email: adminData.email });
+      if (existingUser) {
+        throw new Error('A user with this email already exists');
+      }
 
-    // Generate verification token and send email
-    const verificationToken = this.generateVerificationToken();
-    await this.notificationService.sendVerificationEmail(
-      admin.email,
-      verificationToken
-    );
+      // Start transaction
+      session = await mongoose.startSession();
+      session.startTransaction();
 
-    // Generate auth tokens
-    const tokens = await this.generateAuthTokens(admin);
+      // Step 1: Create organization
+      const organization = new Organization({
+        ...organizationData,
+        subscription: planData,
+        status: 'active',
+        metadata: {
+          employeeCount: 0,
+          geofenceCount: 0,
+          createdBy: null, // Temporary placeholder
+        },
+      });
 
-    return {
-      organization,
-      admin: { ...admin.toJSON(), password: undefined },
-      tokens
-    };
+      // Step 2: Create admin with organization reference
+      const hashedPassword = await bcrypt.hash(adminData.password, 12);
+      const admin = new User({
+        ...adminData,
+        password: hashedPassword,
+        role: 'admin',
+        status: 'active',
+        organization: organization._id,
+      });
+
+      // Step 3: Set createdBy to admin._id
+      organization.metadata.createdBy = admin._id;
+
+      // Step 4: Save both within the transaction
+      console.log('Saving organization and admin in transaction...');
+      await organization.save({ session });
+      await admin.save({ session });
+
+      // Step 5: Commit the transaction
+      await session.commitTransaction();
+      console.log('Transaction committed successfully');
+
+      // Step 6: Generate verification token and send email (outside transaction)
+      const verificationToken = this.generateVerificationToken();
+      await this.notificationService.sendVerificationEmail(admin.email, verificationToken);
+
+      // Step 7: Generate auth tokens (outside transaction)
+      const tokens = await this.generateAuthTokens(admin);
+
+      return {
+        organization,
+        admin: { ...admin.toJSON(), password: undefined },
+        tokens,
+      };
+    } catch (error) {
+      console.error('Error in registerOrganization:', error);
+      if (session && session.transaction.isActive) {
+        await session.abortTransaction();
+      }
+      throw new Error(error.message === 'A user with this email already exists' 
+        ? error.message 
+        : `Failed to register organization: ${error.message}`);
+    } finally {
+      if (session) {
+        session.endSession();
+      }
+    }
   }
+  
+
+  
 
   /**
    * Authenticate user and generate tokens
@@ -196,33 +248,64 @@ class AuthService {
   /**
    * Generate auth tokens (access + refresh)
    */
+
+
   async generateAuthTokens(user) {
+    console.log('JWT Config in generateAuthTokens:', config.jwt); // Debug log
+    if (!config.jwt.secret || !config.jwt.refreshSecret) {
+      throw new Error('JWT secrets are not configured');
+    }
+
     const accessToken = jwt.sign(
-      {
-        userId: user._id,
-        organizationId: user.organization,
-        role: user.role
-      },
-      config.jwtSecret,
-      { expiresIn: config.jwtExpiresIn }
+      { userId: user._id, organizationId: user.organization, role: user.role },
+      config.jwt.secret,
+      { expiresIn: config.jwt.expiresIn }
     );
 
     const refreshToken = jwt.sign(
       { userId: user._id },
-      config.jwtRefreshSecret,
-      { expiresIn: config.jwtRefreshExpiresIn }
+      config.jwt.refreshSecret,
+      { expiresIn: config.jwt.refreshExpiresIn }
     );
 
-    // Save refresh token
+    user.tokens = user.tokens || [];
     user.tokens.push({
       token: refreshToken,
       type: 'refresh',
-      expiresAt: new Date(Date.now() + config.jwtRefreshExpiresIn * 1000)
+      expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 days
     });
     await user.save();
 
     return { accessToken, refreshToken };
   }
+
+  // async generateAuthTokens(user) {
+  //   const accessToken = jwt.sign(
+  //     {
+  //       userId: user._id,
+  //       organizationId: user.organization,
+  //       role: user.role
+  //     },
+  //     config.jwtSecret,
+  //     { expiresIn: config.jwtExpiresIn }
+  //   );
+
+  //   const refreshToken = jwt.sign(
+  //     { userId: user._id },
+  //     config.jwtRefreshSecret,
+  //     { expiresIn: config.jwtRefreshExpiresIn }
+  //   );
+
+  //   // Save refresh token
+  //   user.tokens.push({
+  //     token: refreshToken,
+  //     type: 'refresh',
+  //     expiresAt: new Date(Date.now() + config.jwtRefreshExpiresIn * 1000)
+  //   });
+  //   await user.save();
+
+  //   return { accessToken, refreshToken };
+  // }
 
   /**
    * Generate temporary token for 2FA

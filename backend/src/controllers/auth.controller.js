@@ -5,28 +5,73 @@ const logger = require('../utils/logger');
 class AuthController {
   constructor() {
     this.authService = new AuthService();
+    // this.register = this.register.bind(this);
   }
 
   /**
    * Register a new organization admin
    */
+
+
   async register(req, res, next) {
     try {
+      // Validate request body
       const validationResult = validateRegistration(req.body);
       if (!validationResult.success) {
         return res.status(400).json({ error: validationResult.errors });
       }
 
+      // Extract data from request body
       const { organization, admin, plan } = req.body;
+
+      // Call service to register organization and admin
       const result = await this.authService.registerOrganization(organization, admin, plan);
-      
+
+      // Log success and return response
       logger.info(`Organization registered successfully: ${organization.name}`);
       res.status(201).json(result);
     } catch (error) {
+      // Log error and pass to error middleware
       logger.error(`Registration failed: ${error.message}`);
       next(error);
     }
   }
+  
+  // async register(req, res, next) {
+  //   try {
+  //     const validationResult = validateRegistration(req.body);
+  //     if (!validationResult.success) {
+  //       return res.status(400).json({ error: validationResult.errors });
+  //     }
+
+  //     const { organization, admin, plan } = req.body;
+  //     const result = await this.authService.registerOrganization(organization, admin, plan);
+      
+  //     logger.info(`Organization registered successfully: ${organization.name}`);
+  //     res.status(201).json(result);
+  //   } catch (error) {
+  //     logger.error(`Registration failed: ${error.message}`);
+  //     next(error);
+  //   }
+  // }
+
+  // register = async (req, res, next) => {
+  //   try {
+  //     const validationResult = validateRegistration(req.body);
+  //     if (!validationResult.success) {
+  //       return res.status(400).json({ error: validationResult.errors });
+  //     }
+
+  //     const { organization, admin, plan } = req.body;
+  //     const result = await this.authService.registerOrganization(organization, admin, plan);
+      
+  //     logger.info(`Organization registered successfully: ${organization.name}`);
+  //     res.status(201).json(result);
+  //   } catch (error) {
+  //     logger.error(`Registration failed: ${error.message}`);
+  //     next(error);
+  //   }
+  // };
 
   /**
    * Login user
@@ -114,4 +159,4 @@ class AuthController {
   }
 }
 
-module.exports = new AuthController();
+module.exports = AuthController;
