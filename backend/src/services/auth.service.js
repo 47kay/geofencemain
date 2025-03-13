@@ -7,6 +7,7 @@ const Organization = require('../models/organization.model');
 
 const { UnauthorizedError, NotFoundError } = require('../utils/errors');
 const config = require('../config/env');
+const logger = require('../utils/logger');
 // const config = require('../config/auth');
 // const NotificationService = require('./notification.service');
 
@@ -14,7 +15,13 @@ const config = require('../config/env');
 
 class NotificationService {
   async sendVerificationEmail(email, token) {
-    console.log(`[STUB] Sending verification email to ${email} with token ${token}`);
+    console.log(`[MOCK] Sending verification email to ${email} with token ${token}`);
+  }
+  async sendPasswordResetEmail(email, token) {
+    console.log(`[MOCK] Sending password reset email to ${email} with token ${token}`);
+  }
+  async sendPasswordChangeNotification(email) {
+    console.log(`[MOCK] Sending password change notification to ${email}`);
   }
 }
 
@@ -26,23 +33,19 @@ class AuthService {
 
 
 
-
   async registerOrganization(organizationData, adminData, planData) {
     let session;
     try {
       console.log('Starting registerOrganization with transaction...');
 
-      // Check if user with this email already exists
       const existingUser = await User.findOne({ email: adminData.email });
       if (existingUser) {
         throw new Error('A user with this email already exists');
       }
 
-      // Start transaction
       session = await mongoose.startSession();
       session.startTransaction();
 
-      // Step 1: Create organization
       const organization = new Organization({
         ...organizationData,
         subscription: planData,
@@ -50,37 +53,36 @@ class AuthService {
         metadata: {
           employeeCount: 0,
           geofenceCount: 0,
-          createdBy: null, // Temporary placeholder
+          createdBy: null,
         },
       });
 
-      // Step 2: Create admin with organization reference
-      const hashedPassword = await bcrypt.hash(adminData.password, 12);
+      logger.info('Register - Password before saving: ' + adminData.password); // Debug
       const admin = new User({
-        ...adminData,
-        password: hashedPassword,
+        ...adminData, // password is plain text here
         role: 'admin',
         status: 'active',
         organization: organization._id,
       });
 
-      // Step 3: Set createdBy to admin._id
       organization.metadata.createdBy = admin._id;
 
-      // Step 4: Save both within the transaction
       console.log('Saving organization and admin in transaction...');
       await organization.save({ session });
-      await admin.save({ session });
+      await admin.save({ session }); // pre('save') hook hashes password
 
-      // Step 5: Commit the transaction
       await session.commitTransaction();
       console.log('Transaction committed successfully');
 
-      // Step 6: Generate verification token and send email (outside transaction)
+      // Verify saved hash
+      const savedUser = await User.findOne({ email: adminData.email });
+      logger.info('Register - Saved hash: ' + savedUser.password); // Debug
+      const isValid = await bcrypt.compare(adminData.password, savedUser.password);
+      logger.info('Register - Hash verification: ' + isValid); // Debug
+
       const verificationToken = this.generateVerificationToken();
       await this.notificationService.sendVerificationEmail(admin.email, verificationToken);
 
-      // Step 7: Generate auth tokens (outside transaction)
       const tokens = await this.generateAuthTokens(admin);
 
   
@@ -114,42 +116,33 @@ class AuthService {
   /**
    * Authenticate user and generate tokens
    */
-  async login(email, password, requestInfo = {}) {
-    // Find user
-    const user = await User.findOne({ email }).select('+password');
+
+
+ 
+  async login(email, password) {
+    logger.info('Login - Called with email: ' + email);
+    const user = await User.findOne({ email });
+    logger.info('Login - User retrieved: ' + (user ? user.email : 'null'));
+
     if (!user) {
-      throw new UnauthorizedError('Invalid credentials');
+      throw new UnauthorizedError('Invalid email or password');
     }
-
-    // Verify password
+    logger.info('Login - Stored password hash: ' + user.password); // Debug
     const isPasswordValid = await bcrypt.compare(password, user.password);
+    logger.info('Login - Password valid: ' + isPasswordValid + ' for input: ' + password);
     if (!isPasswordValid) {
-      if (typeof user.incrementLoginAttempts === 'function') {
-        await user.incrementLoginAttempts();
-      }
-      throw new UnauthorizedError('Invalid credentials');
-    }
 
-    // Check if 2FA is required
-    if (user.security && user.security.mfaEnabled) {
-      const tempToken = await this.generateTempToken(user);
-      return { requiresMfa: true, tempToken };
-    }
+      throw new UnauthorizedError('Invalid email or password');
 
-    // Generate tokens
+    }
     const tokens = await this.generateAuthTokens(user);
 
-    // Record login if method exists
-    if (typeof user.recordLogin === 'function') {
-      await user.recordLogin(
-        requestInfo.ip || 'unknown',
-        requestInfo.userAgent || 'unknown'
-      );
-    }
+    logger.info('Login - Tokens generated for email: ' + user.email);
+    return tokens;
 
-    return { user: { ...user.toJSON(), password: undefined }, tokens };
   }
 
+ 
   /**
    * Verify 2FA token
    */
@@ -187,37 +180,15 @@ class AuthService {
   async requestPasswordReset(email) {
     const user = await User.findOne({ email });
     if (!user) {
-      // Don't reveal user existence
-      return;
+      logger.info(`Password reset requested for non-existent email: ${email}`);
+      return; // Silent failure
     }
 
-    // Check if user has the generatePasswordResetToken method
-    let resetToken;
-    if (typeof user.generatePasswordResetToken === 'function') {
-      resetToken = user.generatePasswordResetToken();
-    } else {
-      // Create reset token manually if method doesn't exist
-      resetToken = crypto.randomBytes(32).toString('hex');
-      user.security = user.security || {};
-      user.security.passwordResetToken = crypto
-        .createHash('sha256')
-        .update(resetToken)
-        .digest('hex');
-      user.security.passwordResetExpires = new Date(Date.now() + 3600000); // 1 hour
-    }
-    
+    const resetToken = user.generatePasswordResetToken();
     await user.save();
+    logger.info(`Reset token generated for ${email}: ${resetToken}`); // Extra debug
+    await this.notificationService.sendPasswordResetEmail(email, resetToken);
 
-    // Check if the notification service has the sendPasswordResetEmail method
-    if (this.notificationService && typeof this.notificationService.sendPasswordResetEmail === 'function') {
-      await this.notificationService.sendPasswordResetEmail(
-        email,
-        resetToken
-      );
-    } else {
-      // Fallback if the method doesn't exist
-      console.log(`Password reset token for ${email}: ${resetToken}`);
-    }
   }
 
   /**
@@ -228,28 +199,19 @@ class AuthService {
       .createHash('sha256')
       .update(token)
       .digest('hex');
-
     const user = await User.findOne({
       'security.passwordResetToken': hashedToken,
       'security.passwordResetExpires': { $gt: Date.now() }
     });
-
     if (!user) {
       throw new UnauthorizedError('Invalid or expired reset token');
     }
-
-    user.password = await bcrypt.hash(newPassword, 12);
+    user.password = newPassword; // pre('save') hook will hash it
     user.security.passwordResetToken = undefined;
     user.security.passwordResetExpires = undefined;
-    await user.save();
 
-    // Check if the notification service has the sendPasswordChangeNotification method
-    if (this.notificationService && typeof this.notificationService.sendPasswordChangeNotification === 'function') {
-      await this.notificationService.sendPasswordChangeNotification(user.email);
-    } else {
-      // Fallback if the method doesn't exist
-      console.log(`Password change notification for ${user.email}`);
-    }
+    await this.notificationService.sendPasswordChangeNotification(user.email);
+
   }
 
   /**
@@ -257,26 +219,35 @@ class AuthService {
    */
   async refreshToken(refreshToken) {
     try {
-      const decoded = jwt.verify(refreshToken, config.jwtRefreshSecret);
+      logger.info(`Refreshing token: ${refreshToken.substring(0, 10)}...`); // Partial for brevity
+      const decoded = jwt.verify(refreshToken, config.jwt.refreshSecret);
+      logger.info(`Token decoded: userId=${decoded.userId}`);
       const user = await User.findById(decoded.userId);
 
-      if (!user || !user.tokens || !user.tokens.find(t => t.token === refreshToken)) {
+      if (!user) {
+        logger.info(`User not found for userId: ${decoded.userId}`);
+
         throw new UnauthorizedError('Invalid refresh token');
       }
-
+  
+      const tokenExists = user.tokens.find(t => t.token === refreshToken);
+      logger.info(`Token exists in DB: ${!!tokenExists}`);
+      if (!tokenExists) {
+        throw new UnauthorizedError('Invalid refresh token');
+      }
+  
       // Remove old refresh token
       user.tokens = user.tokens.filter(t => t.token !== refreshToken);
-      
-      // Generate new tokens
       const tokens = await this.generateAuthTokens(user);
       await user.save();
-
+  
+      logger.info('New tokens generated');
       return tokens;
     } catch (error) {
+      logger.error(`Refresh token error: ${error.message}`);
       throw new UnauthorizedError('Invalid refresh token');
     }
   }
-
   /**
    * Logout user
    */
@@ -286,12 +257,16 @@ class AuthService {
       throw new NotFoundError('User not found');
     }
 
-    // Remove refresh token
-    if (user.tokens && Array.isArray(user.tokens)) {
+    if (refreshToken) {
       user.tokens = user.tokens.filter(t => t.token !== refreshToken);
-      await user.save();
+      logger.info('Refresh token removed for user: ' + userId);
+    } else {
+      logger.info('No refresh token provided, logging out user: ' + userId);
     }
+    await user.save();
+
   }
+
 
   /**
    * Generate auth tokens (access + refresh)
@@ -366,33 +341,7 @@ class AuthService {
     return { accessToken, refreshToken };
   }
 
-  // async generateAuthTokens(user) {
-  //   const accessToken = jwt.sign(
-  //     {
-  //       userId: user._id,
-  //       organizationId: user.organization,
-  //       role: user.role
-  //     },
-  //     config.jwtSecret,
-  //     { expiresIn: config.jwtExpiresIn }
-  //   );
-
-  //   const refreshToken = jwt.sign(
-  //     { userId: user._id },
-  //     config.jwtRefreshSecret,
-  //     { expiresIn: config.jwtRefreshExpiresIn }
-  //   );
-
-  //   // Save refresh token
-  //   user.tokens.push({
-  //     token: refreshToken,
-  //     type: 'refresh',
-  //     expiresAt: new Date(Date.now() + config.jwtRefreshExpiresIn * 1000)
-  //   });
-  //   await user.save();
-
-  //   return { accessToken, refreshToken };
-  // }
+ 
 
   /**
    * Generate temporary token for 2FA

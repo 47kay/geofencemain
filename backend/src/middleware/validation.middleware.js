@@ -1,17 +1,24 @@
 const Joi = require('joi');
 const { ValidationError } = require('../utils/errors');
 const logger = require('../utils/logger');
-const { validateGeofence } = require('../utils/validation');
+// const { validateGeofence } = require('../utils/validation');
 
 /**
  * Common validation patterns and messages
  */
+// const patterns = {
+//   password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+//   phone: /^\+?[\d\s-]{10,}$/,
+//   employeeId: /^EMP\d{6}$/,
+//   coordinates: /^-?\d+\.?\d*$/
+// };
 const patterns = {
   password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
   phone: /^\+?[\d\s-]{10,}$/,
   employeeId: /^EMP\d{6}$/,
   coordinates: /^-?\d+\.?\d*$/
 };
+
 
 const messages = {
   required: '{#label} is required',
@@ -25,6 +32,7 @@ const messages = {
 /**
  * Base schema definitions
  */
+
 const baseSchemas = {
   email: Joi.string().email().required().messages({
     'string.email': messages.email,
@@ -53,7 +61,6 @@ const baseSchemas = {
     endDate: Joi.date().iso().min(Joi.ref('startDate'))
   }
 };
-
 /**
  * Schema definitions
  */
@@ -85,9 +92,21 @@ const registrationSchema = Joi.object({
   plan: Joi.string().valid('basic', 'professional', 'enterprise').required()
 });
 
+// const loginSchema = Joi.object({
+//   email: baseSchemas.email,
+//   password: Joi.string().required()
+// });
 const loginSchema = Joi.object({
   email: baseSchemas.email,
-  password: Joi.string().required()
+  password: baseSchemas.password 
+});
+
+
+const refreshTokenSchema = Joi.object({
+  refreshToken: Joi.string().required().messages({
+    'string.empty': 'Refresh token is required',
+    'any.required': 'Refresh token is required'
+  })
 });
 
 const passwordResetSchema = Joi.object({
@@ -239,6 +258,7 @@ const leaveRequestSchema = Joi.object({
 /**
  * Validation middleware factory
  */
+
 const validateRequest = (schema) => {
   return (req, res, next) => {
     try {
@@ -255,7 +275,6 @@ const validateRequest = (schema) => {
         throw new ValidationError('Validation failed', errors);
       }
 
-      // Replace request body with validated value
       req.body = value;
       next();
     } catch (error) {
@@ -265,12 +284,13 @@ const validateRequest = (schema) => {
   };
 };
 
+
 /**
  * Request sanitization middleware
  */
+
 const sanitizeRequest = (req, res, next) => {
   try {
-    // Sanitize body
     if (req.body) {
       Object.keys(req.body).forEach(key => {
         if (typeof req.body[key] === 'string') {
@@ -278,8 +298,6 @@ const sanitizeRequest = (req, res, next) => {
         }
       });
     }
-
-    // Sanitize query parameters
     if (req.query) {
       Object.keys(req.query).forEach(key => {
         if (typeof req.query[key] === 'string') {
@@ -287,7 +305,6 @@ const sanitizeRequest = (req, res, next) => {
         }
       });
     }
-
     next();
   } catch (error) {
     logger.error('Sanitization error:', error);
@@ -304,6 +321,7 @@ const validate = {
   login: validateRequest(loginSchema),
   passwordReset: validateRequest(passwordResetSchema),
   forgotPassword: validateRequest(forgotPasswordSchema),
+  refreshToken: validateRequest(refreshTokenSchema),
 
   // Geofence validations
   geofence: validateRequest(geofenceSchema),
