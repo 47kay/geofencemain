@@ -1,11 +1,12 @@
 const AuthService = require('../services/auth.service');
-const { validateRegistration, validateLogin } = require('../utils/validation');
+const { validateRegistration } = require('../utils/validation');
 const logger = require('../utils/logger');
 
 class AuthController {
   constructor() {
     this.authService = new AuthService();
-    // this.register = this.register.bind(this);
+    logger.info('AuthController constructed, authService:', !!this.authService);
+  
   }
 
   /**
@@ -36,63 +37,31 @@ class AuthController {
       next(error);
     }
   }
-  
-  // async register(req, res, next) {
-  //   try {
-  //     const validationResult = validateRegistration(req.body);
-  //     if (!validationResult.success) {
-  //       return res.status(400).json({ error: validationResult.errors });
-  //     }
 
-  //     const { organization, admin, plan } = req.body;
-  //     const result = await this.authService.registerOrganization(organization, admin, plan);
-      
-  //     logger.info(`Organization registered successfully: ${organization.name}`);
-  //     res.status(201).json(result);
-  //   } catch (error) {
-  //     logger.error(`Registration failed: ${error.message}`);
-  //     next(error);
-  //   }
-  // }
 
-  // register = async (req, res, next) => {
-  //   try {
-  //     const validationResult = validateRegistration(req.body);
-  //     if (!validationResult.success) {
-  //       return res.status(400).json({ error: validationResult.errors });
-  //     }
-
-  //     const { organization, admin, plan } = req.body;
-  //     const result = await this.authService.registerOrganization(organization, admin, plan);
-      
-  //     logger.info(`Organization registered successfully: ${organization.name}`);
-  //     res.status(201).json(result);
-  //   } catch (error) {
-  //     logger.error(`Registration failed: ${error.message}`);
-  //     next(error);
-  //   }
-  // };
 
   /**
    * Login user
    */
-  async login(req, res, next) {
-    try {
-      const validationResult = validateLogin(req.body);
-      if (!validationResult.success) {
-        return res.status(400).json({ error: validationResult.errors });
-      }
 
-      const { email, password } = req.body;
-      const result = await this.authService.login(email, password);
-      
-      logger.info(`User logged in successfully: ${email}`);
-      res.json(result);
-    } catch (error) {
-      logger.error(`Login failed: ${error.message}`);
-      next(error);
-    }
+
+  // src/controllers/auth.controller.js
+async login(req, res, next) {
+  try {
+    logger.info('Login called, req.body.email: ' + req.body.email); // String concat
+    logger.info('Login called, this:', this);
+    logger.info('Login called, this.authService: ' + !!this.authService);
+    const { email, password } = req.body;
+    logger.info('Login called, extracted email: ' + email);
+    const result = await this.authService.login(email, password);
+    logger.info('Login result:', result);
+    logger.info('User logged in successfully: ' + email);
+    res.json(result);
+  } catch (error) {
+    logger.error('Login failed: ' + error.message);
+    next(error);
   }
+}
 
   /**
    * Request password reset
@@ -132,9 +101,10 @@ class AuthController {
   async logout(req, res, next) {
     try {
       const { userId } = req.user;
-      await this.authService.logout(userId);
+      const { refreshToken } = req.body;
+      await this.authService.logout(userId, refreshToken || null);
       
-      logger.info(`User logged out: ${userId}`);
+      logger.info('User logged out: ' + userId);
       res.json({ message: 'Logged out successfully' });
     } catch (error) {
       logger.error(`Logout failed: ${error.message}`);

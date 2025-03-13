@@ -7,8 +7,12 @@ const customFormat = format.combine(
     format: 'YYYY-MM-DD HH:mm:ss'
   }),
   format.errors({ stack: true }),
-  format.metadata(),
-  format.json()
+  format.printf(
+    info => `${info.timestamp} ${info.level}: ${info.message}`
+  ) // Simplified to ensure message includes all data
+  // format.errors({ stack: true }),
+  // format.metadata(),
+  // format.json()
 );
 
 // Define log levels
@@ -27,18 +31,17 @@ const level = () => {
 };
 
 // Create transports
+
 const transports = [
-  // Console transport
   new winston.transports.Console({
     format: format.combine(
       format.colorize(),
       format.printf(
-        info => `${info.timestamp} ${info.level}: ${info.message}${
-          info.metadata && Object.keys(info.metadata).length ? '\n' + JSON.stringify(info.metadata, null, 2) : ''
-        }`
+        info => `${info.timestamp} ${info.level}: ${info.message}`
       )
     )
   }),
+
 
   // File transport for errors
   new winston.transports.File({
@@ -57,9 +60,10 @@ const transports = [
 ];
 
 // Create logger instance
+
+
 const logger = winston.createLogger({
-  level: level(),
-  levels,
+  level: process.env.NODE_ENV === 'development' ? 'debug' : 'info',
   format: customFormat,
   transports,
   exceptionHandlers: [
@@ -69,6 +73,7 @@ const logger = winston.createLogger({
     new winston.transports.File({ filename: 'logs/rejections.log' })
   ]
 });
+
 
 // Add request logging middleware
 logger.requestMiddleware = (req, res, next) => {

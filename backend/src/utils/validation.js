@@ -130,7 +130,10 @@ const locationCheckSchema = Joi.object({
   longitude: baseSchemas.coordinates.longitude
 }).required();
 
-
+const loginSchema = Joi.object({
+  email: baseSchemas.email,
+  password: baseSchemas.password
+});
 
 // Schema for registration
 const registrationSchema = Joi.object({
@@ -260,6 +263,7 @@ module.exports = {
   employeeSchema,
   subscriptionSchema,
   validateRegistration: validate(registrationSchema),
+  validateLogin: validate(loginSchema),
   validateGeofence: validate(geofenceSchema),
   validateEmployee: validate(employeeSchema),
   validateSubscription: validate(subscriptionSchema)
