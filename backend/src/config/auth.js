@@ -1,10 +1,11 @@
 // config/auth.js
 const config = require('./env');
+require('dotenv').config()
 
 const authConfig = {
   jwt: {
-    secret: config.jwt.secret,
-    expiresIn: config.jwt.expiresIn
+    secret:  process.env.JWT_SECRET,
+    expiresIn: process.env.JWT_EXPIRES_IN
   },
   oauth: {
     google: config.oauth.google

@@ -1,5 +1,7 @@
 const AuthService = require('../services/auth.service');
+
 const { validateRegistration } = require('../utils/validation');
+
 const logger = require('../utils/logger');
 
 class AuthController {
@@ -16,6 +18,7 @@ class AuthController {
 
   async register(req, res, next) {
     try {
+
       // Validate request body
       const validationResult = validateRegistration(req.body);
       if (!validationResult.success) {
@@ -23,10 +26,7 @@ class AuthController {
       }
 
       // Extract data from request body
-      const { organization, admin, plan } = req.body;
 
-      // Call service to register organization and admin
-      const result = await this.authService.registerOrganization(organization, admin, plan);
 
       // Log success and return response
       logger.info(`Organization registered successfully: ${organization.name}`);
@@ -45,6 +45,7 @@ class AuthController {
    */
 
 
+
   // src/controllers/auth.controller.js
 async login(req, res, next) {
   try {
@@ -60,8 +61,31 @@ async login(req, res, next) {
   } catch (error) {
     logger.error('Login failed: ' + error.message);
     next(error);
+
   }
 }
+
+  /**
+   * Verify 2FA token
+   */
+  async verify2FA(req, res, next) {
+    try {
+      const { userId, token } = req.body;
+      
+      // Collect request information for login tracking
+      const requestInfo = {
+        ip: req.ip || req.connection.remoteAddress,
+        userAgent: req.headers['user-agent']
+      };
+      
+      const result = await this.authService.verify2FA(userId, token, requestInfo);
+      logger.info(`2FA verification successful for user: ${userId}`);
+      res.json(result);
+    } catch (error) {
+      logger.error(`2FA verification failed: ${error.message}`);
+      next(error);
+    }
+  }
 
   /**
    * Request password reset
@@ -70,7 +94,6 @@ async login(req, res, next) {
     try {
       const { email } = req.body;
       await this.authService.requestPasswordReset(email);
-      
       logger.info(`Password reset requested for: ${email}`);
       res.json({ message: 'Password reset email sent' });
     } catch (error) {
@@ -86,7 +109,6 @@ async login(req, res, next) {
     try {
       const { token, newPassword } = req.body;
       await this.authService.resetPassword(token, newPassword);
-      
       logger.info('Password reset successful');
       res.json({ message: 'Password reset successful' });
     } catch (error) {
@@ -101,10 +123,12 @@ async login(req, res, next) {
   async logout(req, res, next) {
     try {
       const { userId } = req.user;
+
       const { refreshToken } = req.body;
       await this.authService.logout(userId, refreshToken || null);
       
       logger.info('User logged out: ' + userId);
+
       res.json({ message: 'Logged out successfully' });
     } catch (error) {
       logger.error(`Logout failed: ${error.message}`);
@@ -117,9 +141,10 @@ async login(req, res, next) {
    */
   async refreshToken(req, res, next) {
     try {
-      const { refreshToken } = req.body;
+      const refreshToken = req.body.refreshToken || 
+                          req.headers['x-refresh-token'];
+                          
       const result = await this.authService.refreshToken(refreshToken);
-      
       logger.info('Token refreshed successfully');
       res.json(result);
     } catch (error) {
@@ -129,4 +154,6 @@ async login(req, res, next) {
   }
 }
 
+
 module.exports = AuthController;
+
