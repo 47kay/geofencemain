@@ -109,9 +109,8 @@ router.post('/verify-2fa',
  * @desc    Enable 2FA for user
  * @access  Private
  */
-router.post('/enable-2fa',
-  authenticate,
-  asyncHandler(authController.enable2FA)
+router.post('/verify-2fa',
+  asyncHandler(authController.verify2FA)
 );
 
 /**

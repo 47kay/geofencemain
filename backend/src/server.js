@@ -13,13 +13,13 @@ process.on('uncaughtException', (err) => {
   process.exit(1);
 });
 
-const DB = config.database.url.replace(
+const db_url = config.database.url.replace(
   '<PASSWORD>',
   config.database.password
 );
 
 // MongoDB connection
-mongoose.connect(config.database.url, {
+mongoose.connect(db_url, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   // useCreateIndex: true,
