@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const employeeController = require('../controllers/employee.controller');
-const authMiddleware = require('../middleware/auth.middleware');
-const { validateSchema, validateDateRange, employeeSchema } = require('../utils/validation');
+const employeeController = require('../../controllers/employee.controller');
+const authMiddleware = require('../../middleware/auth.middleware');
+const { validateSchema, validateDateRange, employeeSchema } = require('../../utils/validation');
 // const { validateDateRange } = require('../middleware/validation.middleware');
-const { asyncHandler } = require('../middleware/error.middleware');
+const { asyncHandler } = require('../../middleware/error.middleware');
 
 console.log('Attendance route handlers:', {
   authorizeOrSelf: typeof authMiddleware.authorizeOrSelf,

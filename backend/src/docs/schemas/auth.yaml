@@ -255,12 +255,80 @@ components:
               type: string
               example: "data:image/png;base64,..."
 
+    RefreshTokenRequest:
+      type: object
+      required:
+        - refresh_token
+      properties:
+        refresh_token:
+          type: string
+          format: JWT
+          example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+          description: JWT refresh token received during login or previous refresh
+
+    TokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+          example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+          description: JWT access token
+        refresh_token:
+          type: string
+          example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+          description: JWT refresh token
+        expires_in:
+          type: integer
+          format: int32
+          example: 3600
+          description: Token expiration time in seconds
+        token_type:
+          type: string
+          default: "Bearer"
+          example: "Bearer"
+          description: Type of token
+      required:
+        - access_token
+        - expires_in
+        - token_type
+    Verify2FASetupRequest:
+      type: object
+      required:
+        - code
+      properties:
+        code:
+          type: string
+          minLength: 6
+          maxLength: 6
+          pattern: "^\\d{6}$"
+          example: "123456"
+  
+    VerifyEmailCodeRequest:
+      type: object
+      required:
+        - email
+        - code
+      properties:
+        email:
+          type: string
+          format: email
+          example: "john.doe@acme.com"
+        code:
+          type: string
+          minLength: 4
+          maxLength: 4
+          pattern: "^\\d{4}$"
+          example: "1234"
+    
     RegistrationResponse:
       type: object
       properties:
         status:
           type: string
           example: "success"
+        message:
+          type: string
+          example: "Registration initiated. Please verify your email with the code sent."
         data:
           type: object
           properties:
@@ -276,8 +344,24 @@ components:
                 industry:
                   type: string
                   example: "Technology"
-            user:
-              $ref: '#/components/schemas/User'
-            token:
-              type: string
-              example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+            admin:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  example: "admin@acme.com"
+                firstName:
+                  type: string
+                  example: "John"
+                lastName:
+                  type: string
+                  example: "Doe"
+                status:
+                  type: string
+                  example: "pending"
+                  description: "User status will be pending until email is verified"
+  required:
+    - status
+    - message
+    - data

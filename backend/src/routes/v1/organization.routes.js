@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const organizationController = require('../controllers/organization.controller');
-const geofenceController = require('../controllers/geofence.controller');  // Add this line
-const { validate, sanitizeRequest } = require('../middleware/validation.middleware');
-const { authenticate, authorize } = require('../middleware/auth.middleware');
-const { asyncHandler } = require('../middleware/error.middleware');
-const { validateSchema, geofenceSchema, locationCheckSchema } = require('../utils/validation');
+const organizationController = require('../../controllers/organization.controller');
+const geofenceController = require('../../controllers/geofence.controller');  // Add this line
+const { validate, sanitizeRequest } = require('../../middleware/validation.middleware');
+const { authenticate, authorize } = require('../../middleware/auth.middleware');
+const { asyncHandler } = require('../../middleware/error.middleware');
+const { validateSchema, geofenceSchema, locationCheckSchema } = require('../../utils/validation');
 
 
 // Auth middleware for all organization routes

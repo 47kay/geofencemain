@@ -10,14 +10,17 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerSpecs = require('./docs/swagger');
 
 // Import routes
-const authRoutes = require('./routes/auth.routes');
-const organizationRoutes = require('./routes/organization.routes');
-const geofenceRoutes = require('./routes/geofence.routes');
-const employeeRoutes = require('./routes/employee.routes');
-const subscriptionRoutes = require('./routes/subscription.routes');
+// const authRoutes = require('./routes/v1/auth.routes');
+const authRoutes = require('./routes/v1/auth.routes');
+const organizationRoutes = require('./routes/v1/organization.routes');
+const geofenceRoutes = require('./routes/v1/geofence.routes');
+const employeeRoutes = require('./routes/v1/employee.routes');
+const subscriptionRoutes = require('./routes/v1/subscription.routes');
 
 // Import middleware
+
 const { errorHandler, notFoundHandler } = require('./middleware/error.middleware');
+
 const logger = require('./utils/logger');
 
 const app = express();

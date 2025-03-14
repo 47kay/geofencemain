@@ -29,6 +29,23 @@ const messages = {
   coordinates: '{#label} must be a valid coordinate'
 };
 
+
+// 2FA schemas
+const verify2FASchema = Joi.object({
+  code: Joi.string().required().length(6).pattern(/^\d+$/).messages({
+    'string.empty': 'Verification code is required',
+    'string.length': 'Verification code must be 6 digits',
+    'string.pattern.base': 'Verification code must contain only digits'
+  })
+});
+
+const disable2FASchema = Joi.object({
+  password: Joi.string().required().messages({
+    'string.empty': 'Password is required',
+    'any.required': 'Password is required'
+  })
+});
+
 /**
  * Base schema definitions
  */
@@ -103,7 +120,7 @@ const loginSchema = Joi.object({
 
 
 const refreshTokenSchema = Joi.object({
-  refreshToken: Joi.string().required().messages({
+  refresh_token: Joi.string().required().messages({
     'string.empty': 'Refresh token is required',
     'any.required': 'Refresh token is required'
   })
@@ -285,6 +302,19 @@ const validateRequest = (schema) => {
 };
 
 
+const verifyEmailCodeSchema = Joi.object({
+  email: baseSchemas.email,
+  code: Joi.string().required().length(4).pattern(/^\d+$/).messages({
+    'string.empty': 'Verification code is required',
+    'string.length': 'Verification code must be 4 digits',
+    'string.pattern.base': 'Verification code must contain only digits'
+  })
+});
+
+// Add to your validation object
+// validate.verifyEmailCode = validateRequest(verifyEmailCodeSchema);
+
+
 /**
  * Request sanitization middleware
  */
@@ -312,10 +342,26 @@ const sanitizeRequest = (req, res, next) => {
   }
 };
 
+const resendVerificationSchema = Joi.object({
+  email: baseSchemas.email
+});
+
+// Add to your validate object
+
+
 /**
  * Pre-configured validation middleware
  */
 const validate = {
+
+  verify2FA: validateRequest(verify2FASchema),
+  disable2FA: validateRequest(disable2FASchema),
+
+  verifyEmailCode: validateRequest(verifyEmailCodeSchema),
+  resendVerification: validateRequest(resendVerificationSchema),
+
+
+  
   // Auth validations
   registration: validateRequest(registrationSchema),
   login: validateRequest(loginSchema),
@@ -336,6 +382,9 @@ const validate = {
 
   // Organization validations
   organization: validateRequest(organizationSchema)
+
+
+  
 };
 
 module.exports = {

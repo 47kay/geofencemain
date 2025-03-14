@@ -1,11 +1,11 @@
 // src/routes/geofence.routes.js
 const express = require('express');
 const router = express.Router();
-const geofenceController = require('../controllers/geofence.controller');
-const authMiddleware = require('../middleware/auth.middleware');
-const { validateSchema } = require('../utils/validation'); // Changed from middleware/validation.middleware
-const { geofenceSchema, validateCoordinates, locationCheckSchema  } = require('../utils/validation'); // Added validateCoordinates from utils/validation
-const { asyncHandler } = require('../middleware/error.middleware');
+const geofenceController = require('../../controllers/geofence.controller');
+const authMiddleware = require('../../middleware/auth.middleware');
+const { validateSchema } = require('../../utils/validation'); // Changed from middleware/validation.middleware
+const { geofenceSchema, validateCoordinates, locationCheckSchema  } = require('../../utils/validation'); // Added validateCoordinates from utils/validation
+const { asyncHandler } = require('../../middleware/error.middleware');
 
 // console.log('Controller methods:', {
 //   createGeofence: typeof geofenceController.createGeofence,
