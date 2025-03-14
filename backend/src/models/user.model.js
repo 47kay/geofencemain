@@ -54,6 +54,15 @@ const userSchema = new Schema({
       trim: true
     }
   },
+  verification: {
+    code: String,
+    token: String,
+    expires: Date,
+    verified: {
+      type: Boolean,
+      default: false
+    }
+  },
   status: {
     type: String,
     enum: ['active', 'inactive', 'suspended', 'pending'],
@@ -123,6 +132,9 @@ const userSchema = new Schema({
     }
   }
 });
+
+
+
 
 // Indexes
 userSchema.index({ email: 1 }, { unique: true });
@@ -197,5 +209,7 @@ userSchema.statics.findByOrganization = function(organizationId) {
 };
 
 const User = mongoose.model('User', userSchema);
+
+
 
 module.exports = User;

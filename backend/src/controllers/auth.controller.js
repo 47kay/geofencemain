@@ -15,22 +15,27 @@ class AuthController {
    * Register a new organization admin
    */
 
-
   async register(req, res, next) {
     try {
-
-      // Validate request body
-      const validationResult = validateRegistration(req.body);
-      if (!validationResult.success) {
-        return res.status(400).json({ error: validationResult.errors });
-      }
-
-      // Extract data from request body
-
-
+      const { organization: orgData, admin: adminData, plan: planData } = req.body;
+  
+      // Call service to register organization
+      const result = await this.authService.registerOrganization(
+        orgData,
+        adminData,
+        planData
+      );
+  
       // Log success and return response
-      logger.info(`Organization registered successfully: ${organization.name}`);
-      res.status(201).json(result);
+      logger.info(`Organization registration initiated for: ${adminData.email}`);
+      res.status(201).json({
+        status: "success",
+        message: "Registration initiated. Please verify your email with the code sent.",
+        data: {
+          organization: result.organization.name,
+          email: adminData.email
+        }
+      });
     } catch (error) {
       // Log error and pass to error middleware
       logger.error(`Registration failed: ${error.message}`);
@@ -38,6 +43,8 @@ class AuthController {
     }
   }
 
+
+  
 
 
   /**
@@ -68,24 +75,7 @@ async login(req, res, next) {
   /**
    * Verify 2FA token
    */
-  async verify2FA(req, res, next) {
-    try {
-      const { userId, token } = req.body;
-      
-      // Collect request information for login tracking
-      const requestInfo = {
-        ip: req.ip || req.connection.remoteAddress,
-        userAgent: req.headers['user-agent']
-      };
-      
-      const result = await this.authService.verify2FA(userId, token, requestInfo);
-      logger.info(`2FA verification successful for user: ${userId}`);
-      res.json(result);
-    } catch (error) {
-      logger.error(`2FA verification failed: ${error.message}`);
-      next(error);
-    }
-  }
+
 
   /**
    * Request password reset
@@ -141,9 +131,21 @@ async login(req, res, next) {
    */
   async refreshToken(req, res, next) {
     try {
-      const refreshToken = req.body.refreshToken || 
-                          req.headers['x-refresh-token'];
-                          
+      // Look for refresh token in multiple possible locations
+      const refreshToken = req.body.refresh_token || // From your OpenAPI spec
+                            req.body.refreshToken ||  // Current implementation
+                            req.headers['x-refresh-token'];
+      
+      // Add validation to prevent the substring error
+      if (!refreshToken) {
+        return res.status(400).json({
+          status: "error",
+          code: "INVALID_REQUEST",
+          message: "Refresh token is required"
+        });
+      }
+      
+      logger.info(`Refreshing with token: ${refreshToken.substring(0, 10)}...`);
       const result = await this.authService.refreshToken(refreshToken);
       logger.info('Token refreshed successfully');
       res.json(result);
@@ -152,7 +154,181 @@ async login(req, res, next) {
       next(error);
     }
   }
+
+  /**
+ * Enable 2FA
+ */
+async enable2FA(req, res, next) {
+  try {
+    const { userId } = req.user;
+    const result = await this.authService.enable2FA(userId);
+    logger.info(`2FA setup initiated for user: ${userId}`);
+    res.json({
+      status: "success",
+      data: {
+        secret: result.secret,
+        qrCode: result.qrCode
+      }
+    });
+  } catch (error) {
+    logger.error(`2FA setup failed: ${error.message}`);
+    next(error);
+  }
 }
+
+/**
+ * Verify and activate 2FA setup
+ */
+async verify2FASetup(req, res, next) {
+  try {
+    const { userId } = req.user;
+    const { code } = req.body;
+    
+    const result = await this.authService.verify2FASetup(userId, code);
+    logger.info(`2FA setup verified and enabled for user: ${userId}`);
+    res.json({
+      status: "success",
+      message: "Two-factor authentication enabled successfully"
+    });
+  } catch (error) {
+    logger.error(`2FA verification failed: ${error.message}`);
+    next(error);
+  }
+}
+
+/**
+ * Disable 2FA
+ */
+async disable2FA(req, res, next) {
+  try {
+    const { userId } = req.user;
+    const { password } = req.body;
+    
+    if (!password) {
+      return res.status(400).json({
+        status: "error",
+        code: "INVALID_REQUEST",
+        message: "Password is required to disable 2FA"
+      });
+    }
+    
+    await this.authService.disable2FA(userId, password);
+    logger.info(`2FA disabled for user: ${userId}`);
+    res.json({
+      status: "success",
+      message: "Two-factor authentication disabled successfully"
+    });
+  } catch (error) {
+    logger.error(`Disable 2FA failed: ${error.message}`);
+    next(error);
+  }
+}
+
+/**
+ * Verify 2FA during login
+ */
+async verify2FA(req, res, next) {
+  try {
+    const { userId } = req.user;
+    const { code } = req.body;
+    
+    if (!code) {
+      return res.status(400).json({
+        status: "error",
+        code: "INVALID_REQUEST",
+        message: "Verification code is required"
+      });
+    }
+    
+    // Collect request information for login tracking
+    const requestInfo = {
+      ip: req.ip || req.connection.remoteAddress,
+      userAgent: req.headers['user-agent']
+    };
+    
+    const result = await this.authService.verify2FA(userId, code, requestInfo);
+    logger.info(`2FA verification successful for user: ${userId}`);
+    res.json(result);
+  } catch (error) {
+    logger.error(`2FA verification failed: ${error.message}`);
+    next(error);
+  }
+}
+/**
+ * Verify user's email address
+ */
+async verifyEmail(req, res, next) {
+  try {
+    const { token } = req.params;
+    
+    await this.authService.verifyEmail(token);
+    logger.info('Email verification successful');
+    res.json({
+      status: "success",
+      message: "Email verified successfully"
+    });
+  } catch (error) {
+    logger.error(`Email verification failed: ${error.message}`);
+    next(error);
+  }
+}
+
+
+
+/**
+ * Resend verification email
+ */
+async resendVerification(req, res, next) {
+  try {
+    const { email } = req.body;
+    
+    if (!email) {
+      return res.status(400).json({
+        status: "error",
+        code: "INVALID_REQUEST",
+        message: "Email is required"
+      });
+    }
+    
+    const result = await this.authService.resendVerification(email);
+    logger.info(`Verification code resent to: ${email}`);
+    res.json(result);
+  } catch (error) {
+    logger.error(`Resend verification failed: ${error.message}`);
+    next(error);
+  }
+}
+/**
+ * Verify email with code
+ */
+async verifyEmailWithCode(req, res, next) {
+  try {
+    const { email, code } = req.body;
+    
+    if (!email || !code) {
+      return res.status(400).json({
+        status: "error",
+        code: "INVALID_REQUEST",
+        message: "Email and verification code are required"
+      });
+    }
+    
+    const result = await this.authService.verifyEmailWithCode(email, code);
+    logger.info(`Email verification successful for: ${email}`);
+    res.json(result);
+  } catch (error) {
+    logger.error(`Email verification failed: ${error.message}`);
+    next(error);
+  }
+}
+
+
+
+}
+
+
+
+
 
 
 module.exports = AuthController;

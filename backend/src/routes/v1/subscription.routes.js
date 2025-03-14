@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const subscriptionController = require('../controllers/subscription.controller');
-const authMiddleware = require('../middleware/auth.middleware');
-const { validateSchema, subscriptionSchema } = require('../utils/validation');
-const { asyncHandler } = require('../middleware/error.middleware');
+const subscriptionController = require('../../controllers/subscription.controller');
+const authMiddleware = require('../../middleware/auth.middleware');
+const { validateSchema, subscriptionSchema } = require('../../utils/validation');
+const { asyncHandler } = require('../../middleware/error.middleware');
 
 // Add some debug logs to verify our imports
 console.log('Subscription Route Dependencies:', {

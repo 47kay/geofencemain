@@ -5565,3 +5565,70 @@
 {"level":"info","message":"Server running in development mode on port 3000","metadata":{"timestamp":"2025-03-12 19:27:53"}}
 {"level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.erqidae.mongodb.net","metadata":{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.erqidae.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.erqidae.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:291:17)","syscall":"querySrv","timestamp":"2025-03-12 19:27:56"}}
 >>>>>>> 4c0684f956a2d552ae2d04f7242cddc01da0fa77
+2025-03-14 20:14:01 info: AuthController constructed, authService:
+2025-03-14 20:14:01 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-14 20:14:01 info: Email service initialized
+2025-03-14 20:14:01 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-14 20:14:01 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-14 20:14:01 info: Email service initialized
+2025-03-14 20:14:01 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-14 20:14:01 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-14 20:14:01 info: Email service initialized
+2025-03-14 20:14:01 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-14 20:14:01 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-14 20:14:01 info: Email service initialized
+2025-03-14 20:14:01 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-14 20:14:01 info: Server running in development mode on port 3000
+2025-03-14 20:14:05 info: Connected to MongoDB successfully
+2025-03-14 20:15:54 info: AuthController constructed, authService:
+2025-03-14 20:15:54 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-14 20:15:54 info: Email service initialized
+2025-03-14 20:15:54 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-14 20:15:54 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-14 20:15:54 info: Email service initialized
+2025-03-14 20:15:54 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-14 20:15:54 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-14 20:15:54 info: Email service initialized
+2025-03-14 20:15:54 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-14 20:15:54 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-14 20:15:54 info: Email service initialized
+2025-03-14 20:15:54 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-14 20:15:54 info: Server running in development mode on port 3000
+2025-03-14 20:15:58 info: Connected to MongoDB successfully
+2025-03-14 20:17:04 http: Incoming POST request to /api/auth/login
+2025-03-14 20:17:04 info: Login called, req.body.email: admin@nigeria.com
+2025-03-14 20:17:04 info: Login called, this:
+2025-03-14 20:17:04 info: Login called, this.authService: true
+2025-03-14 20:17:04 info: Login called, extracted email: admin@nigeria.com
+2025-03-14 20:17:04 info: Login - Called with email: admin@nigeria.com
+2025-03-14 20:17:04 info: Login - User retrieved: admin@nigeria.com
+2025-03-14 20:17:04 info: Login - Stored password hash: $2a$12$a/JZwngGCe66G86b7Mcv9.rLe4f41N.HjJ1iG7u0BIqGD5PBcxvkm
+2025-03-14 20:17:05 info: Login - Password valid: true for input: NewStrongP@ss123
+2025-03-14 20:17:05 info: Login - Tokens generated for email: admin@nigeria.com
+2025-03-14 20:17:05 info: Login result:
+2025-03-14 20:17:05 info: User logged in successfully: admin@nigeria.com
+2025-03-14 20:17:05 http: ::1 - - [14/Mar/2025:19:17:05 +0000] "POST /api/auth/login HTTP/1.1" 200 510 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-14 20:17:05 http: Request completed in 1035ms
+2025-03-14 20:19:32 http: Incoming POST request to /api/auth/forgot-password
+2025-03-14 20:19:32 info: Reset token generated for admin@nigeria.com: 3199f9d258916499b183815e570b2d1c26123e684e96e9bc646da1745170863f
+2025-03-14 20:19:32 info: Password reset requested for: admin@nigeria.com
+2025-03-14 20:19:32 http: ::1 - - [14/Mar/2025:19:19:32 +0000] "POST /api/auth/forgot-password HTTP/1.1" 200 39 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-14 20:19:32 http: Request completed in 465ms
+2025-03-14 20:20:49 http: Incoming POST request to /api/auth/reset-password
+2025-03-14 20:20:50 info: Password reset successful
+2025-03-14 20:20:50 http: ::1 - - [14/Mar/2025:19:20:50 +0000] "POST /api/auth/reset-password HTTP/1.1" 200 39 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-14 20:20:50 http: Request completed in 943ms
+2025-03-14 20:21:07 http: Incoming POST request to /api/auth/login
+2025-03-14 20:21:07 info: Login called, req.body.email: admin@nigeria.com
+2025-03-14 20:21:07 info: Login called, this:
+2025-03-14 20:21:07 info: Login called, this.authService: true
+2025-03-14 20:21:07 info: Login called, extracted email: admin@nigeria.com
+2025-03-14 20:21:07 info: Login - Called with email: admin@nigeria.com
+2025-03-14 20:21:08 info: Login - User retrieved: admin@nigeria.com
+2025-03-14 20:21:08 info: Login - Stored password hash: $2a$12$ObQQL6Y3pEGs9c.mBOfrE.O8oC1dGcKlXqzsMi5RDxBVC2nyI73pG
+2025-03-14 20:21:08 info: Login - Password valid: true for input: OldNewStrongP@ss123
+2025-03-14 20:21:08 info: Login - Tokens generated for email: admin@nigeria.com
+2025-03-14 20:21:08 info: Login result:
+2025-03-14 20:21:08 info: User logged in successfully: admin@nigeria.com
+2025-03-14 20:21:08 http: ::1 - - [14/Mar/2025:19:21:08 +0000] "POST /api/auth/login HTTP/1.1" 200 510 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-14 20:21:08 http: Request completed in 974ms
