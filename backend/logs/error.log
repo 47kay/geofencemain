@@ -467,3 +467,35 @@
 {"level":"error","message":"Error handling middleware:","metadata":{"error":"Invalid credentials","method":"POST","path":"/api/auth/login","stack":"UnauthorizedError: Invalid credentials\n    at AuthService.login (/Users/chidiagu/projects/geofencemain/backend/src/services/auth.service.js:135:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async AuthController.login (/Users/chidiagu/projects/geofencemain/backend/src/controllers/auth.controller.js:37:22)","timestamp":"2025-03-03 15:32:02"}}
 {"level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.erqidae.mongodb.net","metadata":{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.erqidae.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.erqidae.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:291:17)","syscall":"querySrv","timestamp":"2025-03-12 19:27:56"}}
 >>>>>>> 4c0684f956a2d552ae2d04f7242cddc01da0fa77
+2025-03-17 20:49:49 error: Error handling middleware:
+2025-03-17 20:53:07 error: Error handling middleware:
+2025-03-17 21:09:41 error: Authentication error: No authorization token provided
+2025-03-17 21:09:41 error: Error handling middleware:
+2025-03-17 21:11:24 error: Authentication error: No authorization token provided
+2025-03-17 21:11:24 error: Error handling middleware:
+2025-03-17 21:11:41 error: Authentication error: No authorization token provided
+2025-03-17 21:11:41 error: Error handling middleware:
+2025-03-17 21:22:13 error: Error handling middleware:
+2025-03-17 21:28:12 error: Error handling middleware:
+2025-03-17 21:32:08 error: Error handling middleware:
+2025-03-17 21:32:09 error: Error handling middleware:
+2025-03-17 21:32:21 error: Error handling middleware:
+2025-03-17 21:34:37 error: Authentication error: No authorization token provided
+2025-03-17 21:34:37 error: Error handling middleware:
+2025-03-17 21:35:31 error: Registration failed: this.authService.registerOrganization is not a function
+2025-03-17 21:35:31 error: Error handling middleware:
+2025-03-17 21:41:20 error: Email verification failed: Organization.generateUniqueId is not a function
+2025-03-17 21:41:20 error: Email verification failed: Organization.generateUniqueId is not a function
+2025-03-17 21:41:20 error: Error handling middleware:
+2025-03-17 21:43:31 error: Resend verification failed: Email already verified
+2025-03-17 21:43:31 error: Error handling middleware:
+2025-03-17 21:53:24 error: Invitation failed: You do not have permission to invite users to this organization
+2025-03-17 21:53:24 error: Error handling middleware:
+2025-03-17 22:01:09 error: Invitation failed: You do not have permission to invite users to this organization
+2025-03-17 22:01:09 error: Error handling middleware:
+2025-03-17 22:04:24 error: Invitation failed: You do not have permission to invite users to this organization
+2025-03-17 22:04:24 error: Error handling middleware:
+2025-03-17 22:13:52 error: Invitation failed: Department not found in this organization
+2025-03-17 22:13:52 error: Error handling middleware:
+2025-03-17 22:14:31 error: Complete registration failed: Invalid or expired invitation
+2025-03-17 22:14:31 error: Error handling middleware:

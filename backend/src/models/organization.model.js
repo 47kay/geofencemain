@@ -58,6 +58,12 @@ const organizationSchema = new Schema({
       trim: true
     }
   },
+  uniqueId: {
+    type: String,
+    unique: true,
+    sparse: true,
+    index: true
+  },
   settings: {
     timezone: {
       type: String,
@@ -173,6 +179,31 @@ organizationSchema.methods.updateGeofenceCount = async function() {
 organizationSchema.statics.findByEmail = function(email) {
   return this.findOne({ 'contact.email': email.toLowerCase() });
 };
+
+// Add a utility function to generate a unique ID based on company name
+organizationSchema.statics.generateUniqueId = async function(companyName) {
+  // Take first 3 characters of company name (uppercase) or use 'ORG' if too short
+  const prefix = companyName.length >= 3 
+    ? companyName.substring(0, 3).toUpperCase() 
+    : companyName.padEnd(3, 'X').toUpperCase();
+    
+  // Generate a 5-digit random number
+  const randomPart = Math.floor(10000 + Math.random() * 90000);
+  
+  // Combine to create a unique ID
+  const candidateId = `${prefix}${randomPart}`;
+  
+  // Check if this ID already exists in the database
+  const exists = await this.findOne({ uniqueId: candidateId });
+  
+  if (exists) {
+    // If it exists, recursively generate a new one
+    return this.generateUniqueId(companyName);
+  }
+  
+  return candidateId;
+};
+
 
 const Organization = mongoose.model('Organization', organizationSchema);
 

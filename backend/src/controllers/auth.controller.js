@@ -32,7 +32,7 @@ class AuthController {
         status: "success",
         message: "Registration initiated. Please verify your email with the code sent.",
         data: {
-          organization: result.organization.name,
+           
           email: adminData.email
         }
       });

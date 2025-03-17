@@ -32,11 +32,22 @@ const userSchema = new Schema({
     enum: ['superadmin', 'admin', 'manager', 'user'],
     default: 'user'
   },
+  createdBy: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  },
   organization: {
     type: Schema.Types.ObjectId,
     ref: 'Organization',
     required: true
   },
+  invitationStatus: {
+    type: String,
+    enum: ['pending', 'accepted', 'rejected', 'expired'],
+    default: 'pending'
+  },
+  invitationToken: String,
+  invitationExpires: Date,
   profile: {
     phone: {
       type: String,

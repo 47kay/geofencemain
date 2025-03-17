@@ -523,6 +523,88 @@ class NotificationService {
       return { success: true, fallback: true };
     }
   }
+
+ /**
+ * Send invitation email to new user
+ * @param {string} email - Recipient email
+ * @param {string} token - Invitation token
+ * @param {Object} data - Email data
+ * @returns {Promise<Object>} - Result of email operation
+ */
+async sendInvitationEmail(email, token, data) {
+  try {
+    const { 
+      role, 
+      invitedBy, 
+      inviterEmail,
+      organizationName, 
+      organizationId, 
+      departmentName, 
+      isResend 
+    } = data;
+    
+    logger.info(`Sending ${role} invitation email to ${email}`);
+    
+    // Different registration URL based on role
+    const frontendUrl = config.frontendUrl || 'http://localhost:3000';
+    const registrationUrl = role === 'admin' 
+      ? `${frontendUrl}/admin/complete-registration?token=${token}`
+      : `${frontendUrl}/employee/complete-registration?token=${token}`;
+    
+    // If email service is not configured, use mock/log behavior
+    if (!this.emailTransporter || process.env.NODE_ENV !== 'production') {
+      logger.info(`[MOCK] Invitation token: ${token}`);
+      logger.info(`[MOCK] You have been invited by ${invitedBy} (${inviterEmail}) to join ${organizationName} as a ${role}`);
+      
+      if (departmentName) {
+        logger.info(`[MOCK] Department: ${departmentName}`);
+      }
+      
+      if (isResend) {
+        logger.info(`[MOCK] This is a reminder for a previous invitation.`);
+      }
+      
+      logger.info(`[MOCK] Registration URL: ${registrationUrl}`);
+      return { success: true, fallback: true };
+    }
+    
+    // If we have email configured and in production, send real email
+    // Here we can use the existing email templates system or create a dedicated one
+    // For now we'll use a direct approach:
+    
+    const subject = isResend 
+      ? `Reminder: Invitation to join ${organizationName}`
+      : `Invitation to join ${organizationName}`;
+    
+    const htmlContent = `
+      <h2>You've been invited to join ${organizationName}</h2>
+      <p>Hello,</p>
+      <p>You have been invited by ${invitedBy} (${inviterEmail}) to join ${organizationName} as a ${role}.</p>
+      ${departmentName ? `<p>Department: ${departmentName}</p>` : ''}
+      ${isResend ? `<p><strong>This is a reminder for a previous invitation.</strong></p>` : ''}
+      <p>To complete your registration, please click the following link:</p>
+      <p><a href="${registrationUrl}">${registrationUrl}</a></p>
+      <p>This invitation will expire in 7 days.</p>
+      <p>Thank you,<br>${organizationName} Team</p>
+    `;
+    
+    const mailOptions = {
+      from: config.email.from,
+      to: email,
+      subject: subject,
+      html: htmlContent
+    };
+
+    const result = await this.emailTransporter.sendMail(mailOptions);
+    logger.info(`Invitation email sent successfully to ${email}`, { messageId: result.messageId });
+    return result;
+    
+  } catch (error) {
+    logger.error(`Failed to send invitation email to ${email}:`, error);
+    return { success: false, error: error.message };
+  }
+}
+
 }
 
 module.exports = NotificationService;

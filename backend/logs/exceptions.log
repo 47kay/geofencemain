@@ -1,0 +1,68 @@
+2025-03-17 20:56:27 error: uncaughtException: Cannot find module '../services/invitation.service'
+Require stack:
+- /home/temitope/Desktop/work/geofencemain/backend/src/controllers/invitation.controller.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/invitation.routes.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/app.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/server.js
+Error: Cannot find module '../services/invitation.service'
+Require stack:
+- /home/temitope/Desktop/work/geofencemain/backend/src/controllers/invitation.controller.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/invitation.routes.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/app.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1219:15)
+    at Module._load (node:internal/modules/cjs/loader:1045:27)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/controllers/invitation.controller.js:2:27)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+2025-03-17 20:56:37 error: uncaughtException: Cannot find module '../services/invitation.service'
+Require stack:
+- /home/temitope/Desktop/work/geofencemain/backend/src/controllers/invitation.controller.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/invitation.routes.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/app.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/server.js
+Error: Cannot find module '../services/invitation.service'
+Require stack:
+- /home/temitope/Desktop/work/geofencemain/backend/src/controllers/invitation.controller.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/invitation.routes.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/app.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1219:15)
+    at Module._load (node:internal/modules/cjs/loader:1045:27)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/controllers/invitation.controller.js:2:27)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+2025-03-17 21:01:03 error: uncaughtException: Route.post() requires a callback function but got a [object Undefined]
+Error: Route.post() requires a callback function but got a [object Undefined]
+    at Route.<computed> [as post] (/home/temitope/Desktop/work/geofencemain/backend/node_modules/express/lib/router/route.js:216:15)
+    at proto.<computed> [as post] (/home/temitope/Desktop/work/geofencemain/backend/node_modules/express/lib/router/index.js:521:19)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/invitation.routes.js:15:8)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+2025-03-17 21:01:09 error: uncaughtException: Route.post() requires a callback function but got a [object Undefined]
+Error: Route.post() requires a callback function but got a [object Undefined]
+    at Route.<computed> [as post] (/home/temitope/Desktop/work/geofencemain/backend/node_modules/express/lib/router/route.js:216:15)
+    at proto.<computed> [as post] (/home/temitope/Desktop/work/geofencemain/backend/node_modules/express/lib/router/index.js:521:19)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/invitation.routes.js:15:8)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)

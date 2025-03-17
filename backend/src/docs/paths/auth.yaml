@@ -1,318 +1,4 @@
-# # docs/paths/auth.yaml
-# paths:
-#   /auth/register:
-#     post:
-#       tags:
-#         - Authentication
-#       summary: Register a new organization and admin user
-#       description: Creates a new organization account with an admin user
-#       requestBody:
-#         required: true
-#         content:
-#           application/json:
-#             schema:
-#               $ref: '#/components/schemas/RegistrationRequest'
-#       responses:
-#         '201':
-#           description: Organization and admin user created successfully
-#           content:
-#             application/json:
-#               schema:
-#                 $ref: '#/components/schemas/RegistrationResponse'
-#         '400':
-#           $ref: '#/components/responses/ValidationError'
-#         '409':
-#           $ref: '#/components/responses/ConflictError'
 
-#   /auth/login:
-#     post:
-#       tags:
-#         - Authentication
-#       summary: Authenticate user & get token
-#       description: Login with email and password to receive access token
-#       requestBody:
-#         required: true
-#         content:
-#           application/json:
-#             schema:
-#               $ref: '#/components/schemas/LoginRequest'
-#       responses:
-#         '200':
-#           description: Login successful
-#           content:
-#             application/json:
-#               schema:
-#                 $ref: '#/components/schemas/LoginResponse'
-#         '401':
-#           $ref: '#/components/responses/UnauthorizedError'
-#         '423':
-#           $ref: '#/components/responses/AccountLockedError'
-
-#   /auth/forgot-password:
-#     post:
-#       tags:
-#         - Authentication
-#       summary: Request password reset email
-#       description: Send a password reset link to user's email
-#       requestBody:
-#         required: true
-#         content:
-#           application/json:
-#             schema:
-#               $ref: '#/components/schemas/ForgotPasswordRequest'
-#       responses:
-#         '200':
-#           description: Password reset email sent successfully
-#           content:
-#             application/json:
-#               schema:
-#                 $ref: '#/components/responses/SuccessResponse'
-#         '404':
-#           $ref: '#/components/responses/NotFoundError'
-
-#   /auth/reset-password:
-#     post:
-#       tags:
-#         - Authentication
-#       summary: Reset password using token
-#       description: Reset user's password using the token received via email
-#       requestBody:
-#         required: true
-#         content:
-#           application/json:
-#             schema:
-#               $ref: '#/components/schemas/ResetPasswordRequest'
-#       responses:
-#         '200':
-#           description: Password reset successful
-#           content:
-#             application/json:
-#               schema:
-#                 $ref: '#/components/responses/SuccessResponse'
-#         '400':
-#           $ref: '#/components/responses/ValidationError'
-#         '401':
-#           $ref: '#/components/responses/InvalidTokenError'
-
-#   /auth/refresh-token:
-#     post:
-#       tags:
-#         - Authentication
-#       summary: Get new access token
-#       description: Get new access token using refresh token
-#       security:
-#         - bearerAuth: []
-#       requestBody:
-#         required: true
-#         content:
-#           application/json:
-#             schema:
-#               $ref: '#/components/schemas/RefreshTokenRequest'
-#       responses:
-#         '200':
-#           description: New access token generated successfully
-#           content:
-#             application/json:
-#               schema:
-#                 $ref: '#/components/schemas/TokenResponse'
-#         '401':
-#           $ref: '#/components/responses/InvalidTokenError'
-
-#   /auth/logout:
-#     post:
-#       tags:
-#         - Authentication
-#       summary: Logout user
-#       description: Logout user and invalidate tokens
-#       security:
-#         - bearerAuth: []
-#       responses:
-#         '200':
-#           description: Logout successful
-#           content:
-#             application/json:
-#               schema:
-#                 $ref: '#/components/responses/SuccessResponse'
-#         '401':
-#           $ref: '#/components/responses/UnauthorizedError'
-
-#   /auth/verify-email/{token}:
-#     get:
-#       tags:
-#         - Authentication
-#       summary: Verify email address
-#       description: Verify user's email address using verification token
-#       parameters:
-#         - name: token
-#           in: path
-#           required: true
-#           schema:
-#             type: string
-#       responses:
-#         '200':
-#           description: Email verified successfully
-#           content:
-#             application/json:
-#               schema:
-#                 $ref: '#/components/responses/SuccessResponse'
-#         '400':
-#           $ref: '#/components/responses/InvalidTokenError'
-
-#   /auth/resend-verification:
-#     post:
-#       tags:
-#         - Authentication
-#       summary: Resend verification email
-#       description: Resend verification code to user's email
-#       requestBody:
-#         required: true
-#         content:
-#           application/json:
-#             schema:
-#               type: object
-#               required:
-#                 - email
-#               properties:
-#                 email:
-#                   type: string
-#                   format: email
-#                   example: "user@example.com"
-#     responses:
-#       '200':
-#         description: Verification email sent successfully
-#         content:
-#           application/json:
-#             schema:
-#               $ref: '#/components/responses/SuccessResponse'
-#       '400':
-#         $ref: '#/components/responses/ValidationError'
-
-  
-
-#   /auth/verify-2fa:
-#     post:
-#       tags:
-#         - Authentication
-#       summary: Verify 2FA code
-#       description: Verify two-factor authentication code
-#       security:
-#         - bearerAuth: []
-#       requestBody:
-#         required: true
-#         content:
-#           application/json:
-#             schema:
-#               $ref: '#/components/schemas/Verify2FARequest'
-#       responses:
-#         '200':
-#           description: 2FA verification successful
-#           content:
-#             application/json:
-#               schema:
-#                 $ref: '#/components/responses/SuccessResponse'
-#         '401':
-#           $ref: '#/components/responses/UnauthorizedError'
-
-#   /auth/enable-2fa:
-#     post:
-#       tags:
-#         - Authentication
-#       summary: Enable 2FA
-#       description: Enable two-factor authentication for user
-#       security:
-#         - bearerAuth: []
-#       responses:
-#         '200':
-#           description: 2FA enabled successfully
-#           content:
-#             application/json:
-#               schema:
-#                 $ref: '#/components/schemas/Enable2FAResponse'
-#         '401':
-#           $ref: '#/components/responses/UnauthorizedError'
-
-#   /auth/disable-2fa:
-#     post:
-#       tags:
-#         - Authentication
-#       summary: Disable 2FA
-#       description: Disable two-factor authentication for user
-#       security:
-#         - bearerAuth: []
-#       requestBody:
-#         required: true
-#         content:
-#           application/json:
-#             schema:
-#               type: object
-#               required:
-#                 - password
-#               properties:
-#                 password:
-#                   type: string
-#                   format: password
-#                   example: "StrongP@ss123"
-#       responses:
-#         '200':
-#           description: 2FA disabled successfully
-#           content:
-#             application/json:
-#               schema:
-#                 $ref: '#/components/responses/SuccessResponse'
-#         '401':
-#           $ref: '#/components/responses/UnauthorizedError'
-#   /auth/verify-2fa-setup:
-#     post:
-#         tags:
-#           - Authentication
-#         summary: Verify and activate 2FA setup
-#         description: Verify the 2FA code and enable 2FA for the user account
-#         security:
-#           - bearerAuth: []
-#         requestBody:
-#           required: true
-#           content:
-#             application/json:
-#               schema:
-#                 $ref: '#/components/schemas/Verify2FASetupRequest'
-#         responses:
-#           '200':
-#             description: 2FA setup verified successfully
-#             content:
-#               application/json:
-#                 schema:
-#                   $ref: '#/components/responses/SuccessResponse'
-#           '400':
-#             $ref: '#/components/responses/ValidationError'
-#           '401':
-#             $ref: '#/components/responses/UnauthorizedError'
-
-#   /auth/verify-email-code:
-#     post:
-#       tags:
-#         - Authentication
-#       summary: Verify email with code
-#       description: Verify user's email using the 4-digit code sent during registration
-#       requestBody:
-#         required: true
-#         content:
-#           application/json:
-#             schema:
-#               $ref: '#/components/schemas/VerifyEmailCodeRequest'
-#       responses:
-#         '200':
-#           description: Email verification successful
-#           content:
-#             application/json:
-#               schema:
-#                 $ref: '#/components/schemas/TokenResponse'
-#         '400':
-#           $ref: '#/components/responses/ValidationError'
-#         '401':
-#           $ref: '#/components/responses/InvalidTokenError'
-      
-
-# docs/paths/auth.yaml
 paths:
   /auth/register:
     post:
@@ -622,4 +308,271 @@ paths:
         '400':
           $ref: '#/components/responses/ValidationError'
         '401':
-          $ref: '#/components/responses/InvalidTokenError'    
+          $ref: '#/components/responses/InvalidTokenError'
+
+
+  /auth/invitations/invite:
+    post:
+      tags:
+        - Invitations
+      summary: Invite a new user
+      description: Send an invitation to a new user (admin, manager, or employee)
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InviteUserRequest'
+      responses:
+        '201':
+          description: Invitation sent successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InviteUserResponse'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /auth/invitations/complete-registration:
+    post:
+      tags:
+        - Invitations
+      summary: Complete registration from invitation
+      description: Complete user registration from invitation token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompleteRegistrationRequest'
+      responses:
+        '200':
+          description: Registration completed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompleteRegistrationResponse'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /auth/invitations/{invitationId}/resend:
+    post:
+      tags:
+        - Invitations
+      summary: Resend invitation
+      description: Resend an invitation to a user
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: invitationId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the invitation to resend
+      responses:
+        '200':
+          description: Invitation resent successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResendInvitationResponse'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /auth/invitations/{invitationId}:
+    delete:
+      tags:
+        - Invitations
+      summary: Cancel invitation
+      description: Cancel a pending invitation
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: invitationId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the invitation to cancel
+      responses:
+        '200':
+          description: Invitation canceled successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CancelInvitationResponse'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /auth/invitations:
+    get:
+      tags:
+        - Invitations
+      summary: List invitations
+      description: List pending invitations for the organization
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: role
+          in: query
+          schema:
+            type: string
+            enum: [admin, manager, user]
+          description: Filter by role
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [pending, accepted, rejected, expired]
+            default: pending
+          description: Filter by invitation status
+      responses:
+        '200':
+          description: List of invitations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListInvitationsResponse'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /employees:
+    post:
+      tags:
+        - Employees
+      summary: Create a new employee
+      description: Add a new employee to the organization
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - firstName
+                - lastName
+                - email
+                - employmentDetails
+              properties:
+                firstName:
+                  type: string
+                  example: "Jane"
+                lastName:
+                  type: string
+                  example: "Smith"
+                email:
+                  type: string
+                  format: email
+                  example: "jane.smith@acme.com"
+                phone:
+                  type: string
+                  example: "+1-555-9876543"
+                employmentDetails:
+                  $ref: '#/components/schemas/EmploymentDetails'
+      responses:
+        '201':
+          description: Employee created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: "Employee created successfully"
+                  employee:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: "60d21b4667d0d8992e610c85"
+                      firstName:
+                        type: string
+                        example: "Jane"
+                      lastName:
+                        type: string
+                        example: "Smith"
+                      email:
+                        type: string
+                        example: "jane.smith@acme.com"
+                      phone:
+                        type: string
+                        example: "+1-555-9876543"
+                      status:
+                        type: string
+                        example: "active"
+                        enum: [active, inactive, suspended, pending]
+                      department:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: "60d21b4667d0d8992e610c86"
+                          name:
+                            type: string
+                            example: "Engineering"
+                      position:
+                        type: string
+                        example: "Software Engineer"
+                      employmentType:
+                        type: string
+                        example: "full-time"
+                      startDate:
+                        type: string
+                        format: date
+                        example: "2023-01-15"
+                      manager:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: "60d21b4667d0d8992e610c87"
+                          firstName:
+                            type: string
+                            example: "John"
+                          lastName:
+                            type: string
+                            example: "Doe"
+                          email:
+                            type: string
+                            example: "john.doe@acme.com"
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+
+    

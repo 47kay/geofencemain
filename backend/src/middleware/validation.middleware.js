@@ -346,7 +346,24 @@ const resendVerificationSchema = Joi.object({
   email: baseSchemas.email
 });
 
-// Add to your validate object
+
+
+// Invitation validation schemas
+const inviteUserSchema = Joi.object({
+  email: baseSchemas.email,
+  role: Joi.string().valid('admin', 'manager', 'user').required(),
+  departmentId: Joi.string().optional(),
+  additionalData: Joi.object().optional()
+});
+
+const completeRegistrationSchema = Joi.object({
+  token: Joi.string().required(),
+  firstName: baseSchemas.name,
+  lastName: baseSchemas.name,
+  password: baseSchemas.password,
+  phone: Joi.string().optional()
+});
+
 
 
 /**
@@ -359,6 +376,8 @@ const validate = {
 
   verifyEmailCode: validateRequest(verifyEmailCodeSchema),
   resendVerification: validateRequest(resendVerificationSchema),
+  inviteUser: validateRequest(inviteUserSchema),
+  completeRegistration: validateRequest(completeRegistrationSchema),
 
 
   

@@ -1,4 +1,4 @@
-# docs/schemas/auth.yaml
+
 components:
   schemas:
     RegistrationRequest:
@@ -291,6 +291,7 @@ components:
         - access_token
         - expires_in
         - token_type
+        
     Verify2FASetupRequest:
       type: object
       required:
@@ -319,7 +320,264 @@ components:
           maxLength: 4
           pattern: "^\\d{4}$"
           example: "1234"
+ 
+    InviteUserRequest:
+      type: object
+      required:
+        - email
+        - role
+      properties:
+        email:
+          type: string
+          format: email
+          example: "employee@example.com"
+        role:
+          type: string
+          enum: [admin, manager, user]
+          example: "manager"
+        departmentId:
+          type: string
+          example: "60d21b4667d0d8992e610c85"
+        additionalData:
+          type: object
+          example: 
+            position: "Senior Developer"
+            team: "Backend"
+
+    CompleteRegistrationRequest:
+      type: object
+      required:
+        - token
+        - firstName
+        - lastName
+        - password
+      properties:
+        token:
+          type: string
+          example: "7f68d7c8f3a4e2b1d0c9b6a5f8e7d6c5b4a3f2e1d0c9b8a7"
+        firstName:
+          type: string
+          example: "Jane"
+        lastName:
+          type: string
+          example: "Smith"
+        password:
+          type: string
+          format: password
+          minLength: 8
+          description: "Must contain uppercase, lowercase, number and special character"
+          example: "StrongP@ss123"
+        phone:
+          type: string
+          example: "+1-555-9876543"
+        passportPhoto:
+          type: string
+          format: binary
+          description: "Passport-sized photo of the employee"
+
     
+
+
+    
+
+
+    
+        
+
+    InviteUserResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: "Invitation sent to employee@example.com"
+        user:
+          type: object
+          properties:
+            id:
+              type: string
+              example: "60d21b4667d0d8992e610c85"
+            email:
+              type: string
+              example: "employee@example.com"
+            role:
+              type: string
+              example: "manager"
+            status:
+              type: string
+              example: "pending"
+            department:
+              type: object
+              properties:
+                id:
+                  type: string
+                  example: "60d21b4667d0d8992e610c86"
+                name:
+                  type: string
+                  example: "Engineering"
+
+    CompleteRegistrationResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: "Registration completed successfully"
+        user:
+          type: object
+          properties:
+            id:
+              type: string
+              example: "60d21b4667d0d8992e610c85"
+            email:
+              type: string
+              example: "employee@example.com"
+            firstName:
+              type: string
+              example: "Jane"
+            lastName:
+              type: string
+              example: "Smith"
+            role:
+              type: string
+              example: "manager"
+            department:
+              type: object
+              properties:
+                id:
+                  type: string
+                  example: "60d21b4667d0d8992e610c86"
+                name:
+                  type: string
+                  example: "Engineering"
+          organization:
+            type: object
+            properties:
+              id:
+                type: string
+                example: "60d21b4667d0d8992e610c87"
+              name:
+                type: string
+              example: "Acme Corporation"
+            uniqueId:
+              type: string
+              example: "ACM12345"
+
+    ResendInvitationResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: "Invitation resent to employee@example.com"
+        user:
+          type: object
+          properties:
+            id:
+              type: string
+              example: "60d21b4667d0d8992e610c85"
+            email:
+              type: string
+              example: "employee@example.com"
+            role:
+              type: string
+              example: "manager"
+
+    CancelInvitationResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: "Invitation canceled for employee@example.com"
+
+    ListInvitationsResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        invitations:
+          type: array
+          items:
+            type: object
+            properties:
+              email:
+                type: string
+                example: "employee@example.com"
+              role:
+                type: string
+                example: "manager"
+              department:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: "60d21b4667d0d8992e610c86"
+                  name:
+                    type: string
+                    example: "Engineering"
+              invitationStatus:
+                type: string
+                example: "pending"
+              createdAt:
+                type: string
+                format: date-time
+                example: "2024-03-15T10:30:00Z"
+              createdBy:
+                type: object
+                properties:
+                  firstName:
+                    type: string
+                    example: "John"
+                  lastName:
+                    type: string
+                    example: "Doe"
+                  email:
+                    type: string
+                    example: "john.doe@example.com"
+
+    EmploymentDetails:
+      type: object
+      properties:
+        startDate:
+          type: string
+          format: date
+          example: "2023-01-15"
+        position:
+          type: string
+          example: "Software Engineer"
+        department:
+          type: string
+          example: "Engineering"
+        departmentId:
+          type: string
+          example: "60d21b4667d0d8992e610c86"
+        employmentType:
+          type: string
+          enum: [full-time, part-time, contract, intern]
+          example: "full-time"
+        managerId:
+          type: string
+          example: "507f1f77bcf86cd799439013"
+          description: "ID of the employee's manager"
+        officeLocation:
+          type: string
+          example: "New York Office"
+      required:
+        - startDate
+        - position
+        - department
+        - employmentType
+
     RegistrationResponse:
       type: object
       properties:
@@ -344,6 +602,10 @@ components:
                 industry:
                   type: string
                   example: "Technology"
+                uniqueId:
+                  type: string
+                  example: "ACM12345"
+                  description: "unique identifier for the organization"
             admin:
               type: object
               properties:
@@ -361,7 +623,46 @@ components:
                   type: string
                   example: "pending"
                   description: "User status will be pending until email is verified"
-  required:
-    - status
-    - message
-    - data
+
+  responses:
+    ForbiddenError:
+      description: Access forbidden - user doesn't have required permissions
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: "You do not have permission to perform this action"
+              error:
+                type: string
+                example: "forbidden"
+            required:
+              - success
+              - message
+              - error
+
+    ServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: "An unexpected error occurred"
+              error:
+                type: string
+                example: "server_error"
+            required:
+              - success
+              - message
+              - error

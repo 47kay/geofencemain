@@ -62,6 +62,7 @@ class AuthService {
   
       const organization = new Organization({
         ...organizationData,
+        
         subscription: planData,
         status: 'active',
         metadata: {
@@ -74,7 +75,7 @@ class AuthService {
       logger.info('Creating user with pending status for email: ' + adminData.email);
       const admin = new User({
         ...adminData,
-        role: 'admin',
+        role: 'superadmin',
         status: 'pending', // Set status to pending until verification
         organization: organization._id,
         verification: {
@@ -100,7 +101,8 @@ class AuthService {
       // Return data without tokens - tokens will be provided after verification
       return {
         success: true,
-        organization,
+        organization: organization,
+        
         admin: { ...admin.toJSON(), password: undefined },
         message: "Registration initiated. Please verify your email with the code sent."
       };
@@ -120,92 +122,8 @@ class AuthService {
     }
   }
 
-  // async registerOrganization(organizationData, adminData, planData) {
-  //   let session;
-  //   try {
-  //     logger.info('Starting registration for email: ' + adminData.email);
-  
-  //     const existingUser = await User.findOne({ email: adminData.email });
-  //     if (existingUser) {
-  //       logger.info('Registration failed: Email already exists: ' + adminData.email);
-  //       throw new Error('A user with this email already exists');
-  //     }
-  
-  //     // Generate a 4-digit verification code
-  //     const verificationCode = Math.floor(1000 + Math.random() * 9000).toString();
-  //     logger.info('Generated verification code for ' + adminData.email);
-      
-  //     // Hash the verification code
-  //     const hashedCode = crypto
-  //       .createHash('sha256')
-  //       .update(verificationCode)
-  //       .digest('hex');
-      
-  //     // Set verification data with code
-  //     const verification = {
-  //       code: hashedCode,
-  //       expires: new Date(Date.now() + 30 * 60 * 1000), // 30 minutes expiry
-  //       verified: false
-  //     };
-  
-  //     session = await mongoose.startSession();
-  //     session.startTransaction();
-  
-  //     const organization = new Organization({
-  //       ...organizationData,
-  //       subscription: planData,
-  //       status: 'active',
-  //       metadata: {
-  //         employeeCount: 0,
-  //         geofenceCount: 0,
-  //         createdBy: null,
-  //       },
-  //     });
-  
-  //     logger.info('Creating user with pending status for email: ' + adminData.email);
-  //     const admin = new User({
-  //       ...adminData,
-  //       role: 'admin',
-  //       status: 'pending', // Set status to pending until verification
-  //       organization: organization._id,
-  //       verification: verification // Add verification data to user
-  //     });
-  
-  //     organization.metadata.createdBy = admin._id;
-  
-  //     logger.info('Saving organization and admin in transaction...');
-  //     await organization.save({ session });
-  //     await admin.save({ session });
-  
-  //     await session.commitTransaction();
-  //     logger.info('Transaction committed successfully for: ' + adminData.email);
-  
-  //     // Send verification code to user's email
-  //     await this.notificationService.sendVerificationEmail(admin.email, verificationCode);
-  //     logger.info('Verification code sent to: ' + adminData.email);
-  
-  //     // Return data without tokens - tokens will be provided after verification
-  //     return {
-  //       success: true,
-  //       organization,
-  //       admin: { ...admin.toJSON(), password: undefined },
-  //       message: "Registration initiated. Please verify your email with the code sent."
-  //     };
-  //   } catch (error) {
-  //     logger.error('Error in registerOrganization:', error);
-  //     if (session && session.transaction.isActive) {
-  //       await session.abortTransaction();
-  //       logger.info('Transaction aborted due to error');
-  //     }
-  //     throw new Error(error.message === 'A user with this email already exists' 
-  //       ? error.message 
-  //       : `Failed to register organization: ${error.message}`);
-  //   } finally {
-  //     if (session) {
-  //       session.endSession();
-  //     }
-  //   }
-  // }
+
+
   
 
   
@@ -664,6 +582,7 @@ async resendVerification(email) {
 /**
  * Verify email with 4-digit code
  */
+
 async verifyEmailWithCode(email, code) {
   try {
     logger.info(`Verifying code for email: ${email}`);
@@ -671,14 +590,35 @@ async verifyEmailWithCode(email, code) {
     
     if (!user) {
       logger.error(`User not found: ${email}`);
-      throw new NotFoundError('User not found');
+      const error = new NotFoundError('User not found');
+      error.canResend = false; // Can't resend to a non-existent user
+      throw error;
+    }
+    
+    // Check if already verified
+    if (user.status === 'active' && user.verification && user.verification.verified) {
+      logger.info(`User already verified: ${email}`);
+      return {
+        success: true,
+        message: 'Email already verified',
+        isVerified: true,
+        user: {
+          email: user.email,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          role: user.role
+        }
+      };
     }
     
     logger.info(`User verification data: ${JSON.stringify(user.verification)}`);
     
     if (!user.verification || !user.verification.code) {
       logger.error(`No verification code found for user: ${email}`);
-      throw new UnauthorizedError('No verification code found for this user');
+      const error = new UnauthorizedError('No verification code found for this user');
+      error.canResend = true; // Suggest resending since there's no code
+      error.code = 'NO_VERIFICATION_CODE';
+      throw error;
     }
     
     // Hash the provided code for comparison
@@ -687,40 +627,195 @@ async verifyEmailWithCode(email, code) {
       .update(code)
       .digest('hex');
     
-    // Check if code matches and hasn't expired
+    // Check if code matches
     if (hashedCode !== user.verification.code) {
       logger.error(`Invalid verification code for user: ${email}`);
-      throw new UnauthorizedError('Invalid verification code');
+      
+      // Track verification attempts if not already tracking
+      if (!user.verification.attempts) {
+        user.verification.attempts = 1;
+      } else {
+        user.verification.attempts += 1;
+      }
+      await user.save();
+      
+      const error = new UnauthorizedError('Invalid verification code');
+      error.code = 'INVALID_CODE';
+      error.remainingAttempts = 3 - (user.verification.attempts || 0);
+      
+      // After multiple failed attempts, suggest resending
+      if (user.verification.attempts >= 3) {
+        error.canResend = true;
+        error.message = 'Too many failed attempts. Please request a new code.';
+      } else {
+        error.canResend = false;
+      }
+      
+      throw error;
     }
     
+    // Check if code has expired
     if (user.verification.expires && new Date() > user.verification.expires) {
       logger.error(`Expired verification code for user: ${email}`);
-      throw new UnauthorizedError('Verification code has expired');
+      const error = new UnauthorizedError('Verification code has expired');
+      error.code = 'VERIFICATION_EXPIRED';
+      error.canResend = true; // Definitely suggest resending for expired codes
+      throw error;
     }
     
     // Update user status
     user.verification.verified = true;
     user.status = 'active';
+    user.verification.attempts = 0; // Reset attempts counter
     
     await user.save();
     logger.info(`User verified successfully: ${email}`);
-    
-    // Generate tokens for the now-verified user
-    const tokens = await this.generateAuthTokens(user);
-    
-    return {
-      success: true,
-      message: 'Email verified successfully',
-      access_token: tokens.accessToken,
-      refresh_token: tokens.refreshToken,
-      expires_in: this.getExpirationSeconds(config.jwt.expiresIn),
-      token_type: "Bearer"
-    };
+
+    // Get organization details including uniqueId
+    try {
+      const organization = await Organization.findById(user.organization);
+
+      if (organization && !organization.uniqueId) {
+        // Generate the uniqueId now that email is verified
+        organization.uniqueId = await Organization.generateUniqueId(organization.name);
+        await organization.save();
+        logger.info(`Generated unique ID for organization: ${organization.uniqueId}`);
+      }
+      
+      // Generate tokens for the now-verified user
+      const tokens = await this.generateAuthTokens(user);
+      
+      return {
+        success: true,
+        message: 'Email verified successfully',
+        access_token: tokens.accessToken,
+        refresh_token: tokens.refreshToken,
+        expires_in: this.getExpirationSeconds(config.jwt.expiresIn),
+        token_type: "Bearer",
+        user: {
+          email: user.email,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          role: user.role
+        },
+        organization: organization ? {
+          id: organization._id,
+          name: organization.name,
+          uniqueId: organization.uniqueId
+        } : null
+      };
+    } catch (orgError) {
+      logger.error(`Error with organization processing: ${orgError.message}`);
+      
+      // Even if organization processing fails, we should still return tokens
+      // since the user is verified successfully
+      const tokens = await this.generateAuthTokens(user);
+      
+      return {
+        success: true,
+        message: 'Email verified, but organization processing failed',
+        access_token: tokens.accessToken,
+        refresh_token: tokens.refreshToken,
+        expires_in: this.getExpirationSeconds(config.jwt.expiresIn),
+        token_type: "Bearer",
+        user: {
+          email: user.email,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          role: user.role
+        }
+      };
+    }
   } catch (error) {
     logger.error(`Email verification failed: ${error.message}`);
+    
+    // Enhance the error with resend info if not already set
+    if (error.code === 'VERIFICATION_EXPIRED' && error.canResend === undefined) {
+      error.canResend = true;
+    }
+    
     throw error;
   }
 }
+// async verifyEmailWithCode(email, code) {
+//   try {
+//     logger.info(`Verifying code for email: ${email}`);
+//     const user = await User.findOne({ email });
+    
+//     if (!user) {
+//       logger.error(`User not found: ${email}`);
+//       throw new NotFoundError('User not found');
+//     }
+    
+//     logger.info(`User verification data: ${JSON.stringify(user.verification)}`);
+    
+//     if (!user.verification || !user.verification.code) {
+//       logger.error(`No verification code found for user: ${email}`);
+//       throw new UnauthorizedError('No verification code found for this user');
+//     }
+    
+//     // Hash the provided code for comparison
+//     const hashedCode = crypto
+//       .createHash('sha256')
+//       .update(code)
+//       .digest('hex');
+    
+//     // Check if code matches and hasn't expired
+//     if (hashedCode !== user.verification.code) {
+//       logger.error(`Invalid verification code for user: ${email}`);
+//       throw new UnauthorizedError('Invalid verification code');
+//     }
+    
+//     if (user.verification.expires && new Date() > user.verification.expires) {
+//       logger.error(`Expired verification code for user: ${email}`);
+//       throw new UnauthorizedError('Verification code has expired');
+//     }
+    
+//     // Update user status
+//     user.verification.verified = true;
+//     user.status = 'active';
+    
+//     await user.save();
+//     logger.info(`User verified successfully: ${email}`);
+
+
+//     // Get organization details including uniqueId
+//     const organization = await Organization.findById(user.organization);
+
+//     if (!organization.uniqueId) {
+//       // Generate the uniqueId now that email is verified
+//       organization.uniqueId = await Organization.generateUniqueId(organization.name);
+//       await organization.save();
+//       logger.info(`Generated unique ID for organization: ${organization.uniqueId}`);
+//     }
+    
+//     // Generate tokens for the now-verified user
+//     const tokens = await this.generateAuthTokens(user);
+    
+//     return {
+//       success: true,
+//       message: 'Email verified successfully',
+//       access_token: tokens.accessToken,
+//       refresh_token: tokens.refreshToken,
+//       expires_in: this.getExpirationSeconds(config.jwt.expiresIn),
+//       token_type: "Bearer",
+//       user: {
+//         email: user.email,
+//         firstName: user.firstName,
+//         lastName: user.lastName,
+//         role: user.role
+//       },
+//       organization: {
+//         id: organization._id,
+//         name: organization.name,
+//         uniqueId: organization.uniqueId
+//       }
+//     };
+//   } catch (error) {
+//     logger.error(`Email verification failed: ${error.message}`);
+//     throw error;
+//   }
+// }
 
 
 

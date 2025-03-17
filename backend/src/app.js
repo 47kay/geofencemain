@@ -16,13 +16,13 @@ const organizationRoutes = require('./routes/v1/organization.routes');
 const geofenceRoutes = require('./routes/v1/geofence.routes');
 const employeeRoutes = require('./routes/v1/employee.routes');
 const subscriptionRoutes = require('./routes/v1/subscription.routes');
+// const invitationRoutes = require('./routes/v1/invitation.routes');
 
 // Import middleware
-
 const { errorHandler, notFoundHandler } = require('./middleware/error.middleware');
-
 const logger = require('./utils/logger');
 
+// Initialize Express app
 const app = express();
 
 // Security Middleware
@@ -30,7 +30,6 @@ app.use(helmet());
 app.use(cors());
 app.use(xss());
 app.use(mongoSanitize());
-
 
 // Swagger UI route
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs, {
@@ -64,6 +63,16 @@ app.use('/api/organizations', organizationRoutes);
 app.use('/api/geofences', geofenceRoutes);
 app.use('/api/employees', employeeRoutes);
 app.use('/api/subscriptions', subscriptionRoutes);
+
+// Try to load invitation routes
+try {
+  const invitationRoutes = require('./routes/v1/invitation.routes');
+  app.use('/api/auth/invitations', invitationRoutes);
+  console.log('Invitation routes registered successfully');
+} catch (error) {
+  console.error('Failed to register invitation routes:', error);
+  // Continue without crashing
+}
 
 // Health check endpoint
 app.get('/health', (req, res) => {
