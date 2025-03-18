@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const employeeController = require('../../controllers/employee.controller');
+// const employeeController = require('../../controllers/employee.controller');
+const EmployeeController = require('../../controllers/employee.controller');
+const employeeController = new EmployeeController();
 const authMiddleware = require('../../middleware/auth.middleware');
 const { validateSchema, validateDateRange, employeeSchema } = require('../../utils/validation');
 // const { validateDateRange } = require('../middleware/validation.middleware');
@@ -57,16 +59,28 @@ router.post('/',
   asyncHandler(employeeController.createEmployee)
 );
 
+// /**
+//  * @route   GET /api/employees
+//  * @desc    Get all employees for organization
+//  * @access  Private - Admin/Manager
+//  */
+// router.get('/',
+//   authMiddleware.authorize(['admin', 'manager']),
+//   asyncHandler(employeeController.getEmployees)
+// );
+
+
 /**
  * @route   GET /api/employees
  * @desc    Get all employees for organization
  * @access  Private - Admin/Manager
  */
 router.get('/',
-  authMiddleware.authorize(['admin', 'manager']),
-  asyncHandler(employeeController.getEmployees)
+    authMiddleware.authorize(['admin', 'manager']),
+    asyncHandler((req, res, next) => {
+      return employeeController.getEmployees(req, res, next);
+    })
 );
-
 /**
  * @route   GET /api/employees/:id
  * @desc    Get specific employee details

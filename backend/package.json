@@ -12,7 +12,8 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write 'src/**/*.js'",
     "seed": "node src/scripts/seed.js",
-    "migrate": "node src/scripts/migrate.js"
+    "migrate": "node src/scripts/migrate.js",
+    "admin-tool": "node scripts/admin-management.js"
   },
   "engines": {
     "node": ">=14.0.0"

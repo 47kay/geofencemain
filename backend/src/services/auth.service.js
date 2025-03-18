@@ -134,6 +134,34 @@ class AuthService {
 
 
  
+  // async login(email, password) {
+  //   logger.info('Login - Called with email: ' + email);
+  //   const user = await User.findOne({ email });
+  //   logger.info('Login - User retrieved: ' + (user ? user.email : 'null'));
+  //
+  //   if (!user) {
+  //     throw new UnauthorizedError('Invalid email or password');
+  //   }
+  //   logger.info('Login - Stored password hash: ' + user.password); // Debug
+  //   const isPasswordValid = await bcrypt.compare(password, user.password);
+  //   logger.info('Login - Password valid: ' + isPasswordValid + ' for input: ' + password);
+  //   if (!isPasswordValid) {
+  //
+  //     throw new UnauthorizedError('Invalid email or password');
+  //
+  //   }
+  //   const tokens = await this.generateAuthTokens(user);
+  //
+  //   logger.info('Login - Tokens generated for email: ' + user.email);
+  //   return {
+  //     access_token: tokens.accessToken,
+  //     refresh_token: tokens.refreshToken,
+  //     expires_in: this.getExpirationSeconds(config.jwt.expiresIn),
+  //     token_type: "Bearer"
+  //   };
+  //
+  // }
+
   async login(email, password) {
     logger.info('Login - Called with email: ' + email);
     const user = await User.findOne({ email });
@@ -142,24 +170,36 @@ class AuthService {
     if (!user) {
       throw new UnauthorizedError('Invalid email or password');
     }
+
     logger.info('Login - Stored password hash: ' + user.password); // Debug
     const isPasswordValid = await bcrypt.compare(password, user.password);
     logger.info('Login - Password valid: ' + isPasswordValid + ' for input: ' + password);
+
     if (!isPasswordValid) {
-
       throw new UnauthorizedError('Invalid email or password');
-
     }
+
     const tokens = await this.generateAuthTokens(user);
+
+    // Check if this is a platform admin role
+    const isPlatformAdmin = user.role && user.role.startsWith('platform_');
 
     logger.info('Login - Tokens generated for email: ' + user.email);
     return {
       access_token: tokens.accessToken,
       refresh_token: tokens.refreshToken,
       expires_in: this.getExpirationSeconds(config.jwt.expiresIn),
-      token_type: "Bearer"
+      token_type: "Bearer",
+      user: {
+        id: user._id,
+        email: user.email,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        role: user.role,
+        // Only include organization for non-platform admins
+        ...(isPlatformAdmin ? {} : { organization: user.organization })
+      }
     };
-
   }
 
  

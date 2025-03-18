@@ -252,3 +252,107 @@ TypeError: PlatformController is not a constructor
     at Module.require (node:internal/modules/cjs/loader:1304:12)
     at require (node:internal/modules/helpers:123:16)
     at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:21:24)
+2025-03-18 20:06:52 error: uncaughtException: Route.get() requires a callback function but got a [object Undefined]
+Error: Route.get() requires a callback function but got a [object Undefined]
+    at Route.<computed> [as get] (/home/temitope/Desktop/work/geofencemain/backend/node_modules/express/lib/router/route.js:216:15)
+    at proto.<computed> [as get] (/home/temitope/Desktop/work/geofencemain/backend/node_modules/express/lib/router/index.js:521:19)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/systemAdmin/v1/platform.routes.js:8:8)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+2025-03-18 20:07:06 error: uncaughtException: platformRoutes is not defined
+ReferenceError: platformRoutes is not defined
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:72:26)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/server.js:2:13)
+2025-03-18 20:08:39 error: uncaughtException: Route.get() requires a callback function but got a [object Undefined]
+Error: Route.get() requires a callback function but got a [object Undefined]
+    at Route.<computed> [as get] (/home/temitope/Desktop/work/geofencemain/backend/node_modules/express/lib/router/route.js:216:15)
+    at proto.<computed> [as get] (/home/temitope/Desktop/work/geofencemain/backend/node_modules/express/lib/router/index.js:521:19)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/systemAdmin/v1/platform.routes.js:8:8)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+2025-03-18 20:11:03 error: uncaughtException: Route.get() requires a callback function but got a [object Undefined]
+Error: Route.get() requires a callback function but got a [object Undefined]
+    at Route.<computed> [as get] (/home/temitope/Desktop/work/geofencemain/backend/node_modules/express/lib/router/route.js:216:15)
+    at proto.<computed> [as get] (/home/temitope/Desktop/work/geofencemain/backend/node_modules/express/lib/router/index.js:521:19)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/systemAdmin/v1/platform.routes.js:8:8)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+2025-03-18 20:57:18 error: uncaughtException: platformRoutes is not defined
+ReferenceError: platformRoutes is not defined
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:72:26)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/server.js:2:13)
+2025-03-18 23:42:09 error: uncaughtException: employeeController is not defined
+ReferenceError: employeeController is not defined
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/employee.routes.js:12:25)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:17:24)
+2025-03-18 23:42:28 error: uncaughtException: Invalid or unexpected token
+/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/employee.routes.js:3
+const EmployeeController = require('../../controllers/employee.controller
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Invalid or unexpected token
+    at wrapSafe (node:internal/modules/cjs/loader:1383:18)
+    at Module._compile (node:internal/modules/cjs/loader:1412:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:17:24)
+2025-03-18 23:42:45 error: uncaughtException: Invalid or unexpected token
+/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/employee.routes.js:3
+const EmployeeController = require('../../controllers/employee.controller
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Invalid or unexpected token
+    at wrapSafe (node:internal/modules/cjs/loader:1383:18)
+    at Module._compile (node:internal/modules/cjs/loader:1412:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:17:24)

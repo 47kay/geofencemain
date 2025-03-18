@@ -42,27 +42,124 @@ const authenticate = async (req, res, next) => {
 /**
  * Role-based authorization middleware
  */
+
+
+/**
+ * Role-based authorization middleware
+ */
 const authorize = (allowedRoles) => {
   return (req, res, next) => {
     try {
       const { role } = req.user;
 
-      // Platform administrators have access to everything
-      if (role === 'platform_superadmin' ||
-          (role === 'platform_admin' && !allowedRoles.includes('platform_superadmin'))) {
+      logger.info(`Authorizing user with role: ${role} for access to: ${req.path}`);
+
+      // Check for any admin-level roles (including superadmin)
+      if (role === 'admin' ||
+          role === 'platform_admin' ||
+          role === 'platform_superadmin' ||
+          role === 'superadmin') {
+        logger.info('Admin access granted');
         return next();
       }
 
-      if (!allowedRoles.includes(role)) {
-        throw new ForbiddenError('Insufficient permissions');
+      // Check for other allowed roles
+      if (allowedRoles.includes(role)) {
+        logger.info(`Access granted to ${role}`);
+        return next();
       }
-      next();
+
+      logger.warn(`Access denied for role: ${role}, allowed roles: ${allowedRoles.join(', ')}`);
+      throw new ForbiddenError('Insufficient permissions');
     } catch (error) {
       logger.error(`Authorization error: ${error.message}`);
       next(error);
     }
   };
 };
+// const authorize = (allowedRoles) => {
+//   return (req, res, next) => {
+//     try {
+//       const { role } = req.user;
+//
+//       if (role === 'admin') {
+//         return next();
+//       }
+//
+//       // Platform administrators have access to everything
+//       if (role === 'platform_superadmin' ||
+//           (role === 'platform_admin' && !allowedRoles.includes('platform_superadmin'))) {
+//         return next();
+//       }
+//
+//       if (!allowedRoles.includes(role)) {
+//         throw new ForbiddenError('Insufficient permissions');
+//       }
+//       next();
+//     } catch (error) {
+//       logger.error(`Authorization error: ${error.message}`);
+//       next(error);
+//     }
+//   };
+// };
+
+/**
+ * Combined role-based and self-access authorization middleware
+ */
+// const authorizeOrSelf = (allowedRoles) => {
+//   return (req, res, next) => {
+//     try {
+//       const { role, userId } = req.user;
+//       const requestedUserId = req.params.id;
+//
+//
+//
+//       // Platform administrators have access to everything
+//       if (role === 'platform_superadmin' ||
+//           (role === 'platform_admin' && !allowedRoles.includes('platform_superadmin'))) {
+//         return next();
+//       }
+//
+//       // Allow access if user has appropriate role or is accessing their own resource
+//       if (allowedRoles.includes(role) || userId === requestedUserId) {
+//         next();
+//       } else {
+//         throw new ForbiddenError('Insufficient permissions');
+//       }
+//     } catch (error) {
+//       logger.error(`Authorization error: ${error.message}`);
+//       next(error);
+//     }
+//   };
+// };
+
+/**
+ * Self-access only authorization middleware
+ */
+// const authorizeSelf = () => {
+//   return (req, res, next) => {
+//     try {
+//       const { userId, role } = req.user;
+//       const requestedUserId = req.params.id;
+//
+//
+//
+//       // Platform administrators have access to everything
+//       if (role === 'platform_superadmin' || role === 'platform_admin') {
+//         return next();
+//       }
+//
+//       if (userId !== requestedUserId) {
+//         throw new ForbiddenError('Can only access own resources');
+//       }
+//       next();
+//     } catch (error) {
+//       logger.error(`Authorization error: ${error.message}`);
+//       next(error);
+//     }
+//   };
+// };
+
 
 /**
  * Combined role-based and self-access authorization middleware
@@ -73,9 +170,11 @@ const authorizeOrSelf = (allowedRoles) => {
       const { role, userId } = req.user;
       const requestedUserId = req.params.id;
 
-      // Platform administrators have access to everything
-      if (role === 'platform_superadmin' ||
-          (role === 'platform_admin' && !allowedRoles.includes('platform_superadmin'))) {
+      // Check for any admin-level roles (including superadmin)
+      if (role === 'admin' ||
+          role === 'platform_admin' ||
+          role === 'platform_superadmin' ||
+          role === 'superadmin') {
         return next();
       }
 
@@ -101,8 +200,11 @@ const authorizeSelf = () => {
       const { userId, role } = req.user;
       const requestedUserId = req.params.id;
 
-      // Platform administrators have access to everything
-      if (role === 'platform_superadmin' || role === 'platform_admin') {
+      // Check for any admin-level roles (including superadmin)
+      if (role === 'admin' ||
+          role === 'platform_admin' ||
+          role === 'platform_superadmin' ||
+          role === 'superadmin') {
         return next();
       }
 

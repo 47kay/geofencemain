@@ -2,12 +2,27 @@ const InvitationService = require('../services/invitation.service');
 const NotificationService = require('../services/notification.service');
 const AuditService = require('../services/audit.service');
 const logger = require('../utils/logger');
+const { NotFoundError, ValidationError } = require('../utils/errors');
+
+
+// Required models
+const Invitation = require('../models/invitation.model');
+const Organization = require('../models/organization.model');
+const Employee = require('../models/employee.model');
+
+// Required services
+const EmployeeService = require('../services/employee.service');
+
+
+
+
 
 class InvitationController {
   constructor() {
     const notificationService = new NotificationService();
     const auditService = new AuditService();
     this.invitationService = new InvitationService(notificationService, auditService);
+    this.employeeService = new EmployeeService();
     logger.info('InvitationController initialized');
   }
 
@@ -41,24 +56,158 @@ class InvitationController {
   /**
    * Complete registration from invitation
    */
+  // async completeRegistration(req, res, next) {
+  //   try {
+  //     const { token, firstName, lastName, password, phone } = req.body;
+  //
+  //     logger.info(`Processing registration completion for token: ${token.substring(0, 10)}...`);
+  //
+  //     const result = await this.invitationService.completeRegistration(
+  //       token,
+  //       { firstName, lastName, password, phone }
+  //     );
+  //
+  //     logger.info(`Registration completed for token: ${token.substring(0, 10)}...`);
+  //     res.json(result);
+  //   } catch (error) {
+  //     logger.error(`Complete registration failed: ${error.message}`);
+  //     next(error);
+  //   }
+  // }
+
+
+  /**
+   * Complete registration from invitation
+   */
   async completeRegistration(req, res, next) {
     try {
-      const { token, firstName, lastName, password, phone } = req.body;
-      
+      const { token, firstName, lastName, password, phone, passportPhoto } = req.body;
+
       logger.info(`Processing registration completion for token: ${token.substring(0, 10)}...`);
-      
+
+      // Step 1: Complete the user registration
       const result = await this.invitationService.completeRegistration(
-        token,
-        { firstName, lastName, password, phone }
+          token,
+          { firstName, lastName, password, phone }
       );
-      
+
       logger.info(`Registration completed for token: ${token.substring(0, 10)}...`);
+
+      // Step 2: Fetch the full organization details to ensure we have the uniqueId
+      const Organization = require('../models/organization.model');
+      const organization = await Organization.findById(result.user.organization.id);
+
+      if (organization) {
+        // Update the organization info in the result to include uniqueId
+        result.user.organization = {
+          id: organization._id,
+          name: organization.name,
+          uniqueId: organization.uniqueId || null
+        };
+      }
+
+      // Step 3: Automatically create an employee record
+      try {
+        // Retrieve the invitation to get additional data
+        const Invitation = require('../models/invitation.model');
+        const invitation = await Invitation.findOne({
+          token,
+          status: 'accepted'
+        });
+
+        if (!invitation) {
+          throw new Error('Could not find the accepted invitation');
+        }
+
+        // Get the user from the database
+        const User = require('../models/user.model');
+        const user = await User.findById(result.user.id);
+
+        if (!user) {
+          throw new Error('Could not find the registered user');
+        }
+
+        // Get employment details from invitation additionalData
+        const employmentDetails = invitation.additionalData?.employmentDetails || {};
+
+        // Initialize the EmployeeService
+        const EmployeeService = require('../services/employee.service');
+        const employeeService = new EmployeeService();
+
+        // Create a proper employee data object that matches the required schema
+        const employeeData = {
+          // Note: We don't pass the password again as the user is already created
+          email: invitation.email,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          organization: user.organization, // Pass the MongoDB ObjectId directly
+
+          // Only include relevant fields for addEmployee
+          personalInfo: {
+            phone: phone || null
+          },
+
+          employmentDetails: {
+            department: employmentDetails.department || result.user.department?.name || 'General',
+            position: employmentDetails.position || 'Employee',
+            employmentType: employmentDetails.employmentType || 'full-time',
+            startDate: employmentDetails.startDate || new Date().toISOString().split('T')[0]
+          },
+
+          // The admin who created the invitation
+          createdBy: invitation.createdBy
+        };
+
+        // Create the employee record - IMPORTANT: Don't include password here
+        // We need to modify the addEmployee method to handle cases where the user already exists
+        const modifiedEmployeeService = Object.create(employeeService);
+        modifiedEmployeeService.addEmployee = async function(data) {
+          // Skip user creation since the user already exists
+          // Create employee record directly
+          const employee = new Employee({
+            user: user._id,
+            organization: data.organization,
+            employeeId: await this.generateEmployeeId(
+                data.organization,
+                data.firstName,
+                data.lastName
+            ),
+            personalInfo: data.personalInfo,
+            employmentDetails: data.employmentDetails,
+            metadata: {
+              createdBy: data.createdBy
+            }
+          });
+          await employee.save();
+          return employee;
+        };
+
+        // Create the employee record
+        const employee = await modifiedEmployeeService.addEmployee(employeeData);
+
+        logger.info(`Employee record created for user: ${result.user.id}`);
+
+        // Add employee info to the result
+        result.employee = {
+          id: employee._id,
+          employeeId: employee.employeeId,
+          status: employee.status
+        };
+
+      } catch (employeeError) {
+        // Log the error but don't fail the registration
+        logger.error(`Failed to create employee record: ${employeeError.message}`);
+        result.employeeCreationError = employeeError.message;
+      }
+
+      // Return the final result with organization uniqueId and employee info
       res.json(result);
     } catch (error) {
       logger.error(`Complete registration failed: ${error.message}`);
       next(error);
     }
   }
+
 
   /**
    * Resend invitation

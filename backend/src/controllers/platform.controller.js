@@ -1,6 +1,10 @@
 const PlatformService = require('../services/platform.service');
 const logger = require('../utils/logger');
 
+const Organization = require('../models/organization.model');
+const User = require('../models/user.model');
+
+
 /**
  * Platform controller for system-wide administration
  * Handles requests for cross-organization visibility and management
@@ -171,6 +175,135 @@ class PlatformController {
             res.json(stats);
         } catch (error) {
             logger.error(`Platform statistics retrieval failed: ${error.message}`);
+            next(error);
+        }
+    }
+
+
+    // Add to your PlatformController class
+
+    /**
+     * Create platform administrator
+     * Only accessible to platform_superadmin
+     */
+    async createPlatformAdmin(req, res, next) {
+        try {
+            const { email, firstName, lastName, role, password } = req.body;
+
+            // Validate input
+            if (!email || !firstName || !lastName || !password) {
+                return res.status(400).json({
+                    success: false,
+                    message: 'Missing required fields'
+                });
+            }
+
+            // Ensure valid platform role
+            if (role !== 'platform_admin' && role !== 'platform_superadmin') {
+                return res.status(400).json({
+                    success: false,
+                    message: 'Invalid role. Must be platform_admin or platform_superadmin'
+                });
+            }
+
+            // Check if user already exists
+            const existingUser = await User.findOne({ email });
+            if (existingUser) {
+                return res.status(409).json({
+                    success: false,
+                    message: 'User with this email already exists'
+                });
+            }
+
+            // Create platform admin
+            const admin = new User({
+                email,
+                firstName,
+                lastName,
+                password, // Will be hashed by pre-save hook
+                role,
+                status: 'active',
+                verification: {
+                    verified: true
+                },
+                createdBy: req.user.userId
+            });
+
+            await admin.save();
+
+            // Remove password from response
+            const adminData = admin.toObject();
+            delete adminData.password;
+
+            logger.info(`Platform admin created: ${email} by ${req.user.userId}`);
+
+            res.status(201).json({
+                success: true,
+                message: 'Platform administrator created successfully',
+                admin: adminData
+            });
+        } catch (error) {
+            logger.error(`Failed to create platform admin: ${error.message}`);
+            next(error);
+        }
+    }
+
+    // In platform.controller.js (add these methods)
+
+    /**
+     * List platform administrators
+     */
+    async listPlatformAdmins(req, res, next) {
+        try {
+            const admins = await User.find({
+                role: { $in: ['platform_admin', 'platform_superadmin'] }
+            }).select('email firstName lastName role status createdAt');
+
+            res.json({
+                success: true,
+                admins
+            });
+        } catch (error) {
+            logger.error(`Failed to list platform admins: ${error.message}`);
+            next(error);
+        }
+    }
+
+    /**
+     * Delete platform administrator
+     */
+    async removePlatformAdmin(req, res, next) {
+        try {
+            const { id } = req.params;
+
+            // Prevent removing yourself
+            if (id === req.user.userId) {
+                return res.status(400).json({
+                    success: false,
+                    message: 'Cannot remove your own account'
+                });
+            }
+
+            const admin = await User.findOne({
+                _id: id,
+                role: { $in: ['platform_admin', 'platform_superadmin'] }
+            });
+
+            if (!admin) {
+                return res.status(404).json({
+                    success: false,
+                    message: 'Platform administrator not found'
+                });
+            }
+
+            await User.deleteOne({ _id: id });
+
+            res.json({
+                success: true,
+                message: 'Platform administrator removed successfully'
+            });
+        } catch (error) {
+            logger.error(`Failed to remove platform admin: ${error.message}`);
             next(error);
         }
     }

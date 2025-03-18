@@ -18,7 +18,8 @@ const employeeRoutes = require('./routes/v1/employee.routes');
 const subscriptionRoutes = require('./routes/v1/subscription.routes');
 // const invitationRoutes = require('./routes/v1/invitation.routes');
 const departmentRoutes = require('./routes/v1/department.routes');
-const platformRoutes = require('./routes/v1/platform.routes');
+
+const platformRoutes = require('./routes/systemAdmin/v1/platform.routes');
 const adminRoutes = require('./routes/systemAdmin/v1/admin.routes');
 const adminController = require('./controllers/admin.controller');
 
@@ -69,7 +70,7 @@ app.use('/api/geofences', geofenceRoutes);
 app.use('/api/employees', employeeRoutes);
 app.use('/api/subscriptions', subscriptionRoutes);
 app.use('/api/departments', departmentRoutes);
-app.use('/platform', platformRoutes);
+app.use('/api/platform', platformRoutes);
 app.use('/admin', adminRoutes);
 
 
@@ -82,6 +83,14 @@ try {
   console.error('Failed to register invitation routes:', error);
   // Continue without crashing
 }
+
+// try {
+//   const platformRoutes = require('./routes/systemAdmin/v1/platform.routes');
+//   app.use('/api/platform', platformRoutes);
+// } catch (error) {
+//   console.error('Error registering platform routes:', error);
+//   // Continue application startup without these routes
+// }
 
 app.get(
     '/api/admin/organizations',

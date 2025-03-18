@@ -544,3 +544,50 @@
 2025-03-18 17:03:45 error: Authorization error: Insufficient permissions
 2025-03-18 17:03:45 error: Error handling middleware:
 2025-03-18 17:04:13 error: Error handling middleware:
+2025-03-18 20:18:28 error: Authentication error: No authorization token provided
+2025-03-18 20:18:28 error: Error handling middleware:
+2025-03-18 20:27:51 error: Login failed: Invalid email or password
+2025-03-18 20:27:51 error: Error handling middleware:
+2025-03-18 20:30:46 error: Login failed: Invalid email or password
+2025-03-18 20:30:46 error: Error handling middleware:
+2025-03-18 20:33:49 error: Login failed: Invalid email or password
+2025-03-18 20:33:49 error: Error handling middleware:
+2025-03-18 22:02:32 error: Validation error: Validation failed
+2025-03-18 22:02:32 error: Error handling middleware:
+2025-03-18 22:02:52 error: Invitation failed: Department not found in this organization
+2025-03-18 22:02:52 error: Error handling middleware:
+2025-03-18 22:03:39 error: Error handling middleware:
+2025-03-18 22:05:32 error: Error handling middleware:
+2025-03-18 22:05:33 error: Error handling middleware:
+2025-03-18 22:06:16 error: Failed to create employee record: User validation failed: password: Path `password` is required.
+2025-03-18 22:10:50 error: Error handling middleware:
+2025-03-18 22:10:51 error: Error handling middleware:
+2025-03-18 22:19:07 error: Error handling middleware:
+2025-03-18 22:19:08 error: Error handling middleware:
+2025-03-18 22:19:59 error: Failed to create employee record: E11000 duplicate key error collection: geofence.employees index: employeeId_1 dup key: { employeeId: "EMP000001" }
+2025-03-18 22:57:28 error: Error handling middleware:
+2025-03-18 22:57:29 error: Error handling middleware:
+2025-03-18 22:58:24 error: Failed to create employee record: token is not defined
+2025-03-18 22:58:24 error: Failed to create employee record: result is not defined
+2025-03-18 23:18:15 error: Error handling middleware:
+2025-03-18 23:18:16 error: Error handling middleware:
+2025-03-18 23:22:12 error: Error handling middleware:
+2025-03-18 23:22:13 error: Error handling middleware:
+2025-03-18 23:23:59 error: Authorization error: Insufficient permissions
+2025-03-18 23:23:59 error: Error handling middleware:
+2025-03-18 23:25:14 error: Authorization error: Insufficient permissions
+2025-03-18 23:25:14 error: Error handling middleware:
+2025-03-18 23:33:13 error: Authorization error: Insufficient permissions
+2025-03-18 23:33:13 error: Error handling middleware:
+2025-03-18 23:33:33 error: Authorization error: Insufficient permissions
+2025-03-18 23:33:33 error: Error handling middleware:
+2025-03-18 23:37:20 error: Failed to get employees: Cannot read properties of undefined (reading 'employeeService')
+2025-03-18 23:37:20 error: Error handling middleware:
+2025-03-18 23:37:36 error: Failed to get employees: Cannot read properties of undefined (reading 'employeeService')
+2025-03-18 23:37:36 error: Error handling middleware:
+2025-03-18 23:39:14 error: Failed to get employees: Cannot read properties of undefined (reading 'employeeService')
+2025-03-18 23:39:14 error: Error handling middleware:
+2025-03-18 23:39:19 error: Failed to get employees: Cannot read properties of undefined (reading 'employeeService')
+2025-03-18 23:39:19 error: Error handling middleware:
+2025-03-18 23:46:34 error: Error handling middleware:
+2025-03-18 23:46:37 error: Error handling middleware:

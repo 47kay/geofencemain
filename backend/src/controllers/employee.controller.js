@@ -288,4 +288,4 @@ class EmployeeController {
   }
 }
 
-module.exports = new EmployeeController();
+module.exports = EmployeeController;
