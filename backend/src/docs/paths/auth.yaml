@@ -575,4 +575,164 @@ paths:
         '403':
           $ref: '#/components/responses/ForbiddenError'
 
-    
+  /departments:
+    post:
+      tags:
+        - Departments
+      summary: Create a new department (Admin only)
+      description: Create a new department within the organization
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DepartmentRequest'
+      responses:
+        '201':
+          description: Department created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/DepartmentResponse'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '409':
+          $ref: '#/components/responses/ConflictError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    get:
+      tags:
+        - Departments
+      summary: List departments
+      description: List all departments within the organization
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: parentDepartmentId
+          in: query
+          schema:
+            type: string
+          description: Filter by parent department ID (optional)
+      responses:
+        '200':
+          description: List of departments
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/DepartmentsListResponse'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /departments/{departmentId}:
+    get:
+      tags:
+        - Departments
+      summary: Get department details
+      description: Get details of a specific department
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: departmentId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Department ID
+      responses:
+        '200':
+          description: Department details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/DepartmentResponse'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    put:
+      tags:
+        - Departments
+      summary: Update department (Admin only)
+      description: Update details of a specific department
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: departmentId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Department ID
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DepartmentRequest'
+      responses:
+        '200':
+          description: Department updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/DepartmentResponse'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '409':
+          $ref: '#/components/responses/ConflictError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    delete:
+      tags:
+        - Departments
+      summary: Delete department (Admin only)
+      description: Delete a specific department
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: departmentId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Department ID
+      responses:
+        '200':
+          description: Department deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: "Department deleted successfully"
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '409':
+          $ref: '#/components/responses/ConflictError'
+        '500':
+          $ref: '#/components/responses/ServerError'

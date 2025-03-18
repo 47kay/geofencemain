@@ -53,24 +53,35 @@ class AuthController {
 
 
 
-  // src/controllers/auth.controller.js
-async login(req, res, next) {
-  try {
-    logger.info('Login called, req.body.email: ' + req.body.email); // String concat
-    logger.info('Login called, this:', this);
-    logger.info('Login called, this.authService: ' + !!this.authService);
-    const { email, password } = req.body;
-    logger.info('Login called, extracted email: ' + email);
-    const result = await this.authService.login(email, password);
-    logger.info('Login result:', result);
-    logger.info('User logged in successfully: ' + email);
-    res.json(result);
-  } catch (error) {
-    logger.error('Login failed: ' + error.message);
-    next(error);
+  /**
+   * Login user
+   */
+  async login(req, res, next) {
+    try {
+      logger.info('Login called, req.body.email: ' + req.body.email);
+      const { email, password } = req.body;
 
+      // Call the auth service to authenticate the user
+      const result = await this.authService.login(email, password);
+
+      // Add a flag to indicate if this is a platform admin
+      if (result.user && (result.user.role === 'platform_admin' || result.user.role === 'platform_superadmin')) {
+        result.isPlatformAdmin = true;
+      }
+
+      logger.info('User logged in successfully: ' + email);
+
+      // Remove sensitive data before sending response
+      if (result.user && result.user.password) {
+        delete result.user.password;
+      }
+
+      res.json(result);
+    } catch (error) {
+      logger.error('Login failed: ' + error.message);
+      next(error);
+    }
   }
-}
 
   /**
    * Verify 2FA token

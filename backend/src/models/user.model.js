@@ -29,7 +29,7 @@ const userSchema = new Schema({
   },
   role: {
     type: String,
-    enum: ['superadmin', 'admin', 'manager', 'user'],
+    enum: ['platform_superadmin', 'platform_admin','superadmin', 'admin', 'manager', 'user'],
     default: 'user'
   },
   createdBy: {
@@ -39,7 +39,9 @@ const userSchema = new Schema({
   organization: {
     type: Schema.Types.ObjectId,
     ref: 'Organization',
-    required: true
+    required: function() {
+      return !this.role.startsWith('platform_');
+    }
   },
   invitationStatus: {
     type: String,
@@ -217,6 +219,30 @@ userSchema.statics.findByEmail = function(email) {
 
 userSchema.statics.findByOrganization = function(organizationId) {
   return this.find({ organization: organizationId });
+};
+
+
+userSchema.methods.isPlatformAdmin = function() {
+  return this.role === 'platform_admin' || this.role === 'platform_superadmin';
+};
+
+userSchema.methods.isPlatformSuperAdmin = function() {
+  return this.role === 'platform_superadmin';
+};
+
+userSchema.methods.isOrganizationAdmin = function() {
+  return this.role === 'admin' || this.role === 'superadmin';
+};
+
+userSchema.methods.isOrganizationSuperAdmin = function() {
+  return this.role === 'superadmin';
+};
+
+// Add static method to find platform administrators
+userSchema.statics.findPlatformAdmins = function() {
+  return this.find({
+    role: { $in: ['platform_admin', 'platform_superadmin'] }
+  });
 };
 
 const User = mongoose.model('User', userSchema);

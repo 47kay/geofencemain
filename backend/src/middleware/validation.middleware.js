@@ -346,7 +346,12 @@ const resendVerificationSchema = Joi.object({
   email: baseSchemas.email
 });
 
-
+const departmentSchema = Joi.object({
+  name: Joi.string().required().min(2).max(100),
+  description: Joi.string().max(500),
+  parentDepartmentId: Joi.string().regex(/^[0-9a-fA-F]{24}$/).allow(null),
+  managerId: Joi.string().regex(/^[0-9a-fA-F]{24}$/).allow(null)
+});
 
 // Invitation validation schemas
 const inviteUserSchema = Joi.object({
@@ -378,6 +383,7 @@ const validate = {
   resendVerification: validateRequest(resendVerificationSchema),
   inviteUser: validateRequest(inviteUserSchema),
   completeRegistration: validateRequest(completeRegistrationSchema),
+  department: validateRequest(departmentSchema),
 
 
   
@@ -426,5 +432,6 @@ module.exports = {
     organization: organizationSchema,
     locationCheck: locationCheckSchema,
     leaveRequest: leaveRequestSchema,
+    department: departmentSchema,
   }
 };

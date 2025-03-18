@@ -6528,3 +6528,1595 @@
 2025-03-17 22:23:06 info: InvitationController initialized
 2025-03-17 22:23:06 info: Server running in development mode on port 3000
 2025-03-17 22:23:09 info: Connected to MongoDB successfully
+2025-03-17 22:30:53 info: AuthController constructed, authService:
+2025-03-17 22:30:53 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:30:53 info: Email service initialized
+2025-03-17 22:30:53 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:30:53 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:30:53 info: Email service initialized
+2025-03-17 22:30:53 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:30:53 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:30:53 info: Email service initialized
+2025-03-17 22:30:53 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:30:53 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:30:53 info: Email service initialized
+2025-03-17 22:30:53 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:30:53 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:30:53 info: Email service initialized
+2025-03-17 22:30:53 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:30:53 info: AuditService initialized
+2025-03-17 22:30:53 info: InvitationController initialized
+2025-03-17 22:30:53 info: Server running in development mode on port 3000
+2025-03-17 22:30:57 info: Connected to MongoDB successfully
+2025-03-17 22:31:21 info: AuthController constructed, authService:
+2025-03-17 22:31:21 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:31:21 info: Email service initialized
+2025-03-17 22:31:21 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:31:21 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:31:21 info: Email service initialized
+2025-03-17 22:31:21 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:31:21 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:31:21 info: Email service initialized
+2025-03-17 22:31:21 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:31:21 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:31:21 info: Email service initialized
+2025-03-17 22:31:21 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:31:21 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:31:21 info: Email service initialized
+2025-03-17 22:31:21 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:31:21 info: AuditService initialized
+2025-03-17 22:31:21 info: InvitationController initialized
+2025-03-17 22:31:21 info: Server running in development mode on port 3000
+2025-03-17 22:31:24 info: Connected to MongoDB successfully
+2025-03-17 22:31:59 info: AuthController constructed, authService:
+2025-03-17 22:32:00 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:32:00 info: Email service initialized
+2025-03-17 22:32:00 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:32:00 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:32:00 info: Email service initialized
+2025-03-17 22:32:00 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:32:00 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:32:00 info: Email service initialized
+2025-03-17 22:32:00 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:32:00 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:32:00 info: Email service initialized
+2025-03-17 22:32:00 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:32:00 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:32:00 info: Email service initialized
+2025-03-17 22:32:00 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:32:00 info: AuditService initialized
+2025-03-17 22:32:00 info: InvitationController initialized
+2025-03-17 22:32:00 info: Server running in development mode on port 3000
+2025-03-17 22:32:03 info: Connected to MongoDB successfully
+2025-03-17 22:32:14 info: AuthController constructed, authService:
+2025-03-17 22:32:14 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:32:14 info: Email service initialized
+2025-03-17 22:32:14 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:32:14 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:32:14 info: Email service initialized
+2025-03-17 22:32:14 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:32:14 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:32:14 info: Email service initialized
+2025-03-17 22:32:14 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:32:14 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:32:14 info: Email service initialized
+2025-03-17 22:32:14 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:32:14 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:32:14 info: Email service initialized
+2025-03-17 22:32:14 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:32:14 info: AuditService initialized
+2025-03-17 22:32:14 info: InvitationController initialized
+2025-03-17 22:32:14 info: Server running in development mode on port 3000
+2025-03-17 22:32:16 info: Connected to MongoDB successfully
+2025-03-17 22:33:54 info: AuthController constructed, authService:
+2025-03-17 22:33:54 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:33:54 info: Email service initialized
+2025-03-17 22:33:54 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:33:54 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:33:54 info: Email service initialized
+2025-03-17 22:33:54 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:33:54 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:33:54 info: Email service initialized
+2025-03-17 22:33:54 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:33:54 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:33:54 info: Email service initialized
+2025-03-17 22:33:54 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:33:54 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:33:54 info: Email service initialized
+2025-03-17 22:33:54 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:33:54 info: AuditService initialized
+2025-03-17 22:33:54 info: InvitationController initialized
+2025-03-17 22:33:54 info: Server running in development mode on port 3000
+2025-03-17 22:34:03 info: Connected to MongoDB successfully
+2025-03-17 22:34:22 info: AuthController constructed, authService:
+2025-03-17 22:34:22 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:34:22 info: Email service initialized
+2025-03-17 22:34:22 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:34:22 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:34:22 info: Email service initialized
+2025-03-17 22:34:22 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:34:22 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:34:22 info: Email service initialized
+2025-03-17 22:34:22 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:34:22 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:34:22 info: Email service initialized
+2025-03-17 22:34:22 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:34:22 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:34:22 info: Email service initialized
+2025-03-17 22:34:22 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:34:22 info: AuditService initialized
+2025-03-17 22:34:22 info: InvitationController initialized
+2025-03-17 22:34:22 info: Server running in development mode on port 3000
+2025-03-17 22:34:24 info: Connected to MongoDB successfully
+2025-03-17 22:35:02 info: AuthController constructed, authService:
+2025-03-17 22:35:02 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:35:02 info: Email service initialized
+2025-03-17 22:35:02 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:35:02 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:35:02 info: Email service initialized
+2025-03-17 22:35:02 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:35:02 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:35:02 info: Email service initialized
+2025-03-17 22:35:02 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:35:02 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:35:02 info: Email service initialized
+2025-03-17 22:35:02 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:35:02 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:35:02 info: Email service initialized
+2025-03-17 22:35:02 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:35:02 info: AuditService initialized
+2025-03-17 22:35:02 info: InvitationController initialized
+2025-03-17 22:35:02 info: Server running in development mode on port 3000
+2025-03-17 22:35:32 info: Connected to MongoDB successfully
+2025-03-17 22:36:27 info: AuthController constructed, authService:
+2025-03-17 22:36:27 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:36:27 info: Email service initialized
+2025-03-17 22:36:27 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:36:27 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:36:27 info: Email service initialized
+2025-03-17 22:36:27 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:36:27 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:36:27 info: Email service initialized
+2025-03-17 22:36:27 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:36:27 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:36:27 info: Email service initialized
+2025-03-17 22:36:27 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:36:27 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:36:27 info: Email service initialized
+2025-03-17 22:36:27 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:36:27 info: AuditService initialized
+2025-03-17 22:36:27 info: InvitationController initialized
+2025-03-17 22:36:27 info: Server running in development mode on port 3000
+2025-03-17 22:36:30 info: Connected to MongoDB successfully
+2025-03-17 22:36:47 info: AuthController constructed, authService:
+2025-03-17 22:36:47 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:36:47 info: Email service initialized
+2025-03-17 22:36:47 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:36:47 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:36:47 info: Email service initialized
+2025-03-17 22:36:47 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:36:47 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:36:47 info: Email service initialized
+2025-03-17 22:36:47 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:36:47 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:36:47 info: Email service initialized
+2025-03-17 22:36:47 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:36:47 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:36:47 info: Email service initialized
+2025-03-17 22:36:47 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:36:47 info: AuditService initialized
+2025-03-17 22:36:47 info: InvitationController initialized
+2025-03-17 22:36:47 info: Server running in development mode on port 3000
+2025-03-17 22:36:50 info: Connected to MongoDB successfully
+2025-03-17 22:42:32 info: AuthController constructed, authService:
+2025-03-17 22:42:32 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:42:32 info: Email service initialized
+2025-03-17 22:42:32 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:42:32 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:42:32 info: Email service initialized
+2025-03-17 22:42:32 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:42:32 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:42:32 info: Email service initialized
+2025-03-17 22:42:32 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:42:32 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:42:32 info: Email service initialized
+2025-03-17 22:42:32 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:42:32 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 22:42:32 info: Email service initialized
+2025-03-17 22:42:32 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 22:42:32 info: AuditService initialized
+2025-03-17 22:42:32 info: InvitationController initialized
+2025-03-17 22:42:32 info: Server running in development mode on port 3000
+2025-03-17 22:42:37 info: Connected to MongoDB successfully
+2025-03-17 23:20:52 info: AuthController constructed, authService:
+2025-03-17 23:20:52 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 23:20:52 info: Email service initialized
+2025-03-17 23:20:52 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 23:20:52 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 23:20:52 info: Email service initialized
+2025-03-17 23:20:52 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 23:20:52 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 23:20:52 info: Email service initialized
+2025-03-17 23:20:52 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 23:20:52 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 23:20:52 info: Email service initialized
+2025-03-17 23:20:52 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 23:20:52 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 23:20:52 info: Email service initialized
+2025-03-17 23:20:52 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 23:20:52 info: AuditService initialized
+2025-03-17 23:20:52 info: InvitationController initialized
+2025-03-17 23:20:52 info: Server running in development mode on port 3000
+2025-03-17 23:21:02 info: Connected to MongoDB successfully
+2025-03-17 23:22:49 info: AuthController constructed, authService:
+2025-03-17 23:22:50 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 23:22:50 info: Email service initialized
+2025-03-17 23:22:50 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 23:22:50 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 23:22:50 info: Email service initialized
+2025-03-17 23:22:50 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 23:22:50 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 23:22:50 info: Email service initialized
+2025-03-17 23:22:50 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 23:22:50 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 23:22:50 info: Email service initialized
+2025-03-17 23:22:50 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 23:22:50 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-17 23:22:50 info: Email service initialized
+2025-03-17 23:22:50 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-17 23:22:50 info: AuditService initialized
+2025-03-17 23:22:50 info: InvitationController initialized
+2025-03-17 23:22:50 info: Server running in development mode on port 3000
+2025-03-17 23:22:54 info: Connected to MongoDB successfully
+2025-03-18 10:09:17 info: AuthController constructed, authService:
+2025-03-18 10:09:17 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 10:09:17 info: Email service initialized
+2025-03-18 10:09:17 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 10:09:17 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 10:09:17 info: Email service initialized
+2025-03-18 10:09:17 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 10:09:17 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 10:09:17 info: Email service initialized
+2025-03-18 10:09:17 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 10:09:17 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 10:09:17 info: Email service initialized
+2025-03-18 10:09:17 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 10:09:18 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 10:09:18 info: Email service initialized
+2025-03-18 10:09:18 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 10:09:18 info: AuditService initialized
+2025-03-18 10:09:18 info: InvitationController initialized
+2025-03-18 10:09:18 info: Server running in development mode on port 3000
+2025-03-18 10:09:43 info: Connected to MongoDB successfully
+2025-03-18 10:10:02 http: Incoming POST request to /api/departments
+2025-03-18 10:10:02 error: Authentication error: No authorization token provided
+2025-03-18 10:10:02 error: Error handling middleware:
+2025-03-18 10:10:02 http: ::1 - - [18/Mar/2025:09:10:02 +0000] "POST /api/departments HTTP/1.1" 401 84 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 10:10:02 http: Request completed in 6ms
+2025-03-18 10:11:55 http: Incoming POST request to /api/auth/login
+2025-03-18 10:11:55 info: Login called, req.body.email: admin@korede.com
+2025-03-18 10:11:55 info: Login called, this:
+2025-03-18 10:11:55 info: Login called, this.authService: true
+2025-03-18 10:11:55 info: Login called, extracted email: admin@korede.com
+2025-03-18 10:11:55 info: Login - Called with email: admin@korede.com
+2025-03-18 10:11:56 info: Login - User retrieved: admin@korede.com
+2025-03-18 10:11:56 info: Login - Stored password hash: $2a$12$f.85CoKzdnSamXUZYktuTuQ0Wa8/VyVPy1VdvPrar.JGBAIogQIme
+2025-03-18 10:11:56 info: Login - Password valid: true for input: StrongP@ss123
+2025-03-18 10:11:56 info: Login - Tokens generated for email: admin@korede.com
+2025-03-18 10:11:56 info: Login result:
+2025-03-18 10:11:56 info: User logged in successfully: admin@korede.com
+2025-03-18 10:11:56 http: ::1 - - [18/Mar/2025:09:11:56 +0000] "POST /api/auth/login HTTP/1.1" 200 516 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 10:11:56 http: Request completed in 917ms
+2025-03-18 10:12:50 http: Incoming POST request to /api/departments
+2025-03-18 10:12:50 error: Validation error: Validation failed
+2025-03-18 10:12:50 error: Error handling middleware:
+2025-03-18 10:12:50 http: ::1 - - [18/Mar/2025:09:12:50 +0000] "POST /api/departments HTTP/1.1" 400 229 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 10:12:50 http: Request completed in 11ms
+2025-03-18 10:13:10 http: Incoming POST request to /api/departments
+2025-03-18 10:13:10 error: Validation error: Validation failed
+2025-03-18 10:13:10 error: Error handling middleware:
+2025-03-18 10:13:10 http: ::1 - - [18/Mar/2025:09:13:10 +0000] "POST /api/departments HTTP/1.1" 400 358 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 10:13:10 http: Request completed in 5ms
+2025-03-18 10:14:29 http: Incoming POST request to /api/departments
+2025-03-18 10:14:29 info: Creating department Engineering for organization 67d888be274055fe3f57d6fd
+2025-03-18 10:14:30 error: Error creating department: Parent department not found
+2025-03-18 10:14:30 error: Error handling middleware:
+2025-03-18 10:14:30 http: ::1 - - [18/Mar/2025:09:14:30 +0000] "POST /api/departments HTTP/1.1" 404 77 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 10:14:30 http: Request completed in 434ms
+2025-03-18 10:15:39 http: Incoming POST request to /api/departments
+2025-03-18 10:15:39 info: Creating department Engineering for organization 67d888be274055fe3f57d6fd
+2025-03-18 10:15:40 info: Department created: 67d939bb6092dc9f08e5f305
+2025-03-18 10:15:40 http: ::1 - - [18/Mar/2025:09:15:40 +0000] "POST /api/departments HTTP/1.1" 201 290 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 10:15:40 http: Request completed in 574ms
+2025-03-18 10:17:16 http: Incoming POST request to /api/auth/invitations/invite
+2025-03-18 10:17:16 info: Processing invitation request for employee@korede.com with role manager
+2025-03-18 10:17:18 debug: Audit log created: INVITATION_SENT by 67d888be274055fe3f57d6fe
+2025-03-18 10:17:18 info: Sending manager invitation email to employee@korede.com
+2025-03-18 10:17:18 info: [MOCK] Invitation token: b29679ea7099d3c9489a41e17c40e56f431b45cb2e54ba09a1779ae154afe08f
+2025-03-18 10:17:18 info: [MOCK] You have been invited by John Doe (admin@korede.com) to join korede as a manager
+2025-03-18 10:17:18 info: [MOCK] Department: Engineering
+2025-03-18 10:17:18 info: [MOCK] Registration URL: http://localhost:3000/employee/complete-registration?token=b29679ea7099d3c9489a41e17c40e56f431b45cb2e54ba09a1779ae154afe08f
+2025-03-18 10:17:18 info: manager invitation sent to employee@korede.com by user 67d888be274055fe3f57d6fe
+2025-03-18 10:17:18 http: ::1 - - [18/Mar/2025:09:17:18 +0000] "POST /api/auth/invitations/invite HTTP/1.1" 201 242 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 10:17:18 http: Request completed in 1657ms
+2025-03-18 10:18:28 http: Incoming POST request to /api/auth/invitations/complete-registration
+2025-03-18 10:18:28 info: Processing registration completion for token: 67d888be27...
+2025-03-18 10:18:28 error: Complete registration failed: Invalid or expired invitation
+2025-03-18 10:18:28 error: Error handling middleware:
+2025-03-18 10:18:28 http: ::1 - - [18/Mar/2025:09:18:28 +0000] "POST /api/auth/invitations/complete-registration HTTP/1.1" 404 79 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 10:18:28 http: Request completed in 253ms
+2025-03-18 10:18:52 http: Incoming POST request to /api/auth/invitations/complete-registration
+2025-03-18 10:18:52 info: Processing registration completion for token: 67d888be27...
+2025-03-18 10:18:52 error: Complete registration failed: Invalid or expired invitation
+2025-03-18 10:18:52 error: Error handling middleware:
+2025-03-18 10:18:52 http: ::1 - - [18/Mar/2025:09:18:52 +0000] "POST /api/auth/invitations/complete-registration HTTP/1.1" 404 79 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 10:18:52 http: Request completed in 241ms
+2025-03-18 10:21:24 info: AuthController constructed, authService:
+2025-03-18 10:21:24 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 10:21:24 info: Email service initialized
+2025-03-18 10:21:24 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 10:21:24 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 10:21:24 info: Email service initialized
+2025-03-18 10:21:24 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 10:21:24 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 10:21:24 info: Email service initialized
+2025-03-18 10:21:24 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 10:21:24 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 10:21:24 info: Email service initialized
+2025-03-18 10:21:24 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 10:21:24 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 10:21:24 info: Email service initialized
+2025-03-18 10:21:24 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 10:21:24 info: AuditService initialized
+2025-03-18 10:21:24 info: InvitationController initialized
+2025-03-18 10:21:24 info: Server running in development mode on port 3000
+2025-03-18 10:21:36 info: Connected to MongoDB successfully
+2025-03-18 10:22:44 http: Incoming POST request to /api/auth/login
+2025-03-18 10:22:44 info: Login called, req.body.email: admin@korede.com
+2025-03-18 10:22:44 info: Login called, this:
+2025-03-18 10:22:44 info: Login called, this.authService: true
+2025-03-18 10:22:44 info: Login called, extracted email: admin@korede.com
+2025-03-18 10:22:44 info: Login - Called with email: admin@korede.com
+2025-03-18 10:22:44 info: Login - User retrieved: admin@korede.com
+2025-03-18 10:22:44 info: Login - Stored password hash: $2a$12$f.85CoKzdnSamXUZYktuTuQ0Wa8/VyVPy1VdvPrar.JGBAIogQIme
+2025-03-18 10:22:44 info: Login - Password valid: true for input: StrongP@ss123
+2025-03-18 10:22:45 info: Login - Tokens generated for email: admin@korede.com
+2025-03-18 10:22:45 info: Login result:
+2025-03-18 10:22:45 info: User logged in successfully: admin@korede.com
+2025-03-18 10:22:45 http: ::1 - - [18/Mar/2025:09:22:45 +0000] "POST /api/auth/login HTTP/1.1" 200 516 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 10:22:45 http: Request completed in 931ms
+2025-03-18 10:24:17 http: Incoming POST request to /api/departments
+2025-03-18 10:24:17 info: Creating department cleaning for organization 67d888be274055fe3f57d6fd
+2025-03-18 10:24:17 info: Department created: 67d93bc19dc344e2c1a22dd0
+2025-03-18 10:24:17 http: ::1 - - [18/Mar/2025:09:24:17 +0000] "POST /api/departments HTTP/1.1" 201 287 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 10:24:17 http: Request completed in 457ms
+2025-03-18 10:26:21 http: Incoming POST request to /api/auth/invitations/invite
+2025-03-18 10:26:21 info: Processing invitation request for employee@josh.com with role manager
+2025-03-18 10:26:22 debug: Audit log created: INVITATION_SENT by 67d888be274055fe3f57d6fe
+2025-03-18 10:26:22 info: Sending manager invitation email to employee@josh.com
+2025-03-18 10:26:22 info: [MOCK] Invitation token: 14e3b9a4eb617aa9ab943748c59e0941392e5b60ac431644275610bb5aeed3b5
+2025-03-18 10:26:22 info: [MOCK] You have been invited by John Doe (admin@korede.com) to join korede as a manager
+2025-03-18 10:26:22 info: [MOCK] Department: cleaning
+2025-03-18 10:26:22 info: [MOCK] Registration URL: http://localhost:3000/employee/complete-registration?token=14e3b9a4eb617aa9ab943748c59e0941392e5b60ac431644275610bb5aeed3b5
+2025-03-18 10:26:22 info: manager invitation sent to employee@josh.com by user 67d888be274055fe3f57d6fe
+2025-03-18 10:26:22 http: ::1 - - [18/Mar/2025:09:26:22 +0000] "POST /api/auth/invitations/invite HTTP/1.1" 201 235 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 10:26:22 http: Request completed in 1347ms
+2025-03-18 10:27:33 http: Incoming GET request to /employee/complete-registration?token=14e3b9a4eb617aa9ab943748c59e0941392e5b60ac431644275610bb5aeed3b5
+2025-03-18 10:27:33 error: Error handling middleware:
+2025-03-18 10:27:33 http: ::ffff:127.0.0.1 - - [18/Mar/2025:09:27:33 +0000] "GET /employee/complete-registration?token=14e3b9a4eb617aa9ab943748c59e0941392e5b60ac431644275610bb5aeed3b5 HTTP/1.1" 404 102 "-" "Mozilla/5.0 (X11; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0"
+2025-03-18 10:27:33 http: Request completed in 11ms
+2025-03-18 10:27:34 http: Incoming GET request to /favicon.ico
+2025-03-18 10:27:34 error: Error handling middleware:
+2025-03-18 10:27:34 http: ::ffff:127.0.0.1 - - [18/Mar/2025:09:27:34 +0000] "GET /favicon.ico HTTP/1.1" 404 83 "-" "Mozilla/5.0 (X11; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0"
+2025-03-18 10:27:34 http: Request completed in 3ms
+2025-03-18 10:28:12 http: Incoming POST request to /api/auth/invitations/complete-registration
+2025-03-18 10:28:12 info: Processing registration completion for token: 14e3b9a4eb...
+2025-03-18 10:28:13 error: Complete registration failed: User validation failed: organization: Path `organization` is required.
+2025-03-18 10:28:13 error: Error handling middleware:
+2025-03-18 10:28:13 http: ::1 - - [18/Mar/2025:09:28:13 +0000] "POST /api/auth/invitations/complete-registration HTTP/1.1" 500 646 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 10:28:13 http: Request completed in 613ms
+2025-03-18 10:38:00 info: AuthController constructed, authService:
+2025-03-18 10:38:01 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 10:38:01 info: Email service initialized
+2025-03-18 10:38:01 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 10:38:01 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 10:38:01 info: Email service initialized
+2025-03-18 10:38:01 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 10:38:01 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 10:38:01 info: Email service initialized
+2025-03-18 10:38:01 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 10:38:01 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 10:38:01 info: Email service initialized
+2025-03-18 10:38:01 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 10:38:01 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 10:38:01 info: Email service initialized
+2025-03-18 10:38:01 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 10:38:01 info: AuditService initialized
+2025-03-18 10:38:01 info: InvitationController initialized
+2025-03-18 10:38:01 info: Server running in development mode on port 3000
+2025-03-18 10:38:24 info: Connected to MongoDB successfully
+2025-03-18 10:38:51 http: Incoming GET request to /employee/complete-registration?token=14e3b9a4eb617aa9ab943748c59e0941392e5b60ac431644275610bb5aeed3b5
+2025-03-18 10:38:51 error: Error handling middleware:
+2025-03-18 10:38:51 http: ::ffff:127.0.0.1 - - [18/Mar/2025:09:38:51 +0000] "GET /employee/complete-registration?token=14e3b9a4eb617aa9ab943748c59e0941392e5b60ac431644275610bb5aeed3b5 HTTP/1.1" 404 102 "-" "Mozilla/5.0 (X11; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0"
+2025-03-18 10:38:51 http: Request completed in 21ms
+2025-03-18 10:38:51 http: Incoming GET request to /favicon.ico
+2025-03-18 10:38:51 error: Error handling middleware:
+2025-03-18 10:38:51 http: ::ffff:127.0.0.1 - - [18/Mar/2025:09:38:51 +0000] "GET /favicon.ico HTTP/1.1" 404 83 "-" "Mozilla/5.0 (X11; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0"
+2025-03-18 10:38:51 http: Request completed in 18ms
+2025-03-18 10:39:09 http: Incoming POST request to /api/auth/invitations/complete-registration
+2025-03-18 10:39:09 info: Processing registration completion for token: 14e3b9a4eb...
+2025-03-18 10:39:10 debug: Audit log created: REGISTRATION_COMPLETED by 67d93f3dcfc3b028163e62ed
+2025-03-18 10:39:10 info: Registration completed for token: 14e3b9a4eb...
+2025-03-18 10:39:10 http: ::1 - - [18/Mar/2025:09:39:10 +0000] "POST /api/auth/invitations/complete-registration HTTP/1.1" 200 318 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 10:39:10 http: Request completed in 1666ms
+2025-03-18 10:44:22 http: Incoming GET request to /api/auth/invitations?role=manager&status=accepted
+2025-03-18 10:44:22 info: Listing invitations for organization 67d888be274055fe3f57d6fd, filters: {"role":"manager","status":"accepted"}
+2025-03-18 10:44:22 http: ::1 - - [18/Mar/2025:09:44:22 +0000] "GET /api/auth/invitations?role=manager&status=accepted HTTP/1.1" 200 383 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 10:44:22 http: Request completed in 446ms
+2025-03-18 10:44:42 http: Incoming GET request to /api/auth/invitations?role=manager&status=pending
+2025-03-18 10:44:42 info: Listing invitations for organization 67d888be274055fe3f57d6fd, filters: {"role":"manager","status":"pending"}
+2025-03-18 10:44:43 http: ::1 - - [18/Mar/2025:09:44:43 +0000] "GET /api/auth/invitations?role=manager&status=pending HTTP/1.1" 200 387 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 10:44:43 http: Request completed in 862ms
+2025-03-18 10:56:24 info: AuthController constructed, authService:
+2025-03-18 10:56:24 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 10:56:24 info: Email service initialized
+2025-03-18 10:56:24 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 10:56:24 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 10:56:24 info: Email service initialized
+2025-03-18 10:56:24 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 10:56:24 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 10:56:24 info: Email service initialized
+2025-03-18 10:56:24 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 10:56:24 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 10:56:24 info: Email service initialized
+2025-03-18 10:56:24 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 10:56:24 info: AuditService initialized
+2025-03-18 10:56:24 info: InvitationController initialized
+2025-03-18 10:56:24 info: Server running in development mode on port 3000
+2025-03-18 10:56:47 info: Connected to MongoDB successfully
+2025-03-18 10:57:55 info: AuthController constructed, authService:
+2025-03-18 10:57:55 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 10:57:55 info: Email service initialized
+2025-03-18 10:57:55 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 10:57:55 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 10:57:55 info: Email service initialized
+2025-03-18 10:57:55 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 10:57:55 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 10:57:55 info: Email service initialized
+2025-03-18 10:57:55 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 10:57:55 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 10:57:55 info: Email service initialized
+2025-03-18 10:57:55 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 10:57:55 info: AuditService initialized
+2025-03-18 10:57:55 info: InvitationController initialized
+2025-03-18 10:57:55 info: Server running in development mode on port 3000
+2025-03-18 10:58:19 info: Connected to MongoDB successfully
+2025-03-18 11:23:00 info: AuthController constructed, authService:
+2025-03-18 11:23:00 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:23:00 info: Email service initialized
+2025-03-18 11:23:00 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:23:00 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:23:00 info: Email service initialized
+2025-03-18 11:23:00 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:23:00 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:23:00 info: Email service initialized
+2025-03-18 11:23:00 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:23:01 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:23:01 info: Email service initialized
+2025-03-18 11:23:01 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:23:01 info: AuditService initialized
+2025-03-18 11:23:01 info: InvitationController initialized
+2025-03-18 11:23:01 info: Server running in development mode on port 3000
+2025-03-18 11:23:11 info: AuthController constructed, authService:
+2025-03-18 11:23:12 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:23:12 info: Email service initialized
+2025-03-18 11:23:12 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:23:12 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:23:12 info: Email service initialized
+2025-03-18 11:23:12 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:23:12 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:23:12 info: Email service initialized
+2025-03-18 11:23:12 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:23:12 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:23:12 info: Email service initialized
+2025-03-18 11:23:12 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:23:12 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:23:12 info: Email service initialized
+2025-03-18 11:23:12 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:23:12 info: AuditService initialized
+2025-03-18 11:23:12 info: InvitationController initialized
+2025-03-18 11:23:12 info: Server running in development mode on port 3000
+2025-03-18 11:23:20 info: Connected to MongoDB successfully
+2025-03-18 11:25:19 info: AuthController constructed, authService:
+2025-03-18 11:25:19 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:25:19 info: Email service initialized
+2025-03-18 11:25:19 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:25:19 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:25:19 info: Email service initialized
+2025-03-18 11:25:19 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:25:19 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:25:19 info: Email service initialized
+2025-03-18 11:25:19 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:25:19 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:25:19 info: Email service initialized
+2025-03-18 11:25:19 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:25:19 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:25:19 info: Email service initialized
+2025-03-18 11:25:19 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:25:19 info: AuditService initialized
+2025-03-18 11:25:19 info: InvitationController initialized
+2025-03-18 11:25:19 info: Server running in development mode on port 3000
+2025-03-18 11:25:38 info: AuthController constructed, authService:
+2025-03-18 11:25:38 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:25:38 info: Email service initialized
+2025-03-18 11:25:38 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:25:38 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:25:38 info: Email service initialized
+2025-03-18 11:25:38 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:25:38 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:25:38 info: Email service initialized
+2025-03-18 11:25:38 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:25:38 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:25:38 info: Email service initialized
+2025-03-18 11:25:38 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:25:38 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:25:38 info: Email service initialized
+2025-03-18 11:25:38 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:25:38 info: AuditService initialized
+2025-03-18 11:25:38 info: InvitationController initialized
+2025-03-18 11:25:38 info: Server running in development mode on port 3000
+2025-03-18 11:25:58 info: AuthController constructed, authService:
+2025-03-18 11:25:58 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:25:58 info: Email service initialized
+2025-03-18 11:25:58 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:25:58 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:25:58 info: Email service initialized
+2025-03-18 11:25:58 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:25:58 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:25:58 info: Email service initialized
+2025-03-18 11:25:58 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:25:58 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:25:58 info: Email service initialized
+2025-03-18 11:25:58 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:25:58 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:25:58 info: Email service initialized
+2025-03-18 11:25:58 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:25:58 info: AuditService initialized
+2025-03-18 11:25:58 info: InvitationController initialized
+2025-03-18 11:25:58 info: Server running in development mode on port 3000
+2025-03-18 11:26:04 info: Connected to MongoDB successfully
+2025-03-18 11:26:13 info: AuthController constructed, authService:
+2025-03-18 11:26:13 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:26:13 info: Email service initialized
+2025-03-18 11:26:13 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:26:13 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:26:13 info: Email service initialized
+2025-03-18 11:26:13 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:26:13 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:26:13 info: Email service initialized
+2025-03-18 11:26:13 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:26:13 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:26:13 info: Email service initialized
+2025-03-18 11:26:13 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:26:13 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:26:13 info: Email service initialized
+2025-03-18 11:26:13 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:26:13 info: AuditService initialized
+2025-03-18 11:26:13 info: InvitationController initialized
+2025-03-18 11:26:14 info: Server running in development mode on port 3000
+2025-03-18 11:26:16 info: Connected to MongoDB successfully
+2025-03-18 11:26:53 info: AuthController constructed, authService:
+2025-03-18 11:26:53 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:26:53 info: Email service initialized
+2025-03-18 11:26:53 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:26:53 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:26:53 info: Email service initialized
+2025-03-18 11:26:53 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:26:53 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:26:53 info: Email service initialized
+2025-03-18 11:26:53 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:26:53 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:26:53 info: Email service initialized
+2025-03-18 11:26:53 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:26:53 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:26:53 info: Email service initialized
+2025-03-18 11:26:53 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:26:53 info: AuditService initialized
+2025-03-18 11:26:53 info: InvitationController initialized
+2025-03-18 11:26:53 info: Server running in development mode on port 3000
+2025-03-18 11:27:27 info: Connected to MongoDB successfully
+2025-03-18 11:28:32 info: AuthController constructed, authService:
+2025-03-18 11:28:32 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:28:32 info: Email service initialized
+2025-03-18 11:28:32 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:28:32 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:28:32 info: Email service initialized
+2025-03-18 11:28:32 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:28:32 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:28:32 info: Email service initialized
+2025-03-18 11:28:32 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:28:32 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:28:32 info: Email service initialized
+2025-03-18 11:28:32 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:28:32 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:28:32 info: Email service initialized
+2025-03-18 11:28:32 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:28:32 info: AuditService initialized
+2025-03-18 11:28:32 info: InvitationController initialized
+2025-03-18 11:28:32 info: Server running in development mode on port 3000
+2025-03-18 11:28:57 info: Connected to MongoDB successfully
+2025-03-18 11:30:40 info: AuthController constructed, authService:
+2025-03-18 11:30:40 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:30:40 info: Email service initialized
+2025-03-18 11:30:40 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:30:40 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:30:40 info: Email service initialized
+2025-03-18 11:30:40 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:30:40 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:30:40 info: Email service initialized
+2025-03-18 11:30:40 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:30:40 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:30:40 info: Email service initialized
+2025-03-18 11:30:40 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:30:40 info: PlatformService initialized
+2025-03-18 11:30:40 info: PlatformController initialized
+2025-03-18 11:30:40 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:30:40 info: Email service initialized
+2025-03-18 11:30:40 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:30:40 info: AuditService initialized
+2025-03-18 11:30:40 info: InvitationController initialized
+2025-03-18 11:30:40 info: Server running in development mode on port 3000
+2025-03-18 11:31:06 info: Connected to MongoDB successfully
+2025-03-18 11:31:18 info: AuthController constructed, authService:
+2025-03-18 11:31:18 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:31:18 info: Email service initialized
+2025-03-18 11:31:18 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:31:18 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:31:18 info: Email service initialized
+2025-03-18 11:31:18 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:31:18 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:31:18 info: Email service initialized
+2025-03-18 11:31:18 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:31:18 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:31:18 info: Email service initialized
+2025-03-18 11:31:18 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:31:18 info: PlatformService initialized
+2025-03-18 11:31:18 info: PlatformController initialized
+2025-03-18 11:31:18 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:31:18 info: Email service initialized
+2025-03-18 11:31:18 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:31:18 info: AuditService initialized
+2025-03-18 11:31:18 info: InvitationController initialized
+2025-03-18 11:31:18 info: Server running in development mode on port 3000
+2025-03-18 11:31:21 info: Connected to MongoDB successfully
+2025-03-18 11:45:44 info: AuthController constructed, authService:
+2025-03-18 11:45:44 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:45:44 info: Email service initialized
+2025-03-18 11:45:44 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:45:44 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:45:44 info: Email service initialized
+2025-03-18 11:45:44 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:45:44 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:45:44 info: Email service initialized
+2025-03-18 11:45:44 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:45:44 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:45:44 info: Email service initialized
+2025-03-18 11:45:44 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:45:44 info: PlatformService initialized
+2025-03-18 11:45:44 info: PlatformController initialized
+2025-03-18 11:45:44 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:45:44 info: Email service initialized
+2025-03-18 11:45:44 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:45:44 info: AuditService initialized
+2025-03-18 11:45:44 info: InvitationController initialized
+2025-03-18 11:45:44 info: Server running in development mode on port 3000
+2025-03-18 11:46:07 info: Connected to MongoDB successfully
+2025-03-18 11:46:25 info: AuthController constructed, authService:
+2025-03-18 11:46:26 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:46:26 info: Email service initialized
+2025-03-18 11:46:26 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:46:26 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:46:26 info: Email service initialized
+2025-03-18 11:46:26 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:46:26 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:46:26 info: Email service initialized
+2025-03-18 11:46:26 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:46:26 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:46:26 info: Email service initialized
+2025-03-18 11:46:26 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:46:26 info: PlatformService initialized
+2025-03-18 11:46:26 info: PlatformController initialized
+2025-03-18 11:46:26 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:46:26 info: Email service initialized
+2025-03-18 11:46:26 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:46:26 info: AuditService initialized
+2025-03-18 11:46:26 info: InvitationController initialized
+2025-03-18 11:46:26 info: Server running in development mode on port 3000
+2025-03-18 11:46:28 info: Connected to MongoDB successfully
+2025-03-18 11:58:05 info: AuthController constructed, authService:
+2025-03-18 11:58:05 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:58:05 info: Email service initialized
+2025-03-18 11:58:05 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:58:05 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:58:05 info: Email service initialized
+2025-03-18 11:58:05 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:58:05 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:58:05 info: Email service initialized
+2025-03-18 11:58:05 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:58:05 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:58:05 info: Email service initialized
+2025-03-18 11:58:05 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:58:05 info: PlatformService initialized
+2025-03-18 11:58:05 info: PlatformController initialized
+2025-03-18 11:58:05 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 11:58:05 info: Email service initialized
+2025-03-18 11:58:05 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 11:58:05 info: AuditService initialized
+2025-03-18 11:58:05 info: InvitationController initialized
+2025-03-18 11:58:05 info: Server running in development mode on port 3000
+2025-03-18 11:58:28 info: Connected to MongoDB successfully
+2025-03-18 12:01:49 info: AuthController constructed, authService:
+2025-03-18 12:01:49 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:01:49 info: Email service initialized
+2025-03-18 12:01:49 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:01:49 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:01:49 info: Email service initialized
+2025-03-18 12:01:49 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:01:49 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:01:49 info: Email service initialized
+2025-03-18 12:01:49 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:01:49 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:01:49 info: Email service initialized
+2025-03-18 12:01:49 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:01:49 info: PlatformService initialized
+2025-03-18 12:01:49 info: PlatformController initialized
+2025-03-18 12:01:49 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:01:49 info: Email service initialized
+2025-03-18 12:01:49 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:01:49 info: AuditService initialized
+2025-03-18 12:01:49 info: InvitationController initialized
+2025-03-18 12:01:49 info: Server running in development mode on port 3000
+2025-03-18 12:02:12 info: Connected to MongoDB successfully
+2025-03-18 12:03:36 info: AuthController constructed, authService:
+2025-03-18 12:03:36 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:03:36 info: Email service initialized
+2025-03-18 12:03:36 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:03:36 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:03:36 info: Email service initialized
+2025-03-18 12:03:36 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:03:36 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:03:36 info: Email service initialized
+2025-03-18 12:03:36 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:03:36 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:03:36 info: Email service initialized
+2025-03-18 12:03:36 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:03:36 info: PlatformService initialized
+2025-03-18 12:03:36 info: PlatformController initialized
+2025-03-18 12:03:36 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:03:36 info: Email service initialized
+2025-03-18 12:03:36 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:03:36 info: AuditService initialized
+2025-03-18 12:03:36 info: InvitationController initialized
+2025-03-18 12:03:36 info: Server running in development mode on port 3000
+2025-03-18 12:04:04 info: Connected to MongoDB successfully
+2025-03-18 12:04:08 info: AuthController constructed, authService:
+2025-03-18 12:04:08 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:04:08 info: Email service initialized
+2025-03-18 12:04:08 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:04:08 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:04:08 info: Email service initialized
+2025-03-18 12:04:08 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:04:08 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:04:08 info: Email service initialized
+2025-03-18 12:04:08 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:04:08 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:04:08 info: Email service initialized
+2025-03-18 12:04:08 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:04:08 info: PlatformService initialized
+2025-03-18 12:04:08 info: PlatformController initialized
+2025-03-18 12:04:08 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:04:08 info: Email service initialized
+2025-03-18 12:04:08 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:04:08 info: AuditService initialized
+2025-03-18 12:04:08 info: InvitationController initialized
+2025-03-18 12:04:08 info: Server running in development mode on port 3000
+2025-03-18 12:04:10 info: Connected to MongoDB successfully
+2025-03-18 12:04:59 info: AuthController constructed, authService:
+2025-03-18 12:04:59 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:04:59 info: Email service initialized
+2025-03-18 12:04:59 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:04:59 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:04:59 info: Email service initialized
+2025-03-18 12:04:59 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:04:59 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:04:59 info: Email service initialized
+2025-03-18 12:04:59 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:04:59 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:04:59 info: Email service initialized
+2025-03-18 12:04:59 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:04:59 info: PlatformService initialized
+2025-03-18 12:04:59 info: PlatformController initialized
+2025-03-18 12:04:59 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:04:59 info: Email service initialized
+2025-03-18 12:04:59 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:04:59 info: AuditService initialized
+2025-03-18 12:04:59 info: InvitationController initialized
+2025-03-18 12:04:59 info: Server running in development mode on port 3000
+2025-03-18 12:05:00 info: AuthController constructed, authService:
+2025-03-18 12:05:01 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:05:01 info: Email service initialized
+2025-03-18 12:05:01 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:05:01 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:05:01 info: Email service initialized
+2025-03-18 12:05:01 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:05:01 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:05:01 info: Email service initialized
+2025-03-18 12:05:01 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:05:01 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:05:01 info: Email service initialized
+2025-03-18 12:05:01 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:05:01 info: PlatformService initialized
+2025-03-18 12:05:01 info: PlatformController initialized
+2025-03-18 12:05:01 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:05:01 info: Email service initialized
+2025-03-18 12:05:01 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:05:01 info: AuditService initialized
+2025-03-18 12:05:01 info: InvitationController initialized
+2025-03-18 12:05:01 info: Server running in development mode on port 3000
+2025-03-18 12:05:16 info: Connected to MongoDB successfully
+2025-03-18 12:05:28 info: AuthController constructed, authService:
+2025-03-18 12:05:28 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:05:28 info: Email service initialized
+2025-03-18 12:05:28 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:05:28 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:05:28 info: Email service initialized
+2025-03-18 12:05:28 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:05:28 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:05:28 info: Email service initialized
+2025-03-18 12:05:28 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:05:28 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:05:28 info: Email service initialized
+2025-03-18 12:05:28 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:05:28 info: PlatformService initialized
+2025-03-18 12:05:28 info: PlatformController initialized
+2025-03-18 12:05:28 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:05:28 info: Email service initialized
+2025-03-18 12:05:28 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:05:28 info: AuditService initialized
+2025-03-18 12:05:28 info: InvitationController initialized
+2025-03-18 12:05:28 info: Server running in development mode on port 3000
+2025-03-18 12:05:33 info: Connected to MongoDB successfully
+2025-03-18 12:06:23 info: AuthController constructed, authService:
+2025-03-18 12:06:23 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:06:23 info: Email service initialized
+2025-03-18 12:06:23 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:06:23 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:06:23 info: Email service initialized
+2025-03-18 12:06:23 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:06:23 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:06:23 info: Email service initialized
+2025-03-18 12:06:23 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:06:23 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:06:23 info: Email service initialized
+2025-03-18 12:06:23 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:06:23 info: PlatformService initialized
+2025-03-18 12:06:23 info: PlatformController initialized
+2025-03-18 12:06:23 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:06:23 info: Email service initialized
+2025-03-18 12:06:23 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:06:23 info: AuditService initialized
+2025-03-18 12:06:23 info: InvitationController initialized
+2025-03-18 12:06:24 info: Server running in development mode on port 3000
+2025-03-18 12:06:43 info: Connected to MongoDB successfully
+2025-03-18 12:07:09 info: AuthController constructed, authService:
+2025-03-18 12:07:09 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:07:09 info: Email service initialized
+2025-03-18 12:07:09 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:07:09 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:07:09 info: Email service initialized
+2025-03-18 12:07:09 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:07:09 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:07:09 info: Email service initialized
+2025-03-18 12:07:09 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:07:09 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:07:09 info: Email service initialized
+2025-03-18 12:07:09 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:07:10 info: PlatformService initialized
+2025-03-18 12:07:10 info: PlatformController initialized
+2025-03-18 12:07:10 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:07:10 info: Email service initialized
+2025-03-18 12:07:10 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:07:10 info: AuditService initialized
+2025-03-18 12:07:10 info: InvitationController initialized
+2025-03-18 12:07:10 info: Server running in development mode on port 3000
+2025-03-18 12:07:12 info: Connected to MongoDB successfully
+2025-03-18 12:07:28 info: AuthController constructed, authService:
+2025-03-18 12:07:28 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:07:28 info: Email service initialized
+2025-03-18 12:07:28 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:07:28 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:07:28 info: Email service initialized
+2025-03-18 12:07:28 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:07:28 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:07:28 info: Email service initialized
+2025-03-18 12:07:28 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:07:28 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:07:28 info: Email service initialized
+2025-03-18 12:07:28 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:07:28 info: PlatformService initialized
+2025-03-18 12:07:28 info: PlatformController initialized
+2025-03-18 12:07:28 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:07:28 info: Email service initialized
+2025-03-18 12:07:28 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:07:28 info: AuditService initialized
+2025-03-18 12:07:28 info: InvitationController initialized
+2025-03-18 12:07:28 info: Server running in development mode on port 3000
+2025-03-18 12:07:46 info: Connected to MongoDB successfully
+2025-03-18 12:07:53 info: AuthController constructed, authService:
+2025-03-18 12:07:53 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:07:53 info: Email service initialized
+2025-03-18 12:07:53 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:07:53 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:07:53 info: Email service initialized
+2025-03-18 12:07:53 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:07:53 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:07:53 info: Email service initialized
+2025-03-18 12:07:53 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:07:53 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:07:53 info: Email service initialized
+2025-03-18 12:07:53 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:07:53 info: PlatformService initialized
+2025-03-18 12:07:53 info: PlatformController initialized
+2025-03-18 12:07:53 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:07:53 info: Email service initialized
+2025-03-18 12:07:53 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:07:53 info: AuditService initialized
+2025-03-18 12:07:53 info: InvitationController initialized
+2025-03-18 12:07:53 info: Server running in development mode on port 3000
+2025-03-18 12:07:56 info: Connected to MongoDB successfully
+2025-03-18 12:09:20 info: AuthController constructed, authService:
+2025-03-18 12:09:20 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:09:20 info: Email service initialized
+2025-03-18 12:09:20 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:09:20 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:09:20 info: Email service initialized
+2025-03-18 12:09:20 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:09:20 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:09:20 info: Email service initialized
+2025-03-18 12:09:20 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:09:20 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:09:20 info: Email service initialized
+2025-03-18 12:09:20 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:09:20 info: PlatformService initialized
+2025-03-18 12:09:20 info: PlatformController initialized
+2025-03-18 12:09:20 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 12:09:20 info: Email service initialized
+2025-03-18 12:09:20 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 12:09:20 info: AuditService initialized
+2025-03-18 12:09:20 info: InvitationController initialized
+2025-03-18 12:09:20 info: Server running in development mode on port 3000
+2025-03-18 12:09:39 info: Connected to MongoDB successfully
+2025-03-18 12:14:50 http: Incoming GET request to /api/departments
+2025-03-18 12:14:50 error: Authentication error: No authorization token provided
+2025-03-18 12:14:50 error: Error handling middleware:
+2025-03-18 12:14:50 http: ::1 - - [18/Mar/2025:11:14:50 +0000] "GET /api/departments HTTP/1.1" 401 84 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 12:14:50 http: Request completed in 7ms
+2025-03-18 12:15:26 http: Incoming POST request to /api/auth/login
+2025-03-18 12:15:26 info: Login called, req.body.email: admin@korede.com
+2025-03-18 12:15:26 info: Login called, this:
+2025-03-18 12:15:26 info: Login called, this.authService: true
+2025-03-18 12:15:26 info: Login called, extracted email: admin@korede.com
+2025-03-18 12:15:26 info: Login - Called with email: admin@korede.com
+2025-03-18 12:15:27 info: Login - User retrieved: admin@korede.com
+2025-03-18 12:15:27 info: Login - Stored password hash: $2a$12$f.85CoKzdnSamXUZYktuTuQ0Wa8/VyVPy1VdvPrar.JGBAIogQIme
+2025-03-18 12:15:27 info: Login - Password valid: true for input: StrongP@ss123
+2025-03-18 12:15:27 info: Login - Tokens generated for email: admin@korede.com
+2025-03-18 12:15:27 info: Login result:
+2025-03-18 12:15:27 info: User logged in successfully: admin@korede.com
+2025-03-18 12:15:27 http: ::1 - - [18/Mar/2025:11:15:27 +0000] "POST /api/auth/login HTTP/1.1" 200 516 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 12:15:27 http: Request completed in 1511ms
+2025-03-18 12:16:17 http: Incoming GET request to /api/departments
+2025-03-18 12:16:18 http: ::1 - - [18/Mar/2025:11:16:18 +0000] "GET /api/departments HTTP/1.1" 200 381 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 12:16:18 http: Request completed in 303ms
+2025-03-18 12:40:27 http: Incoming GET request to /api/geofences?active=true
+2025-03-18 12:40:27 info: Retrieved geofences for organization: 67d888be274055fe3f57d6fd
+2025-03-18 12:40:27 http: ::1 - - [18/Mar/2025:11:40:27 +0000] "GET /api/geofences?active=true HTTP/1.1" 200 2 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 12:40:27 http: Request completed in 221ms
+2025-03-18 14:05:17 info: AuthController constructed, authService:
+2025-03-18 14:05:17 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:05:17 info: Email service initialized
+2025-03-18 14:05:17 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:05:17 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:05:17 info: Email service initialized
+2025-03-18 14:05:17 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:05:17 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:05:17 info: Email service initialized
+2025-03-18 14:05:17 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:05:17 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:05:17 info: Email service initialized
+2025-03-18 14:05:17 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:05:17 info: PlatformService initialized
+2025-03-18 14:05:17 info: PlatformController initialized
+2025-03-18 14:05:17 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:05:17 info: Email service initialized
+2025-03-18 14:05:17 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:05:17 info: AuditService initialized
+2025-03-18 14:05:17 info: InvitationController initialized
+2025-03-18 14:05:17 info: Server running in development mode on port 3000
+2025-03-18 14:05:43 info: Connected to MongoDB successfully
+2025-03-18 14:05:54 info: AuthController constructed, authService:
+2025-03-18 14:05:54 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:05:54 info: Email service initialized
+2025-03-18 14:05:54 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:05:54 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:05:54 info: Email service initialized
+2025-03-18 14:05:54 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:05:54 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:05:54 info: Email service initialized
+2025-03-18 14:05:54 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:05:54 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:05:54 info: Email service initialized
+2025-03-18 14:05:54 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:05:54 info: PlatformService initialized
+2025-03-18 14:05:54 info: PlatformController initialized
+2025-03-18 14:05:54 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:05:54 info: Email service initialized
+2025-03-18 14:05:54 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:05:54 info: AuditService initialized
+2025-03-18 14:05:54 info: InvitationController initialized
+2025-03-18 14:05:54 info: Server running in development mode on port 3000
+2025-03-18 14:05:56 info: Connected to MongoDB successfully
+2025-03-18 14:06:16 http: Incoming GET request to /api/admin/organizations
+2025-03-18 14:06:16 error: Error handling middleware:
+2025-03-18 14:06:16 http: ::1 - - [18/Mar/2025:13:06:16 +0000] "GET /api/admin/organizations HTTP/1.1" 404 95 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 14:06:16 http: Request completed in 9ms
+2025-03-18 14:08:08 info: AuthController constructed, authService:
+2025-03-18 14:08:08 info: AuthController constructed, authService:
+2025-03-18 14:08:08 info: AuthController constructed, authService:
+2025-03-18 14:08:24 info: AuthController constructed, authService:
+2025-03-18 14:08:24 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:08:24 info: Email service initialized
+2025-03-18 14:08:24 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:08:24 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:08:24 info: Email service initialized
+2025-03-18 14:08:24 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:08:24 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:08:24 info: Email service initialized
+2025-03-18 14:08:24 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:08:24 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:08:24 info: Email service initialized
+2025-03-18 14:08:24 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:08:24 info: PlatformService initialized
+2025-03-18 14:08:24 info: PlatformController initialized
+2025-03-18 14:08:25 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:08:25 info: Email service initialized
+2025-03-18 14:08:25 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:08:25 info: AuditService initialized
+2025-03-18 14:08:25 info: InvitationController initialized
+2025-03-18 14:08:25 info: Server running in development mode on port 3000
+2025-03-18 14:08:40 info: AuthController constructed, authService:
+2025-03-18 14:08:40 info: AuthController constructed, authService:
+2025-03-18 14:08:46 info: AuthController constructed, authService:
+2025-03-18 14:08:46 info: AuthController constructed, authService:
+2025-03-18 14:10:21 info: AuthController constructed, authService:
+2025-03-18 14:10:21 info: AuthController constructed, authService:
+2025-03-18 14:10:51 info: AuthController constructed, authService:
+2025-03-18 14:10:58 info: AuthController constructed, authService:
+2025-03-18 14:10:58 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:10:58 info: Email service initialized
+2025-03-18 14:10:58 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:10:58 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:10:58 info: Email service initialized
+2025-03-18 14:10:58 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:10:58 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:10:58 info: Email service initialized
+2025-03-18 14:10:58 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:10:58 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:10:58 info: Email service initialized
+2025-03-18 14:10:58 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:10:58 info: PlatformService initialized
+2025-03-18 14:10:58 info: PlatformController initialized
+2025-03-18 14:10:58 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:10:58 info: Email service initialized
+2025-03-18 14:10:58 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:10:58 info: AuditService initialized
+2025-03-18 14:10:58 info: InvitationController initialized
+2025-03-18 14:10:58 info: Server running in development mode on port 3000
+2025-03-18 14:11:22 http: Incoming GET request to /api/admin/organizations
+2025-03-18 14:11:22 error: Authentication error: No authorization token provided
+2025-03-18 14:11:22 error: Error handling middleware:
+2025-03-18 14:11:22 http: ::1 - - [18/Mar/2025:13:11:22 +0000] "GET /api/admin/organizations HTTP/1.1" 401 84 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 14:11:22 http: Request completed in 11ms
+2025-03-18 14:11:24 info: Connected to MongoDB successfully
+2025-03-18 14:11:52 http: Incoming POST request to /api/auth/login
+2025-03-18 14:11:52 info: Login called, req.body.email: admin@korede.com
+2025-03-18 14:11:52 info: Login called, this:
+2025-03-18 14:11:52 info: Login called, this.authService: true
+2025-03-18 14:11:52 info: Login called, extracted email: admin@korede.com
+2025-03-18 14:11:52 info: Login - Called with email: admin@korede.com
+2025-03-18 14:11:52 info: Login - User retrieved: admin@korede.com
+2025-03-18 14:11:52 info: Login - Stored password hash: $2a$12$f.85CoKzdnSamXUZYktuTuQ0Wa8/VyVPy1VdvPrar.JGBAIogQIme
+2025-03-18 14:11:53 info: Login - Password valid: true for input: StrongP@ss123
+2025-03-18 14:11:53 info: Login - Tokens generated for email: admin@korede.com
+2025-03-18 14:11:53 info: Login result:
+2025-03-18 14:11:53 info: User logged in successfully: admin@korede.com
+2025-03-18 14:11:53 http: ::1 - - [18/Mar/2025:13:11:53 +0000] "POST /api/auth/login HTTP/1.1" 200 516 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 14:11:53 http: Request completed in 947ms
+2025-03-18 14:12:14 http: Incoming GET request to /api/admin/organizations
+2025-03-18 14:12:14 error: Authorization error: Insufficient permissions
+2025-03-18 14:12:14 error: Error handling middleware:
+2025-03-18 14:12:14 http: ::1 - - [18/Mar/2025:13:12:14 +0000] "GET /api/admin/organizations HTTP/1.1" 403 74 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 14:12:14 http: Request completed in 6ms
+2025-03-18 14:16:59 info: AuthController constructed, authService:
+2025-03-18 14:17:00 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:17:00 info: Email service initialized
+2025-03-18 14:17:00 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:17:00 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:17:00 info: Email service initialized
+2025-03-18 14:17:00 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:17:00 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:17:00 info: Email service initialized
+2025-03-18 14:17:00 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:17:00 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:17:00 info: Email service initialized
+2025-03-18 14:17:00 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:17:00 info: PlatformService initialized
+2025-03-18 14:17:00 info: PlatformController initialized
+2025-03-18 14:17:00 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:17:00 info: Email service initialized
+2025-03-18 14:17:00 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:17:00 info: AuditService initialized
+2025-03-18 14:17:00 info: InvitationController initialized
+2025-03-18 14:17:00 info: Server running in development mode on port 3000
+2025-03-18 14:17:17 info: Connected to MongoDB successfully
+2025-03-18 14:17:25 info: AuthController constructed, authService:
+2025-03-18 14:17:25 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:17:25 info: Email service initialized
+2025-03-18 14:17:25 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:17:25 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:17:25 info: Email service initialized
+2025-03-18 14:17:25 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:17:25 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:17:25 info: Email service initialized
+2025-03-18 14:17:25 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:17:25 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:17:25 info: Email service initialized
+2025-03-18 14:17:25 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:17:25 info: PlatformService initialized
+2025-03-18 14:17:25 info: PlatformController initialized
+2025-03-18 14:17:25 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:17:25 info: Email service initialized
+2025-03-18 14:17:25 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:17:25 info: AuditService initialized
+2025-03-18 14:17:25 info: InvitationController initialized
+2025-03-18 14:17:25 info: Server running in development mode on port 3000
+2025-03-18 14:17:27 info: Connected to MongoDB successfully
+2025-03-18 14:18:03 info: AuthController constructed, authService:
+2025-03-18 14:18:03 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:18:03 info: Email service initialized
+2025-03-18 14:18:03 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:18:03 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:18:03 info: Email service initialized
+2025-03-18 14:18:03 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:18:03 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:18:03 info: Email service initialized
+2025-03-18 14:18:03 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:18:03 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:18:03 info: Email service initialized
+2025-03-18 14:18:03 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:18:03 info: PlatformService initialized
+2025-03-18 14:18:03 info: PlatformController initialized
+2025-03-18 14:18:03 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:18:03 info: Email service initialized
+2025-03-18 14:18:03 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:18:03 info: AuditService initialized
+2025-03-18 14:18:03 info: InvitationController initialized
+2025-03-18 14:18:03 info: Server running in development mode on port 3000
+2025-03-18 14:18:21 info: Connected to MongoDB successfully
+2025-03-18 14:18:32 info: AuthController constructed, authService:
+2025-03-18 14:18:32 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:18:32 info: Email service initialized
+2025-03-18 14:18:32 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:18:32 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:18:32 info: Email service initialized
+2025-03-18 14:18:32 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:18:32 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:18:32 info: Email service initialized
+2025-03-18 14:18:32 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:18:32 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:18:32 info: Email service initialized
+2025-03-18 14:18:32 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:18:32 info: PlatformService initialized
+2025-03-18 14:18:32 info: PlatformController initialized
+2025-03-18 14:18:32 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:18:32 info: Email service initialized
+2025-03-18 14:18:32 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:18:32 info: AuditService initialized
+2025-03-18 14:18:32 info: InvitationController initialized
+2025-03-18 14:18:33 info: Server running in development mode on port 3000
+2025-03-18 14:18:34 info: Connected to MongoDB successfully
+2025-03-18 14:37:57 info: AuthController constructed, authService:
+2025-03-18 14:37:58 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:37:58 info: Email service initialized
+2025-03-18 14:37:58 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:37:58 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:37:58 info: Email service initialized
+2025-03-18 14:37:58 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:37:58 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:37:58 info: Email service initialized
+2025-03-18 14:37:58 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:37:58 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:37:58 info: Email service initialized
+2025-03-18 14:37:58 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:37:58 info: PlatformService initialized
+2025-03-18 14:37:58 info: PlatformController initialized
+2025-03-18 14:37:58 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:37:58 info: Email service initialized
+2025-03-18 14:37:58 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:37:58 info: AuditService initialized
+2025-03-18 14:37:58 info: InvitationController initialized
+2025-03-18 14:37:58 info: Server running in development mode on port 3000
+2025-03-18 14:38:27 info: Connected to MongoDB successfully
+2025-03-18 14:39:06 info: AuthController constructed, authService:
+2025-03-18 14:39:06 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:39:06 info: Email service initialized
+2025-03-18 14:39:06 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:39:06 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:39:06 info: Email service initialized
+2025-03-18 14:39:06 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:39:06 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:39:06 info: Email service initialized
+2025-03-18 14:39:06 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:39:06 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:39:06 info: Email service initialized
+2025-03-18 14:39:06 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:39:06 info: PlatformService initialized
+2025-03-18 14:39:06 info: PlatformController initialized
+2025-03-18 14:39:06 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:39:06 info: Email service initialized
+2025-03-18 14:39:06 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:39:06 info: AuditService initialized
+2025-03-18 14:39:06 info: InvitationController initialized
+2025-03-18 14:39:06 info: Server running in development mode on port 3000
+2025-03-18 14:39:29 info: Connected to MongoDB successfully
+2025-03-18 14:40:44 info: AuthController constructed, authService:
+2025-03-18 14:40:44 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:40:44 info: Email service initialized
+2025-03-18 14:40:44 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:40:44 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:40:44 info: Email service initialized
+2025-03-18 14:40:44 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:40:44 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:40:44 info: Email service initialized
+2025-03-18 14:40:44 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:40:44 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:40:44 info: Email service initialized
+2025-03-18 14:40:44 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:40:44 info: PlatformService initialized
+2025-03-18 14:40:44 info: PlatformController initialized
+2025-03-18 14:40:44 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:40:44 info: Email service initialized
+2025-03-18 14:40:44 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:40:44 info: AuditService initialized
+2025-03-18 14:40:44 info: InvitationController initialized
+2025-03-18 14:40:44 info: Server running in development mode on port 3000
+2025-03-18 14:41:12 info: Connected to MongoDB successfully
+2025-03-18 14:43:34 info: AuthController constructed, authService:
+2025-03-18 14:43:35 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:43:35 info: Email service initialized
+2025-03-18 14:43:35 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:43:35 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:43:35 info: Email service initialized
+2025-03-18 14:43:35 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:43:35 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:43:35 info: Email service initialized
+2025-03-18 14:43:35 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:43:35 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:43:35 info: Email service initialized
+2025-03-18 14:43:35 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:43:35 info: PlatformService initialized
+2025-03-18 14:43:35 info: PlatformController initialized
+2025-03-18 14:43:35 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:43:35 info: Email service initialized
+2025-03-18 14:43:35 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:43:35 info: AuditService initialized
+2025-03-18 14:43:35 info: InvitationController initialized
+2025-03-18 14:43:35 info: Server running in development mode on port 3000
+2025-03-18 14:44:01 info: Connected to MongoDB successfully
+2025-03-18 14:47:09 info: AuthController constructed, authService:
+2025-03-18 14:47:10 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:47:10 info: Email service initialized
+2025-03-18 14:47:10 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:47:10 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:47:10 info: Email service initialized
+2025-03-18 14:47:10 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:47:10 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:47:10 info: Email service initialized
+2025-03-18 14:47:10 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:47:10 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:47:10 info: Email service initialized
+2025-03-18 14:47:10 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:47:10 info: PlatformService initialized
+2025-03-18 14:47:10 info: PlatformController initialized
+2025-03-18 14:47:10 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:47:10 info: Email service initialized
+2025-03-18 14:47:10 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:47:10 info: AuditService initialized
+2025-03-18 14:47:10 info: InvitationController initialized
+2025-03-18 14:47:10 info: Server running in development mode on port 3000
+2025-03-18 14:47:28 info: Connected to MongoDB successfully
+2025-03-18 14:48:38 info: AuthController constructed, authService:
+2025-03-18 14:48:38 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:48:38 info: Email service initialized
+2025-03-18 14:48:38 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:48:38 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:48:38 info: Email service initialized
+2025-03-18 14:48:38 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:48:38 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:48:38 info: Email service initialized
+2025-03-18 14:48:38 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:48:38 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:48:38 info: Email service initialized
+2025-03-18 14:48:38 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:48:39 info: PlatformService initialized
+2025-03-18 14:48:39 info: PlatformController initialized
+2025-03-18 14:48:39 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:48:39 info: Email service initialized
+2025-03-18 14:48:39 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:48:39 info: AuditService initialized
+2025-03-18 14:48:39 info: InvitationController initialized
+2025-03-18 14:48:39 info: Server running in development mode on port 3000
+2025-03-18 14:49:00 info: Connected to MongoDB successfully
+2025-03-18 14:50:22 info: AuthController constructed, authService:
+2025-03-18 14:56:49 info: AuthController constructed, authService:
+2025-03-18 14:58:32 info: AuthController constructed, authService:
+2025-03-18 14:59:06 info: AuthController constructed, authService:
+2025-03-18 14:59:17 info: AuthController constructed, authService:
+2025-03-18 14:59:17 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:59:17 info: Email service initialized
+2025-03-18 14:59:17 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:59:17 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:59:17 info: Email service initialized
+2025-03-18 14:59:17 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:59:17 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:59:17 info: Email service initialized
+2025-03-18 14:59:17 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:59:17 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:59:17 info: Email service initialized
+2025-03-18 14:59:17 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:59:17 info: PlatformService initialized
+2025-03-18 14:59:17 info: PlatformController initialized
+2025-03-18 14:59:17 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 14:59:17 info: Email service initialized
+2025-03-18 14:59:17 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 14:59:17 info: AuditService initialized
+2025-03-18 14:59:17 info: InvitationController initialized
+2025-03-18 14:59:18 info: Server running in development mode on port 3000
+2025-03-18 14:59:47 info: Connected to MongoDB successfully
+2025-03-18 15:00:18 info: AuthController constructed, authService:
+2025-03-18 15:00:18 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 15:00:18 info: Email service initialized
+2025-03-18 15:00:18 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 15:00:18 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 15:00:18 info: Email service initialized
+2025-03-18 15:00:18 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 15:00:18 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 15:00:18 info: Email service initialized
+2025-03-18 15:00:18 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 15:00:18 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 15:00:18 info: Email service initialized
+2025-03-18 15:00:18 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 15:00:19 info: PlatformService initialized
+2025-03-18 15:00:19 info: PlatformController initialized
+2025-03-18 15:00:19 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 15:00:19 info: Email service initialized
+2025-03-18 15:00:19 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 15:00:19 info: AuditService initialized
+2025-03-18 15:00:19 info: InvitationController initialized
+2025-03-18 15:00:19 info: Server running in development mode on port 3000
+2025-03-18 15:00:32 info: Connected to MongoDB successfully
+2025-03-18 15:00:53 info: AuthController constructed, authService:
+2025-03-18 15:00:53 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 15:00:53 info: Email service initialized
+2025-03-18 15:00:53 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 15:00:53 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 15:00:53 info: Email service initialized
+2025-03-18 15:00:53 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 15:00:53 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 15:00:53 info: Email service initialized
+2025-03-18 15:00:53 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 15:00:53 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 15:00:53 info: Email service initialized
+2025-03-18 15:00:53 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 15:00:53 info: PlatformService initialized
+2025-03-18 15:00:53 info: PlatformController initialized
+2025-03-18 15:00:53 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 15:00:53 info: Email service initialized
+2025-03-18 15:00:53 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 15:00:53 info: AuditService initialized
+2025-03-18 15:00:53 info: InvitationController initialized
+2025-03-18 15:00:53 info: Server running in development mode on port 3000
+2025-03-18 15:00:59 info: Connected to MongoDB successfully
+2025-03-18 15:01:21 info: AuthController constructed, authService:
+2025-03-18 15:01:21 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 15:01:21 info: Email service initialized
+2025-03-18 15:01:21 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 15:01:21 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 15:01:21 info: Email service initialized
+2025-03-18 15:01:21 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 15:01:21 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 15:01:21 info: Email service initialized
+2025-03-18 15:01:21 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 15:01:21 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 15:01:21 info: Email service initialized
+2025-03-18 15:01:21 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 15:01:21 info: PlatformService initialized
+2025-03-18 15:01:21 info: PlatformController initialized
+2025-03-18 15:01:21 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 15:01:21 info: Email service initialized
+2025-03-18 15:01:21 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 15:01:21 info: AuditService initialized
+2025-03-18 15:01:21 info: InvitationController initialized
+2025-03-18 15:01:21 info: Server running in development mode on port 3000
+2025-03-18 15:01:33 info: Connected to MongoDB successfully
+2025-03-18 15:01:46 http: Incoming GET request to /api/admin/organizations
+2025-03-18 15:01:46 error: Authorization error: Insufficient permissions
+2025-03-18 15:01:46 error: Error handling middleware:
+2025-03-18 15:01:46 http: ::1 - - [18/Mar/2025:14:01:46 +0000] "GET /api/admin/organizations HTTP/1.1" 403 74 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 15:01:46 http: Request completed in 17ms
+2025-03-18 15:02:07 info: AuthController constructed, authService:
+2025-03-18 15:02:07 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 15:02:07 info: Email service initialized
+2025-03-18 15:02:07 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 15:02:07 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 15:02:07 info: Email service initialized
+2025-03-18 15:02:07 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 15:02:07 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 15:02:07 info: Email service initialized
+2025-03-18 15:02:07 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 15:02:07 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 15:02:07 info: Email service initialized
+2025-03-18 15:02:07 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 15:02:07 info: PlatformService initialized
+2025-03-18 15:02:07 info: PlatformController initialized
+2025-03-18 15:02:07 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 15:02:07 info: Email service initialized
+2025-03-18 15:02:07 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 15:02:07 info: AuditService initialized
+2025-03-18 15:02:07 info: InvitationController initialized
+2025-03-18 15:02:07 info: Server running in development mode on port 3000
+2025-03-18 15:02:09 info: Connected to MongoDB successfully
+2025-03-18 15:03:12 info: AuthController constructed, authService:
+2025-03-18 15:03:12 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 15:03:12 info: Email service initialized
+2025-03-18 15:03:12 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 15:03:12 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 15:03:12 info: Email service initialized
+2025-03-18 15:03:12 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 15:03:12 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 15:03:12 info: Email service initialized
+2025-03-18 15:03:12 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 15:03:12 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 15:03:12 info: Email service initialized
+2025-03-18 15:03:12 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 15:03:13 info: PlatformService initialized
+2025-03-18 15:03:13 info: PlatformController initialized
+2025-03-18 15:03:13 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 15:03:13 info: Email service initialized
+2025-03-18 15:03:13 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 15:03:13 info: AuditService initialized
+2025-03-18 15:03:13 info: InvitationController initialized
+2025-03-18 15:03:13 info: Server running in development mode on port 3000
+2025-03-18 15:03:32 info: Connected to MongoDB successfully
+2025-03-18 15:03:52 http: Incoming GET request to /api/admin/organizations
+2025-03-18 15:03:52 error: Authentication error: No authorization token provided
+2025-03-18 15:03:52 error: Error handling middleware:
+2025-03-18 15:03:52 http: ::1 - - [18/Mar/2025:14:03:52 +0000] "GET /api/admin/organizations HTTP/1.1" 401 84 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 15:03:52 http: Request completed in 7ms
+2025-03-18 15:04:13 http: Incoming GET request to /api/platform/stats
+2025-03-18 15:04:13 error: Error handling middleware:
+2025-03-18 15:04:13 http: ::1 - - [18/Mar/2025:14:04:13 +0000] "GET /api/platform/stats HTTP/1.1" 404 90 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 15:04:13 http: Request completed in 3ms
+2025-03-18 16:55:35 info: AuthController constructed, authService:
+2025-03-18 16:55:35 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 16:55:35 info: Email service initialized
+2025-03-18 16:55:35 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 16:55:35 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 16:55:35 info: Email service initialized
+2025-03-18 16:55:35 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 16:55:35 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 16:55:35 info: Email service initialized
+2025-03-18 16:55:35 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 16:55:35 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 16:55:35 info: Email service initialized
+2025-03-18 16:55:35 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 16:55:35 info: PlatformService initialized
+2025-03-18 16:55:35 info: PlatformController initialized
+2025-03-18 16:55:35 warn: Twilio credentials not provided. SMS functionality will be disabled.
+2025-03-18 16:55:35 info: Email service initialized
+2025-03-18 16:55:35 warn: Firebase credentials not provided. Push notification functionality will be disabled.
+2025-03-18 16:55:35 info: AuditService initialized
+2025-03-18 16:55:35 info: InvitationController initialized
+2025-03-18 16:55:35 info: Server running in development mode on port 3000
+2025-03-18 16:56:06 info: Connected to MongoDB successfully
+2025-03-18 16:56:17 http: Incoming GET request to /api/admin/organizations
+2025-03-18 16:56:17 error: Authentication error: No authorization token provided
+2025-03-18 16:56:17 error: Error handling middleware:
+2025-03-18 16:56:17 http: ::1 - - [18/Mar/2025:15:56:17 +0000] "GET /api/admin/organizations HTTP/1.1" 401 84 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 16:56:17 http: Request completed in 14ms
+2025-03-18 16:56:46 http: Incoming POST request to /api/auth/login
+2025-03-18 16:56:46 info: Login called, req.body.email: admin@korede.com
+2025-03-18 16:56:46 info: Login - Called with email: admin@korede.com
+2025-03-18 16:56:47 info: Login - User retrieved: admin@korede.com
+2025-03-18 16:56:47 info: Login - Stored password hash: $2a$12$f.85CoKzdnSamXUZYktuTuQ0Wa8/VyVPy1VdvPrar.JGBAIogQIme
+2025-03-18 16:56:47 info: Login - Password valid: true for input: StrongP@ss123
+2025-03-18 16:56:47 info: Login - Tokens generated for email: admin@korede.com
+2025-03-18 16:56:47 info: User logged in successfully: admin@korede.com
+2025-03-18 16:56:47 http: ::1 - - [18/Mar/2025:15:56:47 +0000] "POST /api/auth/login HTTP/1.1" 200 516 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 16:56:47 http: Request completed in 1005ms
+2025-03-18 16:57:10 http: Incoming GET request to /api/admin/organizations
+2025-03-18 16:57:10 error: Authorization error: Insufficient permissions
+2025-03-18 16:57:10 error: Error handling middleware:
+2025-03-18 16:57:10 http: ::1 - - [18/Mar/2025:15:57:10 +0000] "GET /api/admin/organizations HTTP/1.1" 403 74 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 16:57:10 http: Request completed in 12ms
+2025-03-18 16:57:42 http: Incoming GET request to /api/departments
+2025-03-18 16:57:42 http: ::1 - - [18/Mar/2025:15:57:42 +0000] "GET /api/departments HTTP/1.1" 200 381 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 16:57:42 http: Request completed in 230ms
+2025-03-18 16:58:42 http: Incoming POST request to /api/auth/login
+2025-03-18 16:58:42 info: Login called, req.body.email: admin@nigeria.com
+2025-03-18 16:58:42 info: Login - Called with email: admin@nigeria.com
+2025-03-18 16:58:42 info: Login - User retrieved: admin@nigeria.com
+2025-03-18 16:58:42 info: Login - Stored password hash: $2a$12$ObQQL6Y3pEGs9c.mBOfrE.O8oC1dGcKlXqzsMi5RDxBVC2nyI73pG
+2025-03-18 16:58:43 info: Login - Password valid: false for input: StrongP@ss123
+2025-03-18 16:58:43 error: Login failed: Invalid email or password
+2025-03-18 16:58:43 error: Error handling middleware:
+2025-03-18 16:58:43 http: ::1 - - [18/Mar/2025:15:58:43 +0000] "POST /api/auth/login HTTP/1.1" 401 78 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 16:58:43 http: Request completed in 622ms
+2025-03-18 16:59:01 http: Incoming POST request to /api/auth/login
+2025-03-18 16:59:01 info: Login called, req.body.email: admin@joshnick.com
+2025-03-18 16:59:01 info: Login - Called with email: admin@joshnick.com
+2025-03-18 16:59:01 info: Login - User retrieved: null
+2025-03-18 16:59:01 error: Login failed: Invalid email or password
+2025-03-18 16:59:01 error: Error handling middleware:
+2025-03-18 16:59:01 http: ::1 - - [18/Mar/2025:15:59:01 +0000] "POST /api/auth/login HTTP/1.1" 401 78 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 16:59:01 http: Request completed in 148ms
+2025-03-18 17:00:07 http: Incoming POST request to /api/auth/register
+2025-03-18 17:00:07 info: Starting registration for email: admin@buyeto.com
+2025-03-18 17:00:08 info: Generated verification code for admin@buyeto.com
+2025-03-18 17:00:08 info: Creating user with pending status for email: admin@buyeto.com
+2025-03-18 17:00:08 info: Saving organization and admin in transaction...
+2025-03-18 17:00:08 info: Transaction committed successfully for: admin@buyeto.com
+2025-03-18 17:00:08 info: Verification code sent to: admin@buyeto.com
+2025-03-18 17:00:08 info: Organization registration initiated for: admin@buyeto.com
+2025-03-18 17:00:08 http: ::1 - - [18/Mar/2025:16:00:08 +0000] "POST /api/auth/register HTTP/1.1" 201 137 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 17:00:08 http: Request completed in 1133ms
+2025-03-18 17:00:55 http: Incoming POST request to /api/auth/verify-email-code
+2025-03-18 17:00:55 info: Verifying code for email: admin@buyeto.com
+2025-03-18 17:00:55 info: User verification data: {"code":"2c5ae0760c6625f536115f6ffb10d7e458f8adc549d1399dca4f3c1039e72a23","expires":"2025-03-18T16:30:08.051Z","verified":false}
+2025-03-18 17:00:55 info: User verified successfully: admin@buyeto.com
+2025-03-18 17:00:56 info: Generated unique ID for organization: BUY48490
+2025-03-18 17:00:56 info: Email verification successful for: admin@buyeto.com
+2025-03-18 17:00:56 http: ::1 - - [18/Mar/2025:16:00:56 +0000] "POST /api/auth/verify-email-code HTTP/1.1" 200 750 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 17:00:56 http: Request completed in 1632ms
+2025-03-18 17:02:10 http: Incoming GET request to /api/departments
+2025-03-18 17:02:11 http: ::1 - - [18/Mar/2025:16:02:11 +0000] "GET /api/departments HTTP/1.1" 200 33 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 17:02:11 http: Request completed in 672ms
+2025-03-18 17:03:01 http: Incoming GET request to /api/admin/organizations
+2025-03-18 17:03:01 error: Authorization error: Insufficient permissions
+2025-03-18 17:03:01 error: Error handling middleware:
+2025-03-18 17:03:01 http: ::1 - - [18/Mar/2025:16:03:01 +0000] "GET /api/admin/organizations HTTP/1.1" 403 74 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 17:03:01 http: Request completed in 3ms
+2025-03-18 17:03:17 http: Incoming GET request to /api/admin/organizations
+2025-03-18 17:03:17 error: Authorization error: Insufficient permissions
+2025-03-18 17:03:17 error: Error handling middleware:
+2025-03-18 17:03:17 http: ::1 - - [18/Mar/2025:16:03:17 +0000] "GET /api/admin/organizations HTTP/1.1" 403 74 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 17:03:17 http: Request completed in 9ms
+2025-03-18 17:03:45 http: Incoming GET request to /api/admin/organizations
+2025-03-18 17:03:45 error: Authorization error: Insufficient permissions
+2025-03-18 17:03:45 error: Error handling middleware:
+2025-03-18 17:03:45 http: ::1 - - [18/Mar/2025:16:03:45 +0000] "GET /api/admin/organizations HTTP/1.1" 403 74 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 17:03:45 http: Request completed in 8ms
+2025-03-18 17:04:13 http: Incoming GET request to /api/platform/users?role=admin&status=active&sortBy=createdAt&sortOrder=desc&page=1&limit=20
+2025-03-18 17:04:13 error: Error handling middleware:
+2025-03-18 17:04:13 http: ::1 - - [18/Mar/2025:16:04:13 +0000] "GET /api/platform/users?role=admin&status=active&sortBy=createdAt&sortOrder=desc&page=1&limit=20 HTTP/1.1" 404 90 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+2025-03-18 17:04:13 http: Request completed in 4ms

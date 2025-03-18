@@ -334,18 +334,25 @@ async resetPassword(token, newPassword) {
 
 
   async generateAuthTokens(user) {
-
     console.log('JWT Config in generateAuthTokens:', config.jwt); // Debug log
     if (!config.jwt.secret || !config.jwt.refreshSecret) {
       throw new Error('JWT secrets are not configured');
     }
 
+    // Check if user is a platform admin (role starts with 'platform_')
+    const isPlatformAdmin = user.role && user.role.startsWith('platform_');
+
+    // For platform admins, organizationId can be null
+    // For regular users, we must include their organization
     const accessToken = jwt.sign(
-      { userId: user._id, organizationId: user.organization, role: user.role },
-
-
-      config.jwt.secret,
-      { expiresIn: config.jwt.expiresIn }
+        {
+          userId: user._id,
+          role: user.role,
+          // Only include organizationId for non-platform roles
+          ...(isPlatformAdmin ? {} : { organizationId: user.organization })
+        },
+        config.jwt.secret,
+        { expiresIn: config.jwt.expiresIn }
     );
 
     // Parse the refresh token expiration time
@@ -356,7 +363,7 @@ async resetPassword(token, newPassword) {
       if (match) {
         const value = parseInt(match[1]);
         const unit = match[2];
-        
+
         // Convert to seconds based on unit
         switch (unit) {
           case 's': refreshExpiresInSeconds = value; break;
@@ -381,19 +388,16 @@ async resetPassword(token, newPassword) {
 
     // Generate refresh token
     const refreshToken = jwt.sign(
-      { userId: user._id },
-      config.jwt.refreshSecret,
-      { expiresIn: config.jwt.refreshExpiresIn }
+        { userId: user._id },
+        config.jwt.refreshSecret,
+        { expiresIn: config.jwt.refreshExpiresIn }
     );
-
 
     user.tokens = user.tokens || [];
     user.tokens.push({
       token: refreshToken,
       type: 'refresh',
       expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 days
-
- 
     });
 
     await user.save();

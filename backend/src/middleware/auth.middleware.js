@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-// const config = require('../config/auth');
 const config = require('../config/env');
 const logger = require('../utils/logger');
 const { UnauthorizedError, ForbiddenError } = require('../utils/errors');
@@ -47,6 +46,13 @@ const authorize = (allowedRoles) => {
   return (req, res, next) => {
     try {
       const { role } = req.user;
+
+      // Platform administrators have access to everything
+      if (role === 'platform_superadmin' ||
+          (role === 'platform_admin' && !allowedRoles.includes('platform_superadmin'))) {
+        return next();
+      }
+
       if (!allowedRoles.includes(role)) {
         throw new ForbiddenError('Insufficient permissions');
       }
@@ -67,6 +73,12 @@ const authorizeOrSelf = (allowedRoles) => {
       const { role, userId } = req.user;
       const requestedUserId = req.params.id;
 
+      // Platform administrators have access to everything
+      if (role === 'platform_superadmin' ||
+          (role === 'platform_admin' && !allowedRoles.includes('platform_superadmin'))) {
+        return next();
+      }
+
       // Allow access if user has appropriate role or is accessing their own resource
       if (allowedRoles.includes(role) || userId === requestedUserId) {
         next();
@@ -86,8 +98,13 @@ const authorizeOrSelf = (allowedRoles) => {
 const authorizeSelf = () => {
   return (req, res, next) => {
     try {
-      const { userId } = req.user;
+      const { userId, role } = req.user;
       const requestedUserId = req.params.id;
+
+      // Platform administrators have access to everything
+      if (role === 'platform_superadmin' || role === 'platform_admin') {
+        return next();
+      }
 
       if (userId !== requestedUserId) {
         throw new ForbiddenError('Can only access own resources');
@@ -105,8 +122,13 @@ const authorizeSelf = () => {
  */
 const verifyOrganizationAccess = async (req, res, next) => {
   try {
-    const { organizationId } = req.user;
+    const { organizationId, role } = req.user;
     const requestedOrgId = req.params.organizationId || req.body.organizationId;
+
+    // Platform administrators have access to all organizations
+    if (role === 'platform_superadmin' || role === 'platform_admin') {
+      return next();
+    }
 
     if (requestedOrgId && organizationId !== requestedOrgId) {
       throw new ForbiddenError('Access denied to requested organization');
@@ -119,11 +141,51 @@ const verifyOrganizationAccess = async (req, res, next) => {
 };
 
 /**
+ * Platform administrator access middleware
+ */
+const platformAdminOnly = (req, res, next) => {
+  try {
+    const { role } = req.user;
+
+    if (role !== 'platform_admin' && role !== 'platform_superadmin') {
+      throw new ForbiddenError('Platform administrator access required');
+    }
+    next();
+  } catch (error) {
+    logger.error(`Platform admin access error: ${error.message}`);
+    next(error);
+  }
+};
+
+/**
+ * Platform super administrator access middleware
+ */
+const platformSuperAdminOnly = (req, res, next) => {
+  try {
+    const { role } = req.user;
+
+    if (role !== 'platform_superadmin') {
+      throw new ForbiddenError('Platform super administrator access required');
+    }
+    next();
+  } catch (error) {
+    logger.error(`Platform super admin access error: ${error.message}`);
+    next(error);
+  }
+};
+
+/**
  * Subscription validation middleware
  */
 const validateSubscription = async (req, res, next) => {
   try {
-    const { organizationId } = req.user;
+    const { organizationId, role } = req.user;
+
+    // Platform administrators bypass subscription checks
+    if (role === 'platform_superadmin' || role === 'platform_admin') {
+      return next();
+    }
+
     const subscription = await getSubscriptionStatus(organizationId);
 
     if (!subscription.active) {
@@ -147,18 +209,24 @@ const validateSubscription = async (req, res, next) => {
  */
 const rateLimit = async (req, res, next) => {
   try {
-    const { organizationId } = req.user;
+    const { organizationId, role } = req.user;
+
+    // Platform administrators bypass rate limits
+    if (role === 'platform_superadmin' || role === 'platform_admin') {
+      return next();
+    }
+
     const key = `${organizationId}:${req.path}`;
-    
+
     // Check rate limit based on subscription tier
     const subscription = await getSubscriptionStatus(organizationId);
     const limit = subscription.rateLimit || 100; // Default rate limit
-    
+
     const currentUsage = await getRateLimitUsage(key);
     if (currentUsage >= limit) {
       throw new ForbiddenError('Rate limit exceeded');
     }
-    
+
     await incrementRateLimitUsage(key);
     next();
   } catch (error) {
@@ -174,5 +242,7 @@ module.exports = {
   authorizeSelf,
   verifyOrganizationAccess,
   validateSubscription,
-  rateLimit
+  rateLimit,
+  platformAdminOnly,
+  platformSuperAdminOnly
 };

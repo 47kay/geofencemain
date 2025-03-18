@@ -1,4 +1,3 @@
-
 components:
   schemas:
     RegistrationRequest:
@@ -291,7 +290,7 @@ components:
         - access_token
         - expires_in
         - token_type
-        
+
     Verify2FASetupRequest:
       type: object
       required:
@@ -303,7 +302,7 @@ components:
           maxLength: 6
           pattern: "^\\d{6}$"
           example: "123456"
-  
+
     VerifyEmailCodeRequest:
       type: object
       required:
@@ -320,7 +319,7 @@ components:
           maxLength: 4
           pattern: "^\\d{4}$"
           example: "1234"
- 
+
     InviteUserRequest:
       type: object
       required:
@@ -340,7 +339,7 @@ components:
           example: "60d21b4667d0d8992e610c85"
         additionalData:
           type: object
-          example: 
+          example:
             position: "Senior Developer"
             team: "Backend"
 
@@ -374,15 +373,6 @@ components:
           type: string
           format: binary
           description: "Passport-sized photo of the employee"
-
-    
-
-
-    
-
-
-    
-        
 
     InviteUserResponse:
       type: object
@@ -454,18 +444,18 @@ components:
                 name:
                   type: string
                   example: "Engineering"
-          organization:
-            type: object
-            properties:
-              id:
-                type: string
-                example: "60d21b4667d0d8992e610c87"
-              name:
-                type: string
-              example: "Acme Corporation"
-            uniqueId:
-              type: string
-              example: "ACM12345"
+            organization:
+              type: object
+              properties:
+                id:
+                  type: string
+                  example: "60d21b4667d0d8992e610c87"
+                name:
+                  type: string
+                  example: "Acme Corporation"
+                uniqueId:
+                  type: string
+                  example: "ACM12345"
 
     ResendInvitationResponse:
       type: object
@@ -624,7 +614,96 @@ components:
                   example: "pending"
                   description: "User status will be pending until email is verified"
 
+    DepartmentRequest:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          example: "Engineering"
+          description: "Department name"
+        description:
+          type: string
+          example: "Software development and engineering team"
+          description: "Department description"
+        parentDepartmentId:
+          type: string
+          example: "60d21b4667d0d8992e610c85"
+          description: "Optional parent department ID for hierarchical structure"
+        managerId:
+          type: string
+          example: "60d21b4667d0d8992e610c87"
+          description: "Optional ID of the manager for this department"
+
+    Department:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "60d21b4667d0d8992e610c88"
+        name:
+          type: string
+          example: "Engineering"
+        description:
+          type: string
+          example: "Software development and engineering team"
+        parentDepartment:
+          type: object
+          properties:
+            id:
+              type: string
+              example: "60d21b4667d0d8992e610c85"
+            name:
+              type: string
+              example: "Technology"
+        managerId:
+          type: string
+          example: "60d21b4667d0d8992e610c87"
+        createdBy:
+          type: string
+          example: "60d21b4667d0d8992e610c89"
+        createdAt:
+          type: string
+          format: date-time
+          example: "2025-03-17T15:35:00Z"
+        updatedAt:
+          type: string
+          format: date-time
+          example: "2025-03-17T15:35:00Z"
+
   responses:
+    DepartmentResponse:
+      description: Department operation result
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: true
+              message:
+                type: string
+                example: "Department operation successful"
+              department:
+                $ref: '#/components/schemas/Department'
+
+    DepartmentsListResponse:
+      description: List of departments
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: true
+              departments:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Department'
+
     ForbiddenError:
       description: Access forbidden - user doesn't have required permissions
       content:

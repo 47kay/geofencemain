@@ -173,7 +173,7 @@ class InvitationService {
       password, // This should be hashed in the User model pre-save hook
       phone: phone || null,
       role: invitation.role,
-      organizationId: invitation.organizationId,
+      organization: invitation.organizationId, // Change from organizationId to organization
       departmentId: invitation.departmentId,
       status: 'active',
       createdBy: invitation.createdBy,

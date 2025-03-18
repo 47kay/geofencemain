@@ -1,0 +1,262 @@
+components:
+  schemas:
+    OrganizationListing:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "507f1f77bcf86cd799439011"
+        name:
+          type: string
+          example: "Acme Corporation"
+        uniqueId:
+          type: string
+          example: "ACM12345"
+        industry:
+          type: string
+          example: "Technology"
+        status:
+          type: string
+          enum:
+            - active
+            - pending
+            - suspended
+            - archived
+          example: "active"
+        createdAt:
+          type: string
+          format: date-time
+          example: "2025-03-15T18:30:00Z"
+        userCount:
+          type: integer
+          example: 42
+        contact:
+          type: object
+          properties:
+            email:
+              type: string
+              format: email
+              example: "contact@acme.com"
+            phone:
+              type: string
+              example: "+1-555-1234567"
+            website:
+              type: string
+              format: uri
+              example: "https://www.acme.com"
+        address:
+          type: object
+          properties:
+            city:
+              type: string
+              example: "San Francisco"
+            state:
+              type: string
+              example: "CA"
+            country:
+              type: string
+              example: "USA"
+        admin:
+          type: object
+          properties:
+            firstName:
+              type: string
+              example: "John"
+            lastName:
+              type: string
+              example: "Doe"
+            email:
+              type: string
+              format: email
+              example: "john.doe@acme.com"
+
+    UserListing:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "507f1f77bcf86cd799439012"
+        firstName:
+          type: string
+          example: "Jane"
+        lastName:
+          type: string
+          example: "Smith"
+        email:
+          type: string
+          format: email
+          example: "jane.smith@example.com"
+        role:
+          type: string
+          enum:
+            - platform_admin
+            - admin
+            - manager
+            - user
+          example: "manager"
+        status:
+          type: string
+          enum:
+            - active
+            - pending
+            - suspended
+            - archived
+          example: "active"
+        createdAt:
+          type: string
+          format: date-time
+          example: "2025-03-10T12:00:00Z"
+        lastLogin:
+          type: string
+          format: date-time
+          example: "2025-03-18T09:45:00Z"
+        organization:
+          type: object
+          properties:
+            id:
+              type: string
+              example: "507f1f77bcf86cd799439011"
+            name:
+              type: string
+              example: "Acme Corporation"
+            uniqueId:
+              type: string
+              example: "ACM12345"
+
+    PlatformStatistics:
+      type: object
+      properties:
+        organizations:
+          type: object
+          properties:
+            total:
+              type: integer
+              example: 45
+            active:
+              type: integer
+              example: 38
+            pending:
+              type: integer
+              example: 7
+            recent:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    example: "New Company Inc."
+                  industry:
+                    type: string
+                    example: "Healthcare"
+                  status:
+                    type: string
+                    example: "pending"
+                  createdAt:
+                    type: string
+                    format: date-time
+                    example: "2025-03-17T15:30:00Z"
+        users:
+          type: object
+          properties:
+            total:
+              type: integer
+              example: 328
+            byRole:
+              type: object
+              properties:
+                platform_admin:
+                  type: integer
+                  example: 3
+                admin:
+                  type: integer
+                  example: 42
+                manager:
+                  type: integer
+                  example: 85
+                user:
+                  type: integer
+                  example: 198
+            byStatus:
+              type: object
+              properties:
+                active:
+                  type: integer
+                  example: 310
+                pending:
+                  type: integer
+                  example: 15
+                suspended:
+                  type: integer
+                  example: 3
+
+    Pagination:
+      type: object
+      properties:
+        total:
+          type: integer
+          example: 45
+        page:
+          type: integer
+          example: 1
+        limit:
+          type: integer
+          example: 20
+        pages:
+          type: integer
+          example: 3
+
+
+
+    OrganizationSummary:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "507f1f77bcf86cd799439011"
+        name:
+          type: string
+          example: "Acme Corporation"
+        uniqueId:
+          type: string
+          example: "ACM12345"
+        industry:
+          type: string
+          example: "Technology"
+        status:
+          type: string
+          enum:
+            - active
+            - pending
+            - suspended
+            - archived
+          example: "active"
+        createdAt:
+          type: string
+          format: date-time
+          example: "2025-03-15T18:30:00Z"
+        userCount:
+          type: integer
+          example: 42
+        contact:
+          type: object
+          properties:
+            email:
+              type: string
+              format: email
+              example: "contact@acme.com"
+            phone:
+              type: string
+              example: "+1-555-1234567"
+        address:
+          type: object
+          properties:
+            city:
+              type: string
+              example: "San Francisco"
+            state:
+              type: string
+              example: "CA"
+            country:
+              type: string
+              example: "USA"

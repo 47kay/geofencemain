@@ -1,0 +1,266 @@
+/platform/organizations:
+  get:
+    summary: List all organizations on the platform
+    tags:
+      - Platform Administration
+    security:
+      - bearerAuth: []
+    parameters:
+      - in: query
+        name: status
+        schema:
+          type: string
+          enum:
+            - active
+            - pending
+            - suspended
+            - archived
+        description: Filter by organization status
+      - in: query
+        name: industry
+        schema:
+          type: string
+        description: Filter by industry
+      - in: query
+        name: createdAfter
+        schema:
+          type: string
+          format: date
+        description: Filter organizations created after this date (YYYY-MM-DD)
+      - in: query
+        name: createdBefore
+        schema:
+          type: string
+          format: date
+        description: Filter organizations created before this date (YYYY-MM-DD)
+      - in: query
+        name: sortBy
+        schema:
+          type: string
+          enum:
+            - name
+            - createdAt
+            - status
+            - industry
+            - userCount
+          default: createdAt
+        description: Field to sort results by
+      - in: query
+        name: sortOrder
+        schema:
+          type: string
+          enum:
+            - asc
+            - desc
+          default: desc
+        description: Sort direction
+      - in: query
+        name: page
+        schema:
+          type: integer
+          default: 1
+        description: Page number for pagination
+      - in: query
+        name: limit
+        schema:
+          type: integer
+          default: 20
+        description: Number of items per page
+    responses:
+      '200':
+        description: List of organizations
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  type: boolean
+                  example: true
+                organizations:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/OrganizationListing'
+                pagination:
+                  $ref: '#/components/schemas/Pagination'
+      '403':
+        $ref: '#/components/responses/ForbiddenError'
+      '500':
+        $ref: '#/components/responses/ServerError'
+
+/platform/users:
+  get:
+    summary: List all users on the platform
+    tags:
+      - Platform Administration
+    security:
+      - bearerAuth: []
+    parameters:
+      - in: query
+        name: organizationId
+        schema:
+          type: string
+        description: Filter users by organization ID
+      - in: query
+        name: role
+        schema:
+          type: string
+          enum:
+            - platform_admin
+            - admin
+            - manager
+            - user
+        description: Filter by user role
+      - in: query
+        name: status
+        schema:
+          type: string
+          enum:
+            - active
+            - pending
+            - suspended
+            - archived
+        description: Filter by user status
+      - in: query
+        name: createdAfter
+        schema:
+          type: string
+          format: date
+        description: Filter users created after this date (YYYY-MM-DD)
+      - in: query
+        name: createdBefore
+        schema:
+          type: string
+          format: date
+        description: Filter users created before this date (YYYY-MM-DD)
+      - in: query
+        name: sortBy
+        schema:
+          type: string
+          enum:
+            - firstName
+            - lastName
+            - email
+            - role
+            - status
+            - createdAt
+            - lastLogin
+          default: createdAt
+        description: Field to sort results by
+      - in: query
+        name: sortOrder
+        schema:
+          type: string
+          enum:
+            - asc
+            - desc
+          default: desc
+        description: Sort direction
+      - in: query
+        name: page
+        schema:
+          type: integer
+          default: 1
+        description: Page number for pagination
+      - in: query
+        name: limit
+        schema:
+          type: integer
+          default: 20
+        description: Number of items per page
+    responses:
+      '200':
+        description: List of users
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  type: boolean
+                  example: true
+                users:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/UserListing'
+                pagination:
+                  $ref: '#/components/schemas/Pagination'
+      '403':
+        $ref: '#/components/responses/ForbiddenError'
+      '500':
+        $ref: '#/components/responses/ServerError'
+
+/platform/stats:
+  get:
+    summary: Get platform-wide statistics
+    tags:
+      - Platform Administration
+    security:
+      - bearerAuth: []
+    parameters:
+      - in: query
+        name: startDate
+        schema:
+          type: string
+          format: date
+        description: Start date for statistics period (YYYY-MM-DD)
+      - in: query
+        name: endDate
+        schema:
+          type: string
+          format: date
+        description: End date for statistics period (YYYY-MM-DD)
+    responses:
+      '200':
+        description: Platform statistics
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  type: boolean
+                  example: true
+                statistics:
+                  $ref: '#/components/schemas/PlatformStatistics'
+      '403':
+        $ref: '#/components/responses/ForbiddenError'
+      '500':
+        $ref: '#/components/responses/ServerError'
+
+
+
+
+/admin/organizations:
+  get:
+    summary: List all organizations in the platform
+    description: Provides a comprehensive list of all organizations registered on the platform with their basic information and user counts.
+    tags:
+      - Platform Administration
+    security:
+      - bearerAuth: []
+    responses:
+      '200':
+        description: Successfully retrieved organizations
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  type: boolean
+                  example: true
+                count:
+                  type: integer
+                  description: Total number of organizations
+                  example: 43
+                organizations:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/OrganizationSummary'
+      '401':
+        $ref: '#/components/responses/UnauthorizedError'
+      '403':
+        $ref: '#/components/responses/ForbiddenError'
+      '500':
+        $ref: '#/components/responses/ServerError'

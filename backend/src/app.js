@@ -17,10 +17,15 @@ const geofenceRoutes = require('./routes/v1/geofence.routes');
 const employeeRoutes = require('./routes/v1/employee.routes');
 const subscriptionRoutes = require('./routes/v1/subscription.routes');
 // const invitationRoutes = require('./routes/v1/invitation.routes');
+const departmentRoutes = require('./routes/v1/department.routes');
+const platformRoutes = require('./routes/v1/platform.routes');
+const adminRoutes = require('./routes/systemAdmin/v1/admin.routes');
+const adminController = require('./controllers/admin.controller');
 
 // Import middleware
 const { errorHandler, notFoundHandler } = require('./middleware/error.middleware');
 const logger = require('./utils/logger');
+const {authorize, authenticate} = require("./middleware/auth.middleware");
 
 // Initialize Express app
 const app = express();
@@ -63,6 +68,10 @@ app.use('/api/organizations', organizationRoutes);
 app.use('/api/geofences', geofenceRoutes);
 app.use('/api/employees', employeeRoutes);
 app.use('/api/subscriptions', subscriptionRoutes);
+app.use('/api/departments', departmentRoutes);
+app.use('/platform', platformRoutes);
+app.use('/admin', adminRoutes);
+
 
 // Try to load invitation routes
 try {
@@ -73,6 +82,13 @@ try {
   console.error('Failed to register invitation routes:', error);
   // Continue without crashing
 }
+
+app.get(
+    '/api/admin/organizations',
+    authenticate,
+    authorize(['platform_admin']),
+    adminController.listAllOrganizations
+);
 
 // Health check endpoint
 app.get('/health', (req, res) => {
