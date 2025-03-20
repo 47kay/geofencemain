@@ -8,15 +8,14 @@ const rateLimit = require('express-rate-limit');
 const xss = require('xss-clean');
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpecs = require('./docs/swagger');
+const { enforceTenantIsolation } = require('./middleware/tenant.middleware');
 
 // Import routes
-// const authRoutes = require('./routes/v1/auth.routes');
 const authRoutes = require('./routes/v1/auth.routes');
 const organizationRoutes = require('./routes/v1/organization.routes');
 const geofenceRoutes = require('./routes/v1/geofence.routes');
 const employeeRoutes = require('./routes/v1/employee.routes');
 const subscriptionRoutes = require('./routes/v1/subscription.routes');
-// const invitationRoutes = require('./routes/v1/invitation.routes');
 const departmentRoutes = require('./routes/v1/department.routes');
 
 const platformRoutes = require('./routes/systemAdmin/v1/platform.routes');
@@ -26,7 +25,7 @@ const adminController = require('./controllers/admin.controller');
 // Import middleware
 const { errorHandler, notFoundHandler } = require('./middleware/error.middleware');
 const logger = require('./utils/logger');
-const {authorize, authenticate} = require("./middleware/auth.middleware");
+const { authorize, authenticate } = require("./middleware/auth.middleware");
 
 // Initialize Express app
 const app = express();
@@ -63,35 +62,33 @@ app.use(compression());
 app.use(morgan('combined', { stream: logger.stream }));
 app.use(logger.requestMiddleware);
 
-// API Routes
+// Public routes - no authentication required
 app.use('/api/auth', authRoutes);
-app.use('/api/organizations', organizationRoutes);
-app.use('/api/geofences', geofenceRoutes);
-app.use('/api/employees', employeeRoutes);
-app.use('/api/subscriptions', subscriptionRoutes);
-app.use('/api/departments', departmentRoutes);
-app.use('/api/platform', platformRoutes);
-app.use('/admin', adminRoutes);
 
+// Platform admin routes - authentication required but no tenant isolation
+app.use('/api/platform', authenticate, platformRoutes);
+app.use('/admin', authenticate, adminRoutes);
+
+// Organization-specific routes - both authentication and tenant isolation required
+app.use('/api/organizations', authenticate, enforceTenantIsolation, organizationRoutes);
+app.use('/api/geofences', authenticate, enforceTenantIsolation, geofenceRoutes);
+app.use('/api/employees', authenticate, enforceTenantIsolation, employeeRoutes);
+app.use('/api/departments', authenticate, enforceTenantIsolation, departmentRoutes);
+
+// Subscriptions might need tenant isolation depending on your model
+app.use('/api/subscriptions', authenticate, enforceTenantIsolation, subscriptionRoutes);
 
 // Try to load invitation routes
 try {
   const invitationRoutes = require('./routes/v1/invitation.routes');
-  app.use('/api/auth/invitations', invitationRoutes);
+  app.use('/api/auth/invitations', authenticate, enforceTenantIsolation, invitationRoutes);
   console.log('Invitation routes registered successfully');
 } catch (error) {
   console.error('Failed to register invitation routes:', error);
   // Continue without crashing
 }
 
-// try {
-//   const platformRoutes = require('./routes/systemAdmin/v1/platform.routes');
-//   app.use('/api/platform', platformRoutes);
-// } catch (error) {
-//   console.error('Error registering platform routes:', error);
-//   // Continue application startup without these routes
-// }
-
+// Special admin endpoint - authentication and platform admin authorization only
 app.get(
     '/api/admin/organizations',
     authenticate,

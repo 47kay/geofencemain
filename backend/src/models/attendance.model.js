@@ -266,6 +266,5 @@ attendanceSchema.pre('save', async function(next) {
   next();
 });
 
-const Attendance = mongoose.model('Attendance', attendanceSchema);
-
-module.exports = Attendance;
+const AttendanceRecord = mongoose.model('AttendanceRecord', attendanceSchema);
+module.exports = AttendanceRecord;

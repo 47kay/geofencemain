@@ -1,6 +1,7 @@
 const EmployeeService = require('../services/employee.service');
-const { validateEmployee } = require('../utils/validation');
+const { validateEmployee, validateEmployeeUpdate } = require('../utils/validation');
 const logger = require('../utils/logger');
+
 
 class EmployeeController {
   constructor() {
@@ -32,36 +33,35 @@ class EmployeeController {
   }
 
   /**
-   * Get all employees for an organization
-   */
-  async getEmployees(req, res, next) {
-    try {
-      const { organizationId } = req.user;
-      const { page = 1, limit = 10, status, department } = req.query;
-      
-      const employees = await this.employeeService.getEmployees(
-        organizationId,
-        { page, limit, status, department }
-      );
-      
-      logger.info(`Retrieved employees for organization: ${organizationId}`);
-      res.json(employees);
-    } catch (error) {
-      logger.error(`Failed to get employees: ${error.message}`);
-      next(error);
-    }
-  }
-
-  /**
    * Get specific employee details
    */
   async getEmployee(req, res, next) {
     try {
-      const { id } = req.params;  // Changed from employeeId to match route parameter
-      const employee = await this.employeeService.getEmployeeById(id);
-      
-      logger.info(`Retrieved employee: ${id}`);
-      res.json(employee);
+      const { id } = req.params;
+      const organizationId = req.organizationContext;
+
+      logger.info(`Getting employee details for: ${id}, with organization context: ${organizationId || 'none'}`);
+
+      let employee;
+
+      try {
+        // Handle different ID formats, passing organization context
+        if (id.match(/^[0-9a-fA-F]{24}$/)) {
+          employee = await this.employeeService.getEmployeeById(id, organizationId);
+        } else {
+          employee = await this.employeeService.getEmployeeByEmployeeId(id, organizationId);
+        }
+
+        logger.info(`Retrieved employee: ${id}`);
+        return res.json(employee);
+      } catch (error) {
+        // Handle not found errors gracefully
+        if (error.name === 'NotFoundError' || error.message.includes('not found')) {
+          return res.status(404).json({ message: 'Employee not found' });
+        }
+
+        throw error;
+      }
     } catch (error) {
       logger.error(`Failed to get employee: ${error.message}`);
       next(error);
@@ -69,29 +69,128 @@ class EmployeeController {
   }
 
   /**
+   * Get all employees for an organization
+   */
+  async getEmployees(req, res, next) {
+    try {
+      // Get organization context from request
+      const organizationId = req.organizationContext;
+      const { page = 1, limit = 10, status, department } = req.query;
+
+      let employees;
+
+      // For platform admins without organization context, get all employees
+      if (!organizationId && (req.user.role === 'platform_admin' || req.user.role === 'platform_superadmin')) {
+        employees = await this.employeeService.getAllEmployees({
+          page, limit, status, department
+        });
+        logger.info(`Retrieved all employees across organizations as ${req.user.role}`);
+      } else if (organizationId) {
+        // Regular case: get employees for a specific organization
+        employees = await this.employeeService.getEmployees(
+            organizationId,
+            { page, limit, status, department }
+        );
+        logger.info(`Retrieved employees for organization: ${organizationId}`);
+      } else {
+        return res.status(400).json({
+          message: 'Organization context required'
+        });
+      }
+
+      res.json(employees);
+    } catch (error) {
+      logger.error(`Failed to get employees: ${error.message}`);
+      next(error);
+    }
+  }
+
+
+  /**
    * Update employee details
    */
   async updateEmployee(req, res, next) {
     try {
-      const { id } = req.params;  // Changed from employeeId to match route parameter
-      const validationResult = validateEmployee(req.body);
-      if (!validationResult.success) {
-        return res.status(400).json({ error: validationResult.errors });
-      }
+      const { id } = req.params;
+      const { organizationId, role } = req.user;
 
-      const updatedEmployee = await this.employeeService.updateEmployee(
-        id,
-        req.body
-      );
-      
-      logger.info(`Updated employee: ${id}`);
-      res.json(updatedEmployee);
+      logger.info(`Attempting to update employee: ${id}, by user role: ${role}, user org: ${organizationId}`);
+
+      // Find the employee first
+      let employee;
+      try {
+        // Check if user is a platform admin
+        const isCrossPlatformAdmin = role === 'platform_admin' || role === 'platform_superadmin';
+        logger.info(`User is cross-platform admin: ${isCrossPlatformAdmin}`);
+
+        // For platform admins, don't pass any organization context
+        const orgContext = isCrossPlatformAdmin ? null : organizationId;
+
+        // Handle different ID formats
+        if (id.match(/^[0-9a-fA-F]{24}$/)) {
+          employee = await this.employeeService.getEmployeeById(id, orgContext);
+        } else {
+          employee = await this.employeeService.getEmployeeByEmployeeId(id, orgContext);
+        }
+
+        // Get the employee organization ID properly
+        const employeeOrgId = employee.organization._id ? employee.organization._id.toString() : employee.organization.toString();
+        logger.info(`Employee organization ID: ${employeeOrgId}`);
+
+        // Platform admins can update any employee
+        if (isCrossPlatformAdmin) {
+          logger.info('Platform admin can update any employee, bypassing organization check');
+        } else if (employeeOrgId !== organizationId.toString()) {
+          logger.warn(`Organization mismatch: employee org ${employeeOrgId} vs user org ${organizationId}`);
+          return res.status(403).json({ message: 'Cannot update employees from other organizations' });
+        }
+
+        // Prepare update data with schema-compliant structure
+        const updateData = { ...req.body };
+
+        // Transform personalInfo.address if it's a string
+        if (updateData.personalInfo && typeof updateData.personalInfo.address === 'string') {
+          const addressStr = updateData.personalInfo.address;
+          updateData.personalInfo.address = {
+            street: addressStr,
+            city: '',
+            state: '',
+            country: '',
+            postalCode: ''
+          };
+          logger.info(`Transformed address string to object: ${JSON.stringify(updateData.personalInfo.address)}`);
+        }
+
+        logger.info(`Processed update payload: ${JSON.stringify(updateData)}`);
+
+        // Update the employee
+        const updatedEmployee = await this.employeeService.updateEmployee(
+            employee._id.toString(),
+            updateData,
+            isCrossPlatformAdmin ? null : organizationId
+        );
+
+        logger.info(`Successfully updated employee: ${id}`);
+        res.json(updatedEmployee);
+
+      } catch (error) {
+        if (error.name === 'NotFoundError' || error.message.includes('not found')) {
+          return res.status(404).json({ message: 'Employee not found' });
+        }
+        if (error.name === 'ValidationError') {
+          logger.warn(`Validation error: ${error.message}`);
+          return res.status(400).json({
+            message: 'Invalid employee data',
+            details: error.message
+          });
+        }
+        throw error;
+      }
     } catch (error) {
       logger.error(`Failed to update employee: ${error.message}`);
       next(error);
     }
   }
-
   /**
    * Delete employee
    */

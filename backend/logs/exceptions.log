@@ -356,3 +356,283 @@ SyntaxError: Invalid or unexpected token
     at Module.require (node:internal/modules/cjs/loader:1304:12)
     at require (node:internal/modules/helpers:123:16)
     at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:17:24)
+2025-03-20 02:58:58 error: uncaughtException: Unexpected end of input
+/home/temitope/Desktop/work/geofencemain/backend/src/controllers/geofence.controller.js:371
+        return res.status(400).json({
+                                     
+
+SyntaxError: Unexpected end of input
+    at wrapSafe (node:internal/modules/cjs/loader:1383:18)
+    at Module._compile (node:internal/modules/cjs/loader:1412:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/organization.routes.js:4:28)
+2025-03-20 03:24:01 error: uncaughtException: SubscriptionService is not a constructor
+TypeError: SubscriptionService is not a constructor
+    at new SubscriptionController (/home/temitope/Desktop/work/geofencemain/backend/src/controllers/subscription.controller.js:7:32)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/controllers/subscription.controller.js:272:18)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+2025-03-20 04:09:24 error: uncaughtException: Cannot find module '../models/attendance.record.model'
+Require stack:
+- /home/temitope/Desktop/work/geofencemain/backend/src/services/geofence.service.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/controllers/geofence.controller.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/organization.routes.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/app.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/server.js
+Error: Cannot find module '../models/attendance.record.model'
+Require stack:
+- /home/temitope/Desktop/work/geofencemain/backend/src/services/geofence.service.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/controllers/geofence.controller.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/organization.routes.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/app.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1219:15)
+    at Module._load (node:internal/modules/cjs/loader:1045:27)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/services/geofence.service.js:3:26)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+2025-03-20 04:09:59 error: uncaughtException: Unexpected end of input
+/home/temitope/Desktop/work/geofencemain/backend/src/controllers/geofence.controller.js:202
+      if (error.name ===
+                        
+
+SyntaxError: Unexpected end of input
+    at wrapSafe (node:internal/modules/cjs/loader:1383:18)
+    at Module._compile (node:internal/modules/cjs/loader:1412:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/organization.routes.js:4:28)
+2025-03-20 04:10:20 error: uncaughtException: Cannot find module '../models/attendance.record.model'
+Require stack:
+- /home/temitope/Desktop/work/geofencemain/backend/src/services/geofence.service.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/controllers/geofence.controller.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/organization.routes.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/app.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/server.js
+Error: Cannot find module '../models/attendance.record.model'
+Require stack:
+- /home/temitope/Desktop/work/geofencemain/backend/src/services/geofence.service.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/controllers/geofence.controller.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/organization.routes.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/app.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1219:15)
+    at Module._load (node:internal/modules/cjs/loader:1045:27)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/services/geofence.service.js:3:26)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+2025-03-20 04:11:52 error: uncaughtException: Cannot find module '../models/attendance.record.model'
+Require stack:
+- /home/temitope/Desktop/work/geofencemain/backend/src/services/geofence.service.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/controllers/geofence.controller.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/organization.routes.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/app.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/server.js
+Error: Cannot find module '../models/attendance.record.model'
+Require stack:
+- /home/temitope/Desktop/work/geofencemain/backend/src/services/geofence.service.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/controllers/geofence.controller.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/organization.routes.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/app.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1219:15)
+    at Module._load (node:internal/modules/cjs/loader:1045:27)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/services/geofence.service.js:3:26)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+2025-03-20 04:20:23 error: uncaughtException: Cannot find module '../models/attendace.model'
+Require stack:
+- /home/temitope/Desktop/work/geofencemain/backend/src/services/geofence.service.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/controllers/geofence.controller.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/organization.routes.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/app.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/server.js
+Error: Cannot find module '../models/attendace.model'
+Require stack:
+- /home/temitope/Desktop/work/geofencemain/backend/src/services/geofence.service.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/controllers/geofence.controller.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/organization.routes.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/app.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1219:15)
+    at Module._load (node:internal/modules/cjs/loader:1045:27)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/services/geofence.service.js:3:26)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+2025-03-20 04:49:25 error: uncaughtException: Cannot find module '../controllers/geofence.controller'
+Require stack:
+- /home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/geofence.routes.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/app.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/server.js
+Error: Cannot find module '../controllers/geofence.controller'
+Require stack:
+- /home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/geofence.routes.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/app.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1219:15)
+    at Module._load (node:internal/modules/cjs/loader:1045:27)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/geofence.routes.js:4:28)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+2025-03-20 04:55:51 error: uncaughtException: Cannot find module '../controllers/geofence.controller'
+Require stack:
+- /home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/geofence.routes.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/app.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/server.js
+Error: Cannot find module '../controllers/geofence.controller'
+Require stack:
+- /home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/geofence.routes.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/app.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1219:15)
+    at Module._load (node:internal/modules/cjs/loader:1045:27)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/geofence.routes.js:4:28)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+2025-03-20 04:57:03 error: uncaughtException: Route.post() requires a callback function but got a [object Undefined]
+Error: Route.post() requires a callback function but got a [object Undefined]
+    at Route.<computed> [as post] (/home/temitope/Desktop/work/geofencemain/backend/node_modules/express/lib/router/route.js:216:15)
+    at proto.<computed> [as post] (/home/temitope/Desktop/work/geofencemain/backend/node_modules/express/lib/router/index.js:521:19)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/geofence.routes.js:29:8)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+2025-03-20 04:59:29 error: uncaughtException: Route.post() requires a callback function but got a [object Undefined]
+Error: Route.post() requires a callback function but got a [object Undefined]
+    at Route.<computed> [as post] (/home/temitope/Desktop/work/geofencemain/backend/node_modules/express/lib/router/route.js:216:15)
+    at proto.<computed> [as post] (/home/temitope/Desktop/work/geofencemain/backend/node_modules/express/lib/router/index.js:521:19)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/geofence.routes.js:29:8)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+2025-03-20 05:00:07 error: uncaughtException: Cannot find module '../controllers/geofence.controller'
+Require stack:
+- /home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/geofence.routes.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/app.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/server.js
+Error: Cannot find module '../controllers/geofence.controller'
+Require stack:
+- /home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/geofence.routes.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/app.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1219:15)
+    at Module._load (node:internal/modules/cjs/loader:1045:27)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/geofence.routes.js:4:28)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+2025-03-20 05:01:36 error: uncaughtException: validateSchema is not defined
+ReferenceError: validateSchema is not defined
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/geofence.routes.js:33:8)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:16:24)
+2025-03-20 05:04:26 error: uncaughtException: Identifier 'locationCheckSchema' has already been declared
+/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/geofence.routes.js:8
+const { geofenceSchema, validateCoordinates, locationCheckSchema  } = require('../../utils/validation'); // Added validateCoordinates from utils/validation
+                                             ^
+
+SyntaxError: Identifier 'locationCheckSchema' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1383:18)
+    at Module._compile (node:internal/modules/cjs/loader:1412:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:16:24)
+2025-03-20 05:40:28 error: uncaughtException: Unexpected identifier 'assignAllEmployees'
+/home/temitope/Desktop/work/geofencemain/backend/src/utils/validation.js:249
+  assignAllEmployees: Joi.boolean()
+  ^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Unexpected identifier 'assignAllEmployees'
+    at wrapSafe (node:internal/modules/cjs/loader:1383:18)
+    at Module._compile (node:internal/modules/cjs/loader:1412:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/controllers/auth.controller.js:3:34)
+2025-03-20 05:40:48 error: uncaughtException: geofenceSchema is not defined
+ReferenceError: geofenceSchema is not defined
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/utils/validation.js:285:3)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/controllers/auth.controller.js:3:34)

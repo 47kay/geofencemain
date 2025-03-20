@@ -10,6 +10,7 @@ const { ServiceError } = require('../utils/errors');
 const emailTemplates = require('../templates/email');
 const smsTemplates = require('../templates/sms');
 const pushTemplates = require('../templates/push');
+const { withOrganizationContext } = require('../utils/query.utils');
 
 class NotificationService {
   constructor() {
@@ -78,16 +79,26 @@ class NotificationService {
    * @param {string} userId - User ID to notify
    * @param {string} type - Notification type
    * @param {Object} data - Notification data
+   * @param {string} organizationId - Optional organization ID for context
    */
-  async sendMultiChannelNotification(userId, type, data) {
+  async sendMultiChannelNotification(userId, type, data, organizationId = null) {
     try {
-      const user = await User.findById(userId);
+      // Apply organization context to query if provided
+      const query = organizationId ?
+          withOrganizationContext({ _id: userId }, organizationId) :
+          { _id: userId };
+
+      const user = await User.findOne(query);
+
       if (!user) {
         logger.warn(`Attempted to send notification to non-existent user: ${userId}`);
         return;
       }
 
-      const organization = await Organization.findById(user.organization);
+      // Get organization with context
+      const userOrgId = user.organization || user.organizationId;
+      const organization = await Organization.findById(userOrgId);
+
       const preferences = user.preferences?.notifications || {};
       const orgPreferences = organization?.settings?.notificationPreferences || {};
 
@@ -95,7 +106,10 @@ class NotificationService {
 
       // Queue email notification if enabled
       if (preferences.email && orgPreferences.email && this.emailTransporter) {
-        promises.push(this.sendEmail(user.email, type, data).catch(error => {
+        promises.push(this.sendEmail(user.email, type, {
+          ...data,
+          organizationId: userOrgId // Include organization context
+        }).catch(error => {
           logger.error('Email notification failed:', error);
           return null;
         }));
@@ -103,7 +117,10 @@ class NotificationService {
 
       // Queue SMS notification if enabled
       if (preferences.sms && orgPreferences.sms && user.profile?.phone && this.smsClient) {
-        promises.push(this.sendSMS(user.profile.phone, type, data).catch(error => {
+        promises.push(this.sendSMS(user.profile.phone, type, {
+          ...data,
+          organizationId: userOrgId // Include organization context
+        }).catch(error => {
           logger.error('SMS notification failed:', error);
           return null;
         }));
@@ -111,7 +128,10 @@ class NotificationService {
 
       // Queue push notification if enabled
       if (preferences.push && orgPreferences.push && user.deviceTokens?.length && this.fcm) {
-        promises.push(this.sendPushNotification(user.deviceTokens, type, data).catch(error => {
+        promises.push(this.sendPushNotification(user.deviceTokens, type, {
+          ...data,
+          organizationId: userOrgId // Include organization context
+        }).catch(error => {
           logger.error('Push notification failed:', error);
           return null;
         }));
@@ -119,7 +139,7 @@ class NotificationService {
 
       // Wait for all notifications to complete
       const results = await Promise.allSettled(promises);
-      
+
       // Log results
       results.forEach((result, index) => {
         if (result.status === 'rejected') {
@@ -157,7 +177,7 @@ class NotificationService {
       }
 
       const template = emailTemplates[type](data);
-      
+
       const mailOptions = {
         from: config.email.from,
         to: email,
@@ -197,7 +217,7 @@ class NotificationService {
       }
 
       const message = smsTemplates[type](data);
-      
+
       const result = await this.smsClient.messages.create({
         body: message,
         from: config.twilio.phoneNumber,
@@ -235,7 +255,7 @@ class NotificationService {
       }
 
       const notification = pushTemplates[type](data);
-      
+
       const message = {
         notification,
         data: {
@@ -246,7 +266,7 @@ class NotificationService {
       };
 
       const result = await this.fcm.sendMulticast(message);
-      
+
       logger.info('Push notifications sent', {
         type,
         successful: result.successCount,
@@ -261,7 +281,7 @@ class NotificationService {
             failedTokens.push(deviceTokens[idx]);
           }
         });
-        
+
         logger.warn('Failed to send to some devices', { failedTokens });
       }
 
@@ -275,38 +295,52 @@ class NotificationService {
   /**
    * Notification type specific methods
    */
-  
+
   /**
    * Notify when employee enters geofence
    * @param {string} employeeId - Employee ID
    * @param {string} geofenceId - Geofence ID
+   * @param {string} organizationId - Optional organization ID for context
    */
-  async notifyGeofenceEntry(employeeId, geofenceId) {
+  async notifyGeofenceEntry(employeeId, geofenceId, organizationId = null) {
     try {
-      const employee = await User.findById(employeeId).populate('employmentDetails.supervisor');
-      const geofence = await Geofence.findById(geofenceId);
+      // Apply organization context to queries if provided
+      const employeeQuery = organizationId ?
+          withOrganizationContext({ _id: employeeId }, organizationId) :
+          { _id: employeeId };
+
+      const geofenceQuery = organizationId ?
+          withOrganizationContext({ _id: geofenceId }, organizationId) :
+          { _id: geofenceId };
+
+      const employee = await User.findOne(employeeQuery).populate('employmentDetails.supervisor');
+      const geofence = await Geofence.findOne(geofenceQuery);
 
       if (!employee || !geofence) {
         logger.warn('Cannot notify geofence entry: Employee or geofence not found', { employeeId, geofenceId });
         return;
       }
 
+      // Use the organization from the employee or geofence
+      const contextOrgId = organizationId || employee.organization || geofence.organization;
+
       // Notify employee
       await this.sendMultiChannelNotification(employeeId, 'geofence_entry', {
         geofenceName: geofence.name,
         timestamp: new Date().toISOString()
-      });
+      }, contextOrgId);
 
       // Notify supervisor if configured
       if (employee.employmentDetails?.supervisor) {
         await this.sendMultiChannelNotification(
-          employee.employmentDetails.supervisor._id,
-          'employee_geofence_entry',
-          {
-            employeeName: `${employee.firstName} ${employee.lastName}`,
-            geofenceName: geofence.name,
-            timestamp: new Date().toISOString()
-          }
+            employee.employmentDetails.supervisor._id,
+            'employee_geofence_entry',
+            {
+              employeeName: `${employee.firstName} ${employee.lastName}`,
+              geofenceName: geofence.name,
+              timestamp: new Date().toISOString()
+            },
+            contextOrgId
         );
       }
     } catch (error) {
@@ -318,33 +352,47 @@ class NotificationService {
    * Notify when employee exits geofence
    * @param {string} employeeId - Employee ID
    * @param {string} geofenceId - Geofence ID
+   * @param {string} organizationId - Optional organization ID for context
    */
-  async notifyGeofenceExit(employeeId, geofenceId) {
+  async notifyGeofenceExit(employeeId, geofenceId, organizationId = null) {
     try {
-      const employee = await User.findById(employeeId).populate('employmentDetails.supervisor');
-      const geofence = await Geofence.findById(geofenceId);
+      // Apply organization context to queries if provided
+      const employeeQuery = organizationId ?
+          withOrganizationContext({ _id: employeeId }, organizationId) :
+          { _id: employeeId };
+
+      const geofenceQuery = organizationId ?
+          withOrganizationContext({ _id: geofenceId }, organizationId) :
+          { _id: geofenceId };
+
+      const employee = await User.findOne(employeeQuery).populate('employmentDetails.supervisor');
+      const geofence = await Geofence.findOne(geofenceQuery);
 
       if (!employee || !geofence) {
         logger.warn('Cannot notify geofence exit: Employee or geofence not found', { employeeId, geofenceId });
         return;
       }
 
+      // Use the organization from the employee or geofence
+      const contextOrgId = organizationId || employee.organization || geofence.organization;
+
       // Notify employee
       await this.sendMultiChannelNotification(employeeId, 'geofence_exit', {
         geofenceName: geofence.name,
         timestamp: new Date().toISOString()
-      });
+      }, contextOrgId);
 
       // Notify supervisor if configured
       if (employee.employmentDetails?.supervisor) {
         await this.sendMultiChannelNotification(
-          employee.employmentDetails.supervisor._id,
-          'employee_geofence_exit',
-          {
-            employeeName: `${employee.firstName} ${employee.lastName}`,
-            geofenceName: geofence.name,
-            timestamp: new Date().toISOString()
-          }
+            employee.employmentDetails.supervisor._id,
+            'employee_geofence_exit',
+            {
+              employeeName: `${employee.firstName} ${employee.lastName}`,
+              geofenceName: geofence.name,
+              timestamp: new Date().toISOString()
+            },
+            contextOrgId
         );
       }
     } catch (error) {
@@ -356,11 +404,18 @@ class NotificationService {
    * Send welcome email to new user
    * @param {string} email - User email
    * @param {Object} data - Email data
+   * @param {string} organizationId - Optional organization ID for context
    */
-  async sendWelcomeEmail(email, data) {
+  async sendWelcomeEmail(email, data, organizationId = null) {
     try {
       logger.info(`Sending welcome email to ${email}`);
-      return await this.sendEmail(email, 'welcome', data);
+
+      // Add organization context to data if available
+      const emailData = organizationId ?
+          { ...data, organizationId } :
+          data;
+
+      return await this.sendEmail(email, 'welcome', emailData);
     } catch (error) {
       logger.error(`Failed to send welcome email to ${email}:`, error);
       // Don't throw - welcome emails should not block registration flow
@@ -375,12 +430,20 @@ class NotificationService {
    */
   async notifyLeaveRequest(supervisorId, data) {
     try {
-      return await this.sendMultiChannelNotification(supervisorId, 'leave_request', {
-        employeeName: `${data.employee.firstName} ${data.employee.lastName}`,
-        startDate: data.leave.startDate,
-        endDate: data.leave.endDate,
-        reason: data.leave.reason
-      });
+      // Extract organization context from data if available
+      const organizationId = data.organization || data.organizationId;
+
+      return await this.sendMultiChannelNotification(
+          supervisorId,
+          'leave_request',
+          {
+            employeeName: `${data.employee.firstName} ${data.employee.lastName}`,
+            startDate: data.leave.startDate,
+            endDate: data.leave.endDate,
+            reason: data.leave.reason
+          },
+          organizationId
+      );
     } catch (error) {
       logger.error('Failed to notify leave request:', error);
       return { success: false, error: error.message };
@@ -391,8 +454,9 @@ class NotificationService {
    * Send password reset email
    * @param {string} email - User email
    * @param {string} resetToken - Password reset token
+   * @param {string} organizationId - Optional organization ID for context
    */
-  async sendPasswordResetEmail(email, resetToken) {
+  async sendPasswordResetEmail(email, resetToken, organizationId = null) {
     try {
       if (!config.frontendUrl) {
         logger.warn('Frontend URL not configured, using fallback for reset link');
@@ -400,10 +464,19 @@ class NotificationService {
         return { success: true, fallback: true };
       }
 
-      return await this.sendEmail(email, 'password_reset', {
-        resetToken,
-        resetUrl: `${config.frontendUrl}/reset-password?token=${resetToken}`
-      });
+      // Add organization context to data if available
+      const emailData = organizationId ?
+          {
+            resetToken,
+            resetUrl: `${config.frontendUrl}/reset-password?token=${resetToken}`,
+            organizationId
+          } :
+          {
+            resetToken,
+            resetUrl: `${config.frontendUrl}/reset-password?token=${resetToken}`
+          };
+
+      return await this.sendEmail(email, 'password_reset', emailData);
     } catch (error) {
       logger.error(`Failed to send password reset email to ${email}:`, error);
       // Log token so it's not lost but don't throw error to avoid revealing user existence
@@ -417,27 +490,41 @@ class NotificationService {
    * @param {string} employeeId - Employee ID
    * @param {string} geofenceId - Geofence ID
    * @param {Date} scheduledTime - Scheduled check-in time
+   * @param {string} organizationId - Optional organization ID for context
    */
-  async notifyLateCheckIn(employeeId, geofenceId, scheduledTime) {
+  async notifyLateCheckIn(employeeId, geofenceId, scheduledTime, organizationId = null) {
     try {
-      const employee = await User.findById(employeeId).populate('employmentDetails.supervisor');
-      const geofence = await Geofence.findById(geofenceId);
+      // Apply organization context to queries if provided
+      const employeeQuery = organizationId ?
+          withOrganizationContext({ _id: employeeId }, organizationId) :
+          { _id: employeeId };
+
+      const geofenceQuery = organizationId ?
+          withOrganizationContext({ _id: geofenceId }, organizationId) :
+          { _id: geofenceId };
+
+      const employee = await User.findOne(employeeQuery).populate('employmentDetails.supervisor');
+      const geofence = await Geofence.findOne(geofenceQuery);
 
       if (!employee || !geofence) {
         logger.warn('Cannot notify late check-in: Employee or geofence not found', { employeeId, geofenceId });
         return;
       }
 
+      // Use the organization from the employee or geofence
+      const contextOrgId = organizationId || employee.organization || geofence.organization;
+
       if (employee.employmentDetails?.supervisor) {
         await this.sendMultiChannelNotification(
-          employee.employmentDetails.supervisor._id,
-          'late_check_in',
-          {
-            employeeName: `${employee.firstName} ${employee.lastName}`,
-            geofenceName: geofence.name,
-            scheduledTime: scheduledTime.toISOString(),
-            currentTime: new Date().toISOString()
-          }
+            employee.employmentDetails.supervisor._id,
+            'late_check_in',
+            {
+              employeeName: `${employee.firstName} ${employee.lastName}`,
+              geofenceName: geofence.name,
+              scheduledTime: scheduledTime.toISOString(),
+              currentTime: new Date().toISOString()
+            },
+            contextOrgId
         );
       }
     } catch (error) {
@@ -457,10 +544,13 @@ class NotificationService {
         return;
       }
 
-      const adminUsers = await User.find({
-        organization: organizationId,
-        role: 'admin'
-      });
+      // Apply organization context to query
+      const adminQuery = withOrganizationContext(
+          { role: 'admin' },
+          organizationId
+      );
+
+      const adminUsers = await User.find(adminQuery);
 
       if (!adminUsers.length) {
         logger.warn('No admin users found for organization', { organizationId });
@@ -468,15 +558,20 @@ class NotificationService {
       }
 
       const daysRemaining = Math.ceil(
-        (new Date(organization.subscription.expiryDate) - new Date()) / (1000 * 60 * 60 * 24)
+          (new Date(organization.subscription.expiryDate) - new Date()) / (1000 * 60 * 60 * 24)
       );
 
       for (const admin of adminUsers) {
-        await this.sendMultiChannelNotification(admin._id, 'subscription_expiry', {
-          organizationName: organization.name,
-          expiryDate: organization.subscription.expiryDate.toISOString(),
-          daysRemaining
-        });
+        await this.sendMultiChannelNotification(
+            admin._id,
+            'subscription_expiry',
+            {
+              organizationName: organization.name,
+              expiryDate: organization.subscription.expiryDate.toISOString(),
+              daysRemaining
+            },
+            organizationId
+        );
       }
     } catch (error) {
       logger.error('Failed to send subscription expiry reminder:', error);
@@ -487,8 +582,9 @@ class NotificationService {
    * Send verification email to user
    * @param {string} email - User email
    * @param {string} token - Verification token
+   * @param {string} organizationId - Optional organization ID for context
    */
-  async sendVerificationEmail(email, token) {
+  async sendVerificationEmail(email, token, organizationId = null) {
     try {
       if (!config.frontendUrl) {
         logger.warn('Frontend URL not configured, using fallback for verification link');
@@ -496,10 +592,19 @@ class NotificationService {
         return { success: true, fallback: true };
       }
 
-      return await this.sendEmail(email, 'email_verification', {
-        verificationToken: token,
-        verificationUrl: `${config.frontendUrl}/verify-email?token=${token}`
-      });
+      // Add organization context to data if available
+      const emailData = organizationId ?
+          {
+            verificationToken: token,
+            verificationUrl: `${config.frontendUrl}/verify-email?token=${token}`,
+            organizationId
+          } :
+          {
+            verificationToken: token,
+            verificationUrl: `${config.frontendUrl}/verify-email?token=${token}`
+          };
+
+      return await this.sendEmail(email, 'email_verification', emailData);
     } catch (error) {
       logger.error(`Failed to send verification email to ${email}:`, error);
       // Log token so it's not lost, but don't block registration process
@@ -511,12 +616,21 @@ class NotificationService {
   /**
    * Send password change notification
    * @param {string} email - User email
+   * @param {string} organizationId - Optional organization ID for context
    */
-  async sendPasswordChangeNotification(email) {
+  async sendPasswordChangeNotification(email, organizationId = null) {
     try {
-      return await this.sendEmail(email, 'password_changed', {
-        timestamp: new Date().toISOString()
-      });
+      // Add organization context to data if available
+      const emailData = organizationId ?
+          {
+            timestamp: new Date().toISOString(),
+            organizationId
+          } :
+          {
+            timestamp: new Date().toISOString()
+          };
+
+      return await this.sendEmail(email, 'password_changed', emailData);
     } catch (error) {
       logger.error(`Failed to send password change notification to ${email}:`, error);
       logger.info(`[FALLBACK] Password change notification sent to ${email}`);
@@ -524,59 +638,59 @@ class NotificationService {
     }
   }
 
- /**
- * Send invitation email to new user
- * @param {string} email - Recipient email
- * @param {string} token - Invitation token
- * @param {Object} data - Email data
- * @returns {Promise<Object>} - Result of email operation
- */
-async sendInvitationEmail(email, token, data) {
-  try {
-    const { 
-      role, 
-      invitedBy, 
-      inviterEmail,
-      organizationName, 
-      organizationId, 
-      departmentName, 
-      isResend 
-    } = data;
-    
-    logger.info(`Sending ${role} invitation email to ${email}`);
-    
-    // Different registration URL based on role
-    const frontendUrl = config.frontendUrl || 'http://localhost:3000';
-    const registrationUrl = role === 'admin' 
-      ? `${frontendUrl}/admin/complete-registration?token=${token}`
-      : `${frontendUrl}/employee/complete-registration?token=${token}`;
-    
-    // If email service is not configured, use mock/log behavior
-    if (!this.emailTransporter || process.env.NODE_ENV !== 'production') {
-      logger.info(`[MOCK] Invitation token: ${token}`);
-      logger.info(`[MOCK] You have been invited by ${invitedBy} (${inviterEmail}) to join ${organizationName} as a ${role}`);
-      
-      if (departmentName) {
-        logger.info(`[MOCK] Department: ${departmentName}`);
+  /**
+   * Send invitation email to new user
+   * @param {string} email - Recipient email
+   * @param {string} token - Invitation token
+   * @param {Object} data - Email data
+   * @returns {Promise<Object>} - Result of email operation
+   */
+  async sendInvitationEmail(email, token, data) {
+    try {
+      const {
+        role,
+        invitedBy,
+        inviterEmail,
+        organizationName,
+        organizationId,
+        departmentName,
+        isResend
+      } = data;
+
+      logger.info(`Sending ${role} invitation email to ${email}`);
+
+      // Different registration URL based on role
+      const frontendUrl = config.frontendUrl || 'http://localhost:3000';
+      const registrationUrl = role === 'admin'
+          ? `${frontendUrl}/admin/complete-registration?token=${token}`
+          : `${frontendUrl}/employee/complete-registration?token=${token}`;
+
+      // If email service is not configured, use mock/log behavior
+      if (!this.emailTransporter || process.env.NODE_ENV !== 'production') {
+        logger.info(`[MOCK] Invitation token: ${token}`);
+        logger.info(`[MOCK] You have been invited by ${invitedBy} (${inviterEmail}) to join ${organizationName} as a ${role}`);
+
+        if (departmentName) {
+          logger.info(`[MOCK] Department: ${departmentName}`);
+        }
+
+        if (isResend) {
+          logger.info(`[MOCK] This is a reminder for a previous invitation.`);
+        }
+
+        logger.info(`[MOCK] Registration URL: ${registrationUrl}`);
+        return { success: true, fallback: true };
       }
-      
-      if (isResend) {
-        logger.info(`[MOCK] This is a reminder for a previous invitation.`);
-      }
-      
-      logger.info(`[MOCK] Registration URL: ${registrationUrl}`);
-      return { success: true, fallback: true };
-    }
-    
-    // If we have email configured and in production, send real email
-    // Here we can use the existing email templates system or create a dedicated one
-    // For now we'll use a direct approach:
-    
-    const subject = isResend 
-      ? `Reminder: Invitation to join ${organizationName}`
-      : `Invitation to join ${organizationName}`;
-    
-    const htmlContent = `
+
+      // If we have email configured and in production, send real email
+      // Here we can use the existing email templates system or create a dedicated one
+      // For now we'll use a direct approach:
+
+      const subject = isResend
+          ? `Reminder: Invitation to join ${organizationName}`
+          : `Invitation to join ${organizationName}`;
+
+      const htmlContent = `
       <h2>You've been invited to join ${organizationName}</h2>
       <p>Hello,</p>
       <p>You have been invited by ${invitedBy} (${inviterEmail}) to join ${organizationName} as a ${role}.</p>
@@ -587,23 +701,23 @@ async sendInvitationEmail(email, token, data) {
       <p>This invitation will expire in 7 days.</p>
       <p>Thank you,<br>${organizationName} Team</p>
     `;
-    
-    const mailOptions = {
-      from: config.email.from,
-      to: email,
-      subject: subject,
-      html: htmlContent
-    };
 
-    const result = await this.emailTransporter.sendMail(mailOptions);
-    logger.info(`Invitation email sent successfully to ${email}`, { messageId: result.messageId });
-    return result;
-    
-  } catch (error) {
-    logger.error(`Failed to send invitation email to ${email}:`, error);
-    return { success: false, error: error.message };
+      const mailOptions = {
+        from: config.email.from,
+        to: email,
+        subject: subject,
+        html: htmlContent
+      };
+
+      const result = await this.emailTransporter.sendMail(mailOptions);
+      logger.info(`Invitation email sent successfully to ${email}`, { messageId: result.messageId });
+      return result;
+
+    } catch (error) {
+      logger.error(`Failed to send invitation email to ${email}:`, error);
+      return { success: false, error: error.message };
+    }
   }
-}
 
 }
 

@@ -350,3 +350,56 @@ components:
         totalRecords:
           type: number
           example: 48
+
+    PersonalInfo:
+      type: object
+      properties:
+        phone:
+          type: string
+          description: Employee's phone number
+        address:
+          type: string
+          description: Employee's address
+        emergencyContact:
+          type: object
+          properties:
+            name:
+              type: string
+              description: Emergency contact name
+            phone:
+              type: string
+              description: Emergency contact phone number
+            relationship:
+              type: string
+              description: Relationship to employee
+        dateOfBirth:
+          type: string
+          format: date
+          description: Employee's date of birth
+
+    EmployeeSettings:
+      type: object
+      properties:
+        notifications:
+          type: object
+          properties:
+            checkIn:
+              type: boolean
+              default: true
+              description: Whether to send notifications for check-ins
+            checkOut:
+              type: boolean
+              default: true
+              description: Whether to send notifications for check-outs
+            schedule:
+              type: boolean
+              default: true
+              description: Whether to send notifications for schedule changes
+        locationTracking:
+          type: boolean
+          default: true
+          description: Whether location tracking is enabled for this employee
+        autoCheckIn:
+          type: boolean
+          default: false
+          description: Whether automatic check-in is enabled based on geofence

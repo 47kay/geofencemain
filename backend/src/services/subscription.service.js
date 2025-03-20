@@ -4,6 +4,7 @@ const Subscription = require('../models/subscription.model');
 const { NotFoundError, ConflictError } = require('../utils/errors');
 const logger = require('../utils/logger');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const { withOrganizationContext } = require('../utils/query.utils');
 
 class SubscriptionService {
   /**
@@ -12,19 +13,22 @@ class SubscriptionService {
   async createSubscription(data) {
     try {
       const { organizationId, plan, billing } = data;
-      
-      // Check if organization already has a subscription
-      const existingSubscription = await Subscription.findOne({ organizationId });
+
+      // Check if organization already has a subscription using withOrganizationContext
+      const subscriptionQuery = withOrganizationContext({}, organizationId);
+      const existingSubscription = await Subscription.findOne(subscriptionQuery);
+
       if (existingSubscription) {
         throw new ConflictError('Organization already has an active subscription');
       }
 
-      // Create Stripe customer and subscription
+      // Check if organization exists
       const organization = await Organization.findById(organizationId);
       if (!organization) {
         throw new NotFoundError('Organization not found');
       }
 
+      // Create Stripe customer and subscription
       const customer = await stripe.customers.create({
         email: organization.contact.email,
         metadata: {
@@ -40,9 +44,9 @@ class SubscriptionService {
         expand: ['latest_invoice.payment_intent']
       });
 
-      // Create subscription record in database
+      // Create subscription record in database with organization context
       const newSubscription = await Subscription.create({
-        organizationId,
+        organization: organizationId, // Use consistent field name
         stripeCustomerId: customer.id,
         stripeSubscriptionId: subscription.id,
         plan,
@@ -64,14 +68,17 @@ class SubscriptionService {
    */
   async getSubscription(organizationId) {
     try {
-      const subscription = await Subscription.findOne({ organizationId });
+      // Apply organization context to query
+      const query = withOrganizationContext({}, organizationId);
+      const subscription = await Subscription.findOne(query);
+
       if (!subscription) {
         throw new NotFoundError('Subscription not found');
       }
 
       // Get latest subscription details from Stripe
       const stripeSubscription = await stripe.subscriptions.retrieve(
-        subscription.stripeSubscriptionId
+          subscription.stripeSubscriptionId
       );
 
       // Update local subscription status if needed
@@ -92,18 +99,21 @@ class SubscriptionService {
    */
   async updateSubscription(organizationId, { planId, paymentMethod }) {
     try {
-      const subscription = await Subscription.findOne({ organizationId });
+      // Apply organization context to query
+      const query = withOrganizationContext({}, organizationId);
+      const subscription = await Subscription.findOne(query);
+
       if (!subscription) {
         throw new NotFoundError('Subscription not found');
       }
 
       // Update Stripe subscription
       const updatedStripeSubscription = await stripe.subscriptions.update(
-        subscription.stripeSubscriptionId,
-        {
-          items: [{ price: planId }],
-          default_payment_method: paymentMethod
-        }
+          subscription.stripeSubscriptionId,
+          {
+            items: [{ price: planId }],
+            default_payment_method: paymentMethod
+          }
       );
 
       // Update local subscription record
@@ -123,7 +133,10 @@ class SubscriptionService {
    */
   async cancelSubscription(organizationId, reason) {
     try {
-      const subscription = await Subscription.findOne({ organizationId });
+      // Apply organization context to query
+      const query = withOrganizationContext({}, organizationId);
+      const subscription = await Subscription.findOne(query);
+
       if (!subscription) {
         throw new NotFoundError('Subscription not found');
       }
@@ -149,7 +162,10 @@ class SubscriptionService {
    */
   async getBillingHistory(organizationId, { page = 1, limit = 10 }) {
     try {
-      const subscription = await Subscription.findOne({ organizationId });
+      // Apply organization context to query
+      const query = withOrganizationContext({}, organizationId);
+      const subscription = await Subscription.findOne(query);
+
       if (!subscription) {
         throw new NotFoundError('Subscription not found');
       }
@@ -177,7 +193,10 @@ class SubscriptionService {
    */
   async updatePaymentMethod(organizationId, paymentMethodId) {
     try {
-      const subscription = await Subscription.findOne({ organizationId });
+      // Apply organization context to query
+      const query = withOrganizationContext({}, organizationId);
+      const subscription = await Subscription.findOne(query);
+
       if (!subscription) {
         throw new NotFoundError('Subscription not found');
       }
@@ -216,10 +235,10 @@ class SubscriptionService {
         id: price.id,
         name: price.product.name,
         description: price.product.description,
-        features: price.product.metadata.features ? 
-          JSON.parse(price.product.metadata.features) : [],
+        features: price.product.metadata.features ?
+            JSON.parse(price.product.metadata.features) : [],
         limits: price.product.metadata.limits ?
-          JSON.parse(price.product.metadata.limits) : {},
+            JSON.parse(price.product.metadata.limits) : {},
         price: price.unit_amount / 100,
         currency: price.currency,
         interval: price.recurring.interval,
@@ -238,7 +257,10 @@ class SubscriptionService {
    */
   async generateInvoice(organizationId, invoiceId) {
     try {
-      const subscription = await Subscription.findOne({ organizationId });
+      // Apply organization context to query
+      const query = withOrganizationContext({}, organizationId);
+      const subscription = await Subscription.findOne(query);
+
       if (!subscription) {
         throw new NotFoundError('Subscription not found');
       }

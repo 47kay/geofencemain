@@ -310,6 +310,20 @@ employeeSchema.statics = {
   }
 };
 
+employeeSchema.statics.findByIdWithinOrganization = function(id, organizationId) {
+  return this.findOne({
+    _id: id,
+    organization: organizationId
+  });
+};
+
+employeeSchema.statics.findAllWithinOrganization = function(query, organizationId) {
+  return this.find({
+    ...query,
+    organization: organizationId
+  });
+};
+
 const Employee = mongoose.model('Employee', employeeSchema);
 
 module.exports = Employee;

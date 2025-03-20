@@ -15,10 +15,18 @@ class OrganizationService {
   /**
    * Get organization by ID
    */
-  async getOrganizationById(organizationId) {
+  async getOrganizationById(organizationId, userContext = null) {
+    // For platform admins, allow access to any organization
+    // For regular users, ensure they can only access their own organization
+    if (userContext && userContext.role !== 'platform_admin' &&
+        userContext.role !== 'platform_superadmin' &&
+        userContext.organizationId !== organizationId) {
+      throw new ForbiddenError('Access denied to requested organization');
+    }
+
     const organization = await Organization.findById(organizationId)
-      .populate('subscription')
-      .populate('metadata.createdBy', 'firstName lastName email');
+        .populate('subscription')
+        .populate('metadata.createdBy', 'firstName lastName email');
 
     if (!organization) {
       throw new NotFoundError('Organization not found');

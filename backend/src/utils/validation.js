@@ -45,6 +45,58 @@ const baseSchemas = {
   }
 };
 
+// Add this to your existing validation.js file
+const validateEmployeeUpdate = (data) => {
+  const schema = Joi.object({
+    personalInfo: Joi.object({
+      phone: Joi.string().allow('', null),
+      address: Joi.string().allow('', null),
+      emergencyContact: Joi.object({
+        name: Joi.string().allow('', null),
+        phone: Joi.string().allow('', null),
+        relationship: Joi.string().allow('', null)
+      }).allow(null),
+      dateOfBirth: Joi.date().iso().allow('', null)
+    }).allow(null),
+
+    employmentDetails: Joi.object({
+      startDate: Joi.date().iso().allow('', null),
+      position: Joi.string().allow('', null),
+      department: Joi.string().allow('', null),
+      departmentId: Joi.string().allow('', null),
+      employmentType: Joi.string().valid('full-time', 'part-time', 'contract', 'intern').allow('', null),
+      managerId: Joi.string().allow('', null),
+      officeLocation: Joi.string().allow('', null)
+    }).allow(null),
+
+    settings: Joi.object({
+      notifications: Joi.object({
+        checkIn: Joi.boolean(),
+        checkOut: Joi.boolean(),
+        schedule: Joi.boolean()
+      }).allow(null),
+      locationTracking: Joi.boolean(),
+      autoCheckIn: Joi.boolean()
+    }).allow(null),
+
+    status: Joi.string().valid('active', 'inactive', 'onLeave', 'terminated').allow('', null)
+  });
+
+  const { error, value } = schema.validate(data, { abortEarly: false });
+
+  if (error) {
+    return {
+      success: false,
+      errors: error.details.map(detail => detail.message)
+    };
+  }
+
+  return {
+    success: true,
+    value
+  };
+};
+
 const validateDateRange = (req, res, next) => {
   const { startDate, endDate } = req.query;
   
@@ -163,6 +215,7 @@ const registrationSchema = Joi.object({
 });
 
 // Schema for geofence
+// In your validation.js file
 const geofenceSchema = Joi.object({
   name: Joi.string().required(),
   location: Joi.object({
@@ -181,7 +234,7 @@ const geofenceSchema = Joi.object({
   schedule: Joi.object({
     enabled: Joi.boolean(),
     workDays: Joi.array().items(Joi.string().valid(
-      'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'
+        'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'
     )),
     workHours: Joi.object({
       start: Joi.string().pattern(/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/),
@@ -193,9 +246,9 @@ const geofenceSchema = Joi.object({
     exitNotification: Joi.boolean(),
     autoCheckIn: Joi.boolean(),
     graceperiod: Joi.number().min(0).max(60)
-  })
+  }),
+  assignAllEmployees: Joi.boolean() // Add this line
 });
-
 // Schema for employee
 const employeeSchema = Joi.object({
   email: baseSchemas.email,
@@ -257,6 +310,8 @@ module.exports = {
   validateDateRange,
   validateSchema,
   validate,
+
+  validateEmployeeUpdate,
   locationCheckSchema,
   registrationSchema,
   geofenceSchema,

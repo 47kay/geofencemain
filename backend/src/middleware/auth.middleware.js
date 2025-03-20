@@ -162,28 +162,32 @@ const authorize = (allowedRoles) => {
 
 
 /**
- * Combined role-based and self-access authorization middleware
+ * Combined role, self-access, and organization-based authorization middleware
  */
 const authorizeOrSelf = (allowedRoles) => {
-  return (req, res, next) => {
+  return async (req, res, next) => {
     try {
-      const { role, userId } = req.user;
-      const requestedUserId = req.params.id;
+      const { role, userId, organizationId } = req.user;
+      const requestedId = req.params.id;
 
-      // Check for any admin-level roles (including superadmin)
-      if (role === 'admin' ||
-          role === 'platform_admin' ||
-          role === 'platform_superadmin' ||
-          role === 'superadmin') {
+      logger.info(`Authorizing access: role=${role}, userId=${userId}, requestedId=${requestedId}`);
+
+      // Allow platform admins and superadmins access to everything
+      if (role === 'platform_superadmin' || role === 'platform_admin' || role === 'superadmin' || role === 'admin') {
+        logger.info(`Admin access granted for ${role}`);
         return next();
       }
 
-      // Allow access if user has appropriate role or is accessing their own resource
-      if (allowedRoles.includes(role) || userId === requestedUserId) {
-        next();
-      } else {
-        throw new ForbiddenError('Insufficient permissions');
+      // For regular users, check if they're accessing their own resource
+      // or if they have a role that's in the allowedRoles array
+      if (allowedRoles.includes(role) || userId === requestedId) {
+        logger.info(`Access granted to ${role} or self-access`);
+        return next();
       }
+
+      // If we get here, access is denied
+      logger.warn(`Access denied for role: ${role}, allowed roles: ${allowedRoles.join(', ')}`);
+      throw new ForbiddenError('Insufficient permissions');
     } catch (error) {
       logger.error(`Authorization error: ${error.message}`);
       next(error);

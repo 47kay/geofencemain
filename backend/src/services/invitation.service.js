@@ -6,6 +6,7 @@ const Department = require('../models/department.model');
 const Organization = require('../models/organization.model');
 const { NotFoundError, ConflictError, ForbiddenError, ValidationError, UnauthorizedError } = require('../utils/errors');
 const logger = require('../utils/logger');
+const { withOrganizationContext } = require('../utils/query.utils');
 
 class InvitationService {
   constructor(notificationService, auditService) {
@@ -33,37 +34,38 @@ class InvitationService {
       throw new NotFoundError('Inviter not found');
     }
 
-    if (inviter.role !== 'superadmin' && 
-      (!inviter.organization || inviter.organization.toString() !== organizationId.toString())) {
-    throw new UnauthorizedError('You do not have permission to invite users to this organization');
+    // Check if inviter has permission for this organization
+    if (inviter.role !== 'superadmin' &&
+        (!inviter.organization || inviter.organization.toString() !== organizationId.toString())) {
+      throw new UnauthorizedError('You do not have permission to invite users to this organization');
     }
 
+    // Check if user already exists in this organization using withOrganizationContext
+    const existingUserQuery = withOrganizationContext({ email }, organizationId);
+    const existingUser = await User.findOne(existingUserQuery);
 
-    // Check if user already exists in this organization
-    const existingUser = await User.findOne({ email, organizationId });
     if (existingUser) {
       throw new ConflictError('User with this email already exists in this organization');
     }
 
-    // Check if invitation already exists and is pending for this organization
-    const existingInvitation = await Invitation.findOne({
-      email,
-      organizationId,
-      status: 'pending'
-    });
+    // Check if invitation already exists and is pending for this organization using withOrganizationContext
+    const existingInvitationQuery = withOrganizationContext(
+        { email, status: 'pending' },
+        organizationId
+    );
+
+    const existingInvitation = await Invitation.findOne(existingInvitationQuery);
 
     if (existingInvitation) {
       throw new ConflictError('An invitation has already been sent to this email');
     }
 
-    // Verify department exists if provided
+    // Verify department exists if provided using withOrganizationContext
     let department = null;
     if (departmentId) {
-      department = await Department.findOne({ 
-        _id: departmentId,
-        organizationId
-      });
-      
+      const departmentQuery = withOrganizationContext({ _id: departmentId }, organizationId);
+      department = await Department.findOne(departmentQuery);
+
       if (!department) {
         throw new NotFoundError('Department not found in this organization');
       }
@@ -72,12 +74,12 @@ class InvitationService {
     // Generate a secure token
     const token = crypto.randomBytes(32).toString('hex');
 
-    // Create invitation
+    // Create invitation with organization context
     const invitation = new Invitation({
       email,
       role,
       token,
-      organizationId,
+      organization: organizationId, // Store as organization for consistency
       departmentId: departmentId || null,
       createdBy: inviterId,
       status: 'pending',
@@ -87,7 +89,7 @@ class InvitationService {
 
     await invitation.save();
 
-    // Log activity
+    // Log activity with organization context
     await this.auditService.logActivity({
       action: 'INVITATION_SENT',
       userId: inviterId,
@@ -102,19 +104,19 @@ class InvitationService {
       }
     });
 
-    // Send invitation email
+    // Send invitation email with organization context
     await this.notificationService.sendInvitationEmail(
-      email,
-      token,
-      {
-        role,
-        invitedBy: `${inviter.firstName} ${inviter.lastName}`,
-        inviterEmail: inviter.email,
-        organizationName: organization.name,
-        organizationId: organization._id,
-        departmentName: department?.name || null,
-        isResend: false
-      }
+        email,
+        token,
+        {
+          role,
+          invitedBy: `${inviter.firstName} ${inviter.lastName}`,
+          inviterEmail: inviter.email,
+          organizationName: organization.name,
+          organizationId: organization._id,
+          departmentName: department?.name || null,
+          isResend: false
+        }
     );
 
     // Return success response
@@ -154,18 +156,26 @@ class InvitationService {
       throw new ForbiddenError('Invitation has expired');
     }
 
-    // Get additional needed data
-    const department = invitation.departmentId ? 
-      await Department.findById(invitation.departmentId) : null;
-    
-    const organization = await Organization.findById(invitation.organizationId);
+    const organizationId = invitation.organization || invitation.organizationId;
+
+    // Get additional needed data with organization context
+    let department = null;
+    if (invitation.departmentId) {
+      const departmentQuery = withOrganizationContext(
+          { _id: invitation.departmentId },
+          organizationId
+      );
+      department = await Department.findOne(departmentQuery);
+    }
+
+    const organization = await Organization.findById(organizationId);
     if (!organization) {
       throw new NotFoundError('Organization not found');
     }
 
     const { firstName, lastName, password, phone } = userData;
 
-    // Create the user
+    // Create the user with organization context
     const user = new User({
       email: invitation.email,
       firstName,
@@ -173,7 +183,7 @@ class InvitationService {
       password, // This should be hashed in the User model pre-save hook
       phone: phone || null,
       role: invitation.role,
-      organization: invitation.organizationId, // Change from organizationId to organization
+      organization: organizationId, // Consistent field name
       departmentId: invitation.departmentId,
       status: 'active',
       createdBy: invitation.createdBy,
@@ -189,11 +199,11 @@ class InvitationService {
     invitation.status = 'accepted';
     await invitation.save();
 
-    // Log activity
+    // Log activity with organization context
     await this.auditService.logActivity({
       action: 'REGISTRATION_COMPLETED',
       userId: user._id,
-      organizationId: user.organizationId,
+      organizationId,
       resource: 'user',
       resourceId: user._id,
       details: {
@@ -239,58 +249,66 @@ class InvitationService {
       throw new UnauthorizedError('User not found');
     }
 
-    // Find the invitation within the same organization
-    const invitation = await Invitation.findOne({
-      _id: invitationId,
-      organizationId: user.organizationId,
-      status: 'pending'
-    });
+    const organizationId = user.organization || user.organizationId;
+
+    // Find the invitation within the same organization using withOrganizationContext
+    const invitationQuery = withOrganizationContext(
+        { _id: invitationId, status: 'pending' },
+        organizationId
+    );
+
+    const invitation = await Invitation.findOne(invitationQuery);
 
     if (!invitation) {
       throw new NotFoundError('Invitation not found or already processed');
     }
 
     // Get the necessary data for the email
-    const organization = await Organization.findById(invitation.organizationId);
+    const organization = await Organization.findById(organizationId);
     if (!organization) {
       throw new NotFoundError('Organization not found');
     }
 
     let departmentName = null;
     if (invitation.departmentId) {
-      const department = await Department.findById(invitation.departmentId);
+      // Get department with organization context
+      const departmentQuery = withOrganizationContext(
+          { _id: invitation.departmentId },
+          organizationId
+      );
+      const department = await Department.findOne(departmentQuery);
       departmentName = department?.name;
     }
 
     // Generate a new token
     const newToken = crypto.randomBytes(32).toString('hex');
     invitation.token = newToken;
-    
+
     // Reset expiration date
     invitation.expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
-    
+
     await invitation.save();
 
-    // Send invitation email
+    // Send invitation email with organization context
     await this.notificationService.sendInvitationEmail(
-      invitation.email,
-      newToken,
-      {
-        role: invitation.role,
-        invitedBy: `${user.firstName} ${user.lastName}`,
-        inviterEmail: user.email,
-        organizationName: organization.name,
-        organizationId: organization._id,
-        departmentName,
-        isResend: true
-      }
+        invitation.email,
+        newToken,
+        {
+          role: invitation.role,
+          invitedBy: `${user.firstName} ${user.lastName}`,
+          inviterEmail: user.email,
+          organizationName: organization.name,
+          organizationId: organization._id,
+          departmentName,
+          isResend: true
+        }
     );
 
-    // Log activity
+    // Log activity with organization context
     await this.auditService.logActivity({
       action: 'INVITATION_RESENT',
       userId,
-      organizationId: user.organizationId,
+      organizationId,
       resource: 'invitation',
       resourceId: invitation._id,
       details: {
@@ -325,12 +343,15 @@ class InvitationService {
       throw new UnauthorizedError('User not found');
     }
 
-    // Find the invitation within the same organization
-    const invitation = await Invitation.findOne({
-      _id: invitationId,
-      organizationId: user.organizationId,
-      status: 'pending'
-    });
+    const organizationId = user.organization || user.organizationId;
+
+    // Find the invitation within the same organization using withOrganizationContext
+    const invitationQuery = withOrganizationContext(
+        { _id: invitationId, status: 'pending' },
+        organizationId
+    );
+
+    const invitation = await Invitation.findOne(invitationQuery);
 
     if (!invitation) {
       throw new NotFoundError('Invitation not found or already processed');
@@ -340,11 +361,11 @@ class InvitationService {
     invitation.status = 'rejected';
     await invitation.save();
 
-    // Log activity
+    // Log activity with organization context
     await this.auditService.logActivity({
       action: 'INVITATION_CANCELLED',
       userId,
-      organizationId: user.organizationId,
+      organizationId,
       resource: 'invitation',
       resourceId: invitation._id,
       details: {
@@ -368,24 +389,35 @@ class InvitationService {
    */
   async listInvitations(organizationId, filters = {}) {
     const { role, status = 'pending' } = filters;
-    
-    // Build query with tenant isolation
-    const query = { 
-      organizationId,
-      status
-    };
-    
+
+    logger.info(`Building query for invitations: org=${organizationId}, role=${role}, status=${status}`);
+
+    // Build the query with proper ObjectId handling
+    const query = { status };
+
+    // Use $or to match either field name (organization or organizationId)
+    if (organizationId) {
+      query.$or = [
+        { organization: new mongoose.Types.ObjectId(organizationId) },
+        { organizationId: new mongoose.Types.ObjectId(organizationId) }
+      ];
+    }
+
     if (role) {
       query.role = role;
     }
-    
+
+    logger.info(`Executing invitation query: ${JSON.stringify(query)}`);
+
     // Find invitations
     const invitations = await Invitation.find(query)
-      .populate('departmentId', 'name')
-      .populate('createdBy', 'firstName lastName email')
-      .sort({ createdAt: -1 })
-      .exec();
-    
+        .populate('departmentId', 'name')
+        .populate('createdBy', 'firstName lastName email')
+        .sort({ createdAt: -1 })
+        .exec();
+
+    logger.info(`Retrieved ${invitations.length} invitation records`);
+
     // Format the response
     const formattedInvitations = invitations.map(invitation => ({
       id: invitation._id,
@@ -405,7 +437,7 @@ class InvitationService {
         email: invitation.createdBy.email
       } : null
     }));
-    
+
     return {
       success: true,
       invitations: formattedInvitations

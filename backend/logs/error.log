@@ -591,3 +591,49 @@
 2025-03-18 23:39:19 error: Error handling middleware:
 2025-03-18 23:46:34 error: Error handling middleware:
 2025-03-18 23:46:37 error: Error handling middleware:
+2025-03-18 23:54:34 error: Failed to get employee: Cannot read properties of undefined (reading 'employeeService')
+2025-03-18 23:54:34 error: Error handling middleware:
+2025-03-19 08:59:31 error: Failed to get employee: Cannot read properties of undefined (reading 'employeeService')
+2025-03-19 08:59:31 error: Error handling middleware:
+2025-03-19 09:02:23 error: Failed to get employee: Cast to ObjectId failed for value "BUY-JS-0001" (type string) at path "_id" for model "Employee"
+2025-03-19 09:02:23 error: Error handling middleware:
+2025-03-19 09:16:49 error: Failed to get employees: Cannot destructure property 'organizationId' of 'req.user' as it is undefined.
+2025-03-19 09:16:49 error: Failed to get employees: next is not a function
+2025-03-19 09:16:49 error: Error handling middleware:
+2025-03-19 09:17:19 error: Authorization error: Insufficient permissions
+2025-03-19 09:17:19 error: Error handling middleware:
+2025-03-19 09:17:32 error: Failed to get employees: Cannot destructure property 'organizationId' of 'req.user' as it is undefined.
+2025-03-19 09:17:32 error: Failed to get employees: next is not a function
+2025-03-19 09:17:32 error: Error handling middleware:
+2025-03-19 09:24:36 error: Authorization error: Insufficient permissions
+2025-03-19 09:24:36 error: Error handling middleware:
+2025-03-19 09:24:43 error: Authorization error: Insufficient permissions
+2025-03-19 09:24:43 error: Error handling middleware:
+2025-03-19 09:24:46 error: Authorization error: Insufficient permissions
+2025-03-19 09:24:46 error: Error handling middleware:
+2025-03-19 09:25:09 error: Authorization error: Insufficient permissions
+2025-03-19 09:25:09 error: Error handling middleware:
+2025-03-19 09:27:23 error: Error handling middleware:
+2025-03-19 09:27:34 error: Error handling middleware:
+2025-03-19 09:54:00 error: Error handling middleware:
+2025-03-19 10:48:52 error: Failed to update employee: Cannot read properties of undefined (reading 'employeeService')
+2025-03-19 10:48:52 error: Error handling middleware:
+2025-03-20 03:33:27 error: List invitations failed: Class constructor ObjectId cannot be invoked without 'new'
+2025-03-20 03:33:27 error: Error handling middleware:
+2025-03-20 03:33:33 error: List invitations failed: Class constructor ObjectId cannot be invoked without 'new'
+2025-03-20 03:33:33 error: Error handling middleware:
+2025-03-20 03:33:41 error: List invitations failed: Class constructor ObjectId cannot be invoked without 'new'
+2025-03-20 03:33:41 error: Error handling middleware:
+2025-03-20 03:48:44 error: Failed to update employee: Operation `employees.findOne()` buffering timed out after 10000ms
+2025-03-20 03:48:44 error: Error handling middleware:
+2025-03-20 03:54:34 error: Failed to update employee: Employee validation failed: personalInfo.address: Cast to Object failed for value "string" (type string) at path "personalInfo.address"
+2025-03-20 03:54:34 error: Error handling middleware:
+2025-03-20 04:00:40 error: Error in getEmployeeByEmployeeId: Employee not found
+2025-03-20 04:34:24 error: Authentication error: No authorization token provided
+2025-03-20 04:34:24 error: Error handling middleware:
+2025-03-20 04:35:09 error: Error handling middleware:
+2025-03-20 04:54:08 error: Failed to get geofences: Cannot read properties of undefined (reading 'geofenceService')
+2025-03-20 04:54:08 error: Error handling middleware:
+2025-03-20 05:05:15 error: Failed to get geofences: Cannot read properties of undefined (reading 'geofenceService')
+2025-03-20 05:05:15 error: Error handling middleware:
+2025-03-20 05:11:11 error: Error handling middleware:

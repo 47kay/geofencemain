@@ -4,7 +4,7 @@ const router = express.Router();
 const EmployeeController = require('../../controllers/employee.controller');
 const employeeController = new EmployeeController();
 const authMiddleware = require('../../middleware/auth.middleware');
-const { validateSchema, validateDateRange, employeeSchema } = require('../../utils/validation');
+const { validateSchema, validateDateRange, employeeSchema, validateEmployeeUpdate} = require('../../utils/validation');
 // const { validateDateRange } = require('../middleware/validation.middleware');
 const { asyncHandler } = require('../../middleware/error.middleware');
 
@@ -87,8 +87,10 @@ router.get('/',
  * @access  Private - Admin/Manager/Self
  */
 router.get('/:id',
-  authMiddleware.authorizeOrSelf(['admin', 'manager']),
-  asyncHandler(employeeController.getEmployee)
+    authMiddleware.authorizeOrSelf(['admin', 'manager']),
+    asyncHandler((req, res, next) => {
+        return employeeController.getEmployee(req, res, next);
+    })
 );
 
 /**
@@ -96,12 +98,32 @@ router.get('/:id',
  * @desc    Update employee details
  * @access  Private - Admin/Manager
  */
-router.put('/:id',
-  authMiddleware.authorize(['admin', 'manager']),
-  validateSchema(employeeSchema),
-  asyncHandler(employeeController.updateEmployee)
-);
+// router.put('/:id',
+//   authMiddleware.authorize(['admin', 'manager']),
+//   validateSchema(employeeSchema),
+//   asyncHandler(employeeController.updateEmployee)
+// );
 
+// In your routes file (employee.routes.js)
+router.put('/:id',
+    authMiddleware.authorize(['admin', 'manager']),
+    (req, res, next) => {
+        // Use validateEmployeeUpdate instead of the schema validator
+        const validationResult = validateEmployeeUpdate(req.body);
+        if (!validationResult.success) {
+            return res.status(400).json({
+                status: 'error',
+                message: 'Validation error',
+                details: validationResult.errors
+            });
+        }
+        next();
+    },
+    asyncHandler((req, res, next) => {
+        // Use wrapper function to preserve 'this' context
+        return employeeController.updateEmployee(req, res, next);
+    })
+);
 /**
  * @route   DELETE /api/employees/:id
  * @desc    Delete employee

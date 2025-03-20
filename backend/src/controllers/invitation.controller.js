@@ -2,8 +2,7 @@ const InvitationService = require('../services/invitation.service');
 const NotificationService = require('../services/notification.service');
 const AuditService = require('../services/audit.service');
 const logger = require('../utils/logger');
-const { NotFoundError, ValidationError } = require('../utils/errors');
-
+const { NotFoundError, ValidationError, ForbiddenError } = require('../utils/errors');
 
 // Required models
 const Invitation = require('../models/invitation.model');
@@ -12,10 +11,6 @@ const Employee = require('../models/employee.model');
 
 // Required services
 const EmployeeService = require('../services/employee.service');
-
-
-
-
 
 class InvitationController {
   constructor() {
@@ -31,11 +26,21 @@ class InvitationController {
    */
   async inviteUser(req, res, next) {
     try {
-      const { userId, organizationId } = req.user; // From auth middleware
+      const { userId } = req.user;
+      // Use organization context from tenant middleware
+      const organizationId = req.organizationContext;
+
+      if (!organizationId) {
+        return res.status(400).json({
+          success: false,
+          message: 'Organization context is required for sending invitations'
+        });
+      }
+
       const { email, role, departmentId, additionalData } = req.body;
-      
-      logger.info(`Processing invitation request for ${email} with role ${role}`);
-      
+
+      logger.info(`Processing invitation request for ${email} with role ${role} in organization ${organizationId}`);
+
       const result = await this.invitationService.sendInvitation({
         email,
         role,
@@ -44,8 +49,8 @@ class InvitationController {
         departmentId,
         additionalData
       }, req);
-      
-      logger.info(`${role} invitation sent to ${email} by user ${userId}`);
+
+      logger.info(`${role} invitation sent to ${email} by user ${userId} for organization ${organizationId}`);
       res.status(201).json(result);
     } catch (error) {
       logger.error(`Invitation failed: ${error.message}`);
@@ -55,29 +60,7 @@ class InvitationController {
 
   /**
    * Complete registration from invitation
-   */
-  // async completeRegistration(req, res, next) {
-  //   try {
-  //     const { token, firstName, lastName, password, phone } = req.body;
-  //
-  //     logger.info(`Processing registration completion for token: ${token.substring(0, 10)}...`);
-  //
-  //     const result = await this.invitationService.completeRegistration(
-  //       token,
-  //       { firstName, lastName, password, phone }
-  //     );
-  //
-  //     logger.info(`Registration completed for token: ${token.substring(0, 10)}...`);
-  //     res.json(result);
-  //   } catch (error) {
-  //     logger.error(`Complete registration failed: ${error.message}`);
-  //     next(error);
-  //   }
-  // }
-
-
-  /**
-   * Complete registration from invitation
+   * This is a public endpoint that doesn't need tenant isolation
    */
   async completeRegistration(req, res, next) {
     try {
@@ -94,7 +77,6 @@ class InvitationController {
       logger.info(`Registration completed for token: ${token.substring(0, 10)}...`);
 
       // Step 2: Fetch the full organization details to ensure we have the uniqueId
-      const Organization = require('../models/organization.model');
       const organization = await Organization.findById(result.user.organization.id);
 
       if (organization) {
@@ -109,7 +91,6 @@ class InvitationController {
       // Step 3: Automatically create an employee record
       try {
         // Retrieve the invitation to get additional data
-        const Invitation = require('../models/invitation.model');
         const invitation = await Invitation.findOne({
           token,
           status: 'accepted'
@@ -129,10 +110,6 @@ class InvitationController {
 
         // Get employment details from invitation additionalData
         const employmentDetails = invitation.additionalData?.employmentDetails || {};
-
-        // Initialize the EmployeeService
-        const EmployeeService = require('../services/employee.service');
-        const employeeService = new EmployeeService();
 
         // Create a proper employee data object that matches the required schema
         const employeeData = {
@@ -160,7 +137,7 @@ class InvitationController {
 
         // Create the employee record - IMPORTANT: Don't include password here
         // We need to modify the addEmployee method to handle cases where the user already exists
-        const modifiedEmployeeService = Object.create(employeeService);
+        const modifiedEmployeeService = Object.create(this.employeeService);
         modifiedEmployeeService.addEmployee = async function(data) {
           // Skip user creation since the user already exists
           // Create employee record directly
@@ -208,23 +185,45 @@ class InvitationController {
     }
   }
 
-
   /**
    * Resend invitation
    */
   async resendInvitation(req, res, next) {
     try {
-      const { userId, organizationId } = req.user; // From auth middleware
+      const { userId } = req.user;
+      // Use organization context from tenant middleware
+      const organizationId = req.organizationContext;
+
+      if (!organizationId) {
+        return res.status(400).json({
+          success: false,
+          message: 'Organization context is required'
+        });
+      }
+
       const { invitationId } = req.params;
-      
-      logger.info(`Resending invitation ${invitationId} by user ${userId}`);
-      
+
+      logger.info(`Resending invitation ${invitationId} by user ${userId} for organization ${organizationId}`);
+
+      // First check if invitation belongs to this organization
+      const invitation = await Invitation.findOne({
+        _id: invitationId,
+        organizationId
+      });
+
+      if (!invitation && !(req.user.role === 'platform_admin' || req.user.role === 'platform_superadmin')) {
+        return res.status(404).json({
+          success: false,
+          message: 'Invitation not found in this organization'
+        });
+      }
+
       const result = await this.invitationService.resendInvitation(
-        invitationId,
-        userId,
-        req
+          invitationId,
+          userId,
+          req
       );
-      
+
       logger.info(`Invitation ${invitationId} resent by user ${userId}`);
       res.json(result);
     } catch (error) {
@@ -238,17 +237,40 @@ class InvitationController {
    */
   async cancelInvitation(req, res, next) {
     try {
-      const { userId, organizationId } = req.user; // From auth middleware
+      const { userId } = req.user;
+      // Use organization context from tenant middleware
+      const organizationId = req.organizationContext;
+
+      if (!organizationId) {
+        return res.status(400).json({
+          success: false,
+          message: 'Organization context is required'
+        });
+      }
+
       const { invitationId } = req.params;
-      
-      logger.info(`Canceling invitation ${invitationId} by user ${userId}`);
-      
+
+      // First check if invitation belongs to this organization
+      const invitation = await Invitation.findOne({
+        _id: invitationId,
+        organizationId
+      });
+
+      if (!invitation && !(req.user.role === 'platform_admin' || req.user.role === 'platform_superadmin')) {
+        return res.status(404).json({
+          success: false,
+          message: 'Invitation not found in this organization'
+        });
+      }
+
+      logger.info(`Canceling invitation ${invitationId} by user ${userId} for organization ${organizationId}`);
+
       const result = await this.invitationService.cancelInvitation(
-        invitationId,
-        userId,
-        req
+          invitationId,
+          userId,
+          req
       );
-      
+
       logger.info(`Invitation ${invitationId} canceled by user ${userId}`);
       res.json(result);
     } catch (error) {
@@ -262,16 +284,35 @@ class InvitationController {
    */
   async listInvitations(req, res, next) {
     try {
-      const { userId, organizationId } = req.user;
+      // Use organization context from tenant middleware
+      const organizationId = req.organizationContext;
+
+      if (!organizationId) {
+        // For platform admins, optionally allow listing across all organizations
+        if (req.user.role === 'platform_admin' || req.user.role === 'platform_superadmin') {
+          // Could implement cross-organization invitation listing here
+          // For now, require an organization context
+          return res.status(400).json({
+            success: false,
+            message: 'Organization context is required'
+          });
+        } else {
+          return res.status(400).json({
+            success: false,
+            message: 'Organization context is required'
+          });
+        }
+      }
+
       const { role, status } = req.query;
-      
+
       logger.info(`Listing invitations for organization ${organizationId}, filters: ${JSON.stringify({ role, status })}`);
-      
+
       const result = await this.invitationService.listInvitations(
-        organizationId,
-        { role, status }
+          organizationId,
+          { role, status }
       );
-      
+
       res.json(result);
     } catch (error) {
       logger.error(`List invitations failed: ${error.message}`);
@@ -279,5 +320,7 @@ class InvitationController {
     }
   }
 }
+
+// module.exports = new InvitationController();
 
 module.exports = InvitationController;
