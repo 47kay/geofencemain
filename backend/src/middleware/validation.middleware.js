@@ -1,17 +1,12 @@
+
+//home/temitope/Desktop/work/geofencemain/backend/src/middleware/validation.middleware.js
+
 const Joi = require('joi');
 const { ValidationError } = require('../utils/errors');
 const logger = require('../utils/logger');
 // const { validateGeofence } = require('../utils/validation');
 
-/**
- * Common validation patterns and messages
- */
-// const patterns = {
-//   password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-//   phone: /^\+?[\d\s-]{10,}$/,
-//   employeeId: /^EMP\d{6}$/,
-//   coordinates: /^-?\d+\.?\d*$/
-// };
+
 const patterns = {
   password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
   phone: /^\+?[\d\s-]{10,}$/,
@@ -369,12 +364,35 @@ const completeRegistrationSchema = Joi.object({
   phone: Joi.string().optional()
 });
 
+// Schema for assigning admin to branch
+const assignBranchAdminSchema = Joi.object({
+  userId: Joi.string().regex(/^[0-9a-fA-F]{24}$/).description('ID of existing user to assign'),
+  email: Joi.string().email().description('Email of user to assign or create'),
+  firstName: Joi.string().when('email', {
+    is: Joi.exist(),
+    then: Joi.when('userId', {
+      not: Joi.exist(),
+      then: Joi.required()
+    })
+  }),
+  lastName: Joi.string().when('email', {
+    is: Joi.exist(),
+    then: Joi.when('userId', {
+      not: Joi.exist(),
+      then: Joi.required()
+    })
+  })
+})
+    .or('userId', 'email'); // Ensure that either userId or email is provided
+
 
 
 /**
  * Pre-configured validation middleware
  */
 const validate = {
+
+  assignBranchAdmin: validateRequest(assignBranchAdminSchema),
 
   verify2FA: validateRequest(verify2FASchema),
   disable2FA: validateRequest(disable2FASchema),
@@ -418,12 +436,14 @@ module.exports = {
   sanitizeRequest,
   patterns,
   messages,
+
   schemas: {
     // Auth schemas
     registration: registrationSchema,
     login: loginSchema,
     passwordReset: passwordResetSchema,
     forgotPassword: forgotPasswordSchema,
+    assignBranchAdmin: assignBranchAdminSchema,
 
     // Feature schemas
     geofence: geofenceSchema,

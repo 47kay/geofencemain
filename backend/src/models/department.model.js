@@ -30,6 +30,11 @@ const departmentSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User',
     required: true
+  },
+  branch: {
+    type: Schema.Types.ObjectId,
+    ref: 'Organization.branches',
+    default: null
   }
 }, { 
   timestamps: true 

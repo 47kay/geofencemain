@@ -8,7 +8,13 @@ const rateLimit = require('express-rate-limit');
 const xss = require('xss-clean');
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpecs = require('./docs/swagger');
+const path = require('path');
+
+// Import middleware
 const { enforceTenantIsolation } = require('./middleware/tenant.middleware');
+const { errorHandler, notFoundHandler } = require('./middleware/error.middleware');
+const logger = require('./utils/logger');
+const { authorize, authenticate } = require('./middleware/auth.middleware');
 
 // Import routes
 const authRoutes = require('./routes/v1/auth.routes');
@@ -17,15 +23,17 @@ const geofenceRoutes = require('./routes/v1/geofence.routes');
 const employeeRoutes = require('./routes/v1/employee.routes');
 const subscriptionRoutes = require('./routes/v1/subscription.routes');
 const departmentRoutes = require('./routes/v1/department.routes');
-
-const platformRoutes = require('./routes/systemAdmin/v1/platform.routes');
-const adminRoutes = require('./routes/systemAdmin/v1/admin.routes');
+const platformRoutes = require('./routes/v1/platform.routes');
+const adminRoutes = require('./routes/v1/admin.routes');
 const adminController = require('./controllers/admin.controller');
+const branchRoutes = require('./routes/v1/branch.routes');
+// In app.js (or wherever you register routes)
 
-// Import middleware
-const { errorHandler, notFoundHandler } = require('./middleware/error.middleware');
-const logger = require('./utils/logger');
-const { authorize, authenticate } = require("./middleware/auth.middleware");
+
+
+
+
+// And then add this with the other route registrations
 
 // Initialize Express app
 const app = express();
@@ -35,13 +43,6 @@ app.use(helmet());
 app.use(cors());
 app.use(xss());
 app.use(mongoSanitize());
-
-// Swagger UI route
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs, {
-  explorer: true,
-  customCss: '.swagger-ui .topbar { display: none }',
-  customSiteTitle: "Geofencing API Documentation"
-}));
 
 // Rate limiting
 const limiter = rateLimit({
@@ -62,6 +63,17 @@ app.use(compression());
 app.use(morgan('combined', { stream: logger.stream }));
 app.use(logger.requestMiddleware);
 
+// Set up branch routes - try different paths
+// Set up branch routes - try different paths
+
+
+// Swagger UI route
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs, {
+  explorer: true,
+  customCss: '.swagger-ui .topbar { display: none }',
+  customSiteTitle: "Geofencing API Documentation"
+}));
+
 // Public routes - no authentication required
 app.use('/api/auth', authRoutes);
 
@@ -74,21 +86,27 @@ app.use('/api/organizations', authenticate, enforceTenantIsolation, organization
 app.use('/api/geofences', authenticate, enforceTenantIsolation, geofenceRoutes);
 app.use('/api/employees', authenticate, enforceTenantIsolation, employeeRoutes);
 app.use('/api/departments', authenticate, enforceTenantIsolation, departmentRoutes);
-
-// Subscriptions might need tenant isolation depending on your model
+// app.use('/api/branches', authenticate, enforceTenantIsolation, branchRoutes);
 app.use('/api/subscriptions', authenticate, enforceTenantIsolation, subscriptionRoutes);
+app.use('/api/branches', authenticate, enforceTenantIsolation, branchRoutes);
+
 
 // Try to load invitation routes
 try {
   const invitationRoutes = require('./routes/v1/invitation.routes');
   app.use('/api/auth/invitations', authenticate, enforceTenantIsolation, invitationRoutes);
-  console.log('Invitation routes registered successfully');
+  logger.info('Invitation routes registered successfully');
 } catch (error) {
-  console.error('Failed to register invitation routes:', error);
-  // Continue without crashing
+  logger.error('Failed to register invitation routes:', error.message);
 }
 
-// Special admin endpoint - authentication and platform admin authorization only
+// Set up branch routes - try different paths with better error logging
+
+
+    // Add the /create endpoint to the fallback router
+
+
+// Special admin endpoint
 app.get(
     '/api/admin/organizations',
     authenticate,

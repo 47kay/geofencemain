@@ -1,7 +1,10 @@
 // controllers/admin.controller.js
 const Organization = require('../models/organization.model');
 const User = require('../models/user.model');
+
+const Branch = require('../models/branch.model');
 const logger = require('../utils/logger');
+const adminService = require('../services/admin.service');
 
 class AdminController {
     /**
@@ -209,6 +212,66 @@ class AdminController {
             });
         } catch (error) {
             logger.error(`Platform admin registration completion failed: ${error.message}`);
+            next(error);
+        }
+    }
+
+
+    /**
+     * Get options for branch admin assignment
+     * Returns available admins and branches in the organization
+     */
+    async getBranchAdminOptions(req, res, next) {
+        try {
+            const organizationId = req.organizationContext;
+
+            logger.info(`Request received to get branch admin options for organization: ${organizationId}`);
+
+            // Execute queries in parallel for better performance
+            const [users, branches] = await Promise.all([
+                // Get users who can be admins
+                User.find({
+                    organization: organizationId,
+                    role: { $in: ['admin', 'user', 'manager'] }
+                })
+                    .select('_id firstName lastName email role')
+                    .sort({ firstName: 1, lastName: 1 })
+                    .lean(),
+
+                // Get all branches
+                Branch.find({ organization: organizationId })
+                    .select('_id name status branchAdmin uniqueCode')
+                    .populate('branchAdmin', 'firstName lastName email')
+                    .sort({ name: 1 })
+                    .lean()
+            ]);
+
+            // Categorize users
+            const existingAdmins = users.filter(user => user.role === 'admin');
+            const potentialAdmins = users.filter(user => user.role !== 'admin');
+
+            // Categorize branches
+            const branchesWithAdmin = branches.filter(branch => branch.branchAdmin);
+            const branchesWithoutAdmin = branches.filter(branch => !branch.branchAdmin);
+
+            logger.info(`Retrieved ${users.length} users and ${branches.length} branches for admin options`);
+
+            res.json({
+                success: true,
+                data: {
+                    admins: {
+                        existingAdmins,
+                        potentialAdmins,
+                    },
+                    branches: {
+                        all: branches,
+                        withAdmin: branchesWithAdmin,
+                        withoutAdmin: branchesWithoutAdmin
+                    }
+                }
+            });
+        } catch (error) {
+            logger.error(`Failed to get branch admin options: ${error.message}`);
             next(error);
         }
     }

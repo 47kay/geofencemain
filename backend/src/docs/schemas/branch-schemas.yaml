@@ -1,0 +1,436 @@
+components:
+  schemas:
+    Address:
+      type: object
+      properties:
+        street:
+          type: string
+          example: "123 Main Street"
+        city:
+          type: string
+          example: "San Francisco"
+        state:
+          type: string
+          example: "CA"
+        country:
+          type: string
+          example: "USA"
+        postalCode:
+          type: string
+          example: "94105"
+      required:
+        - street
+        - city
+        - state
+        - country
+        - postalCode
+
+    Contact:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          example: "branch@example.com"
+        phone:
+          type: string
+          example: "+1 555-123-4567"
+
+    BranchInput:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "Downtown Branch"
+        address:
+          $ref: '#/components/schemas/Address'
+        contact:
+          $ref: '#/components/schemas/Contact'
+        branchAdminId:
+          type: string
+          format: objectId
+          example: "5f8a6d0d7e87a12345678901"
+        branchAdminEmail:
+          type: string
+          format: email
+          example: "admin@example.com"
+        branchAdminFirstName:
+          type: string
+          example: "John"
+        branchAdminLastName:
+          type: string
+          example: "Doe"
+        status:
+          type: string
+          enum: [active, inactive]
+          default: active
+      required:
+        - name
+        - address
+
+    BranchUpdateInput:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "Downtown Branch Updated"
+        address:
+          $ref: '#/components/schemas/Address'
+        contact:
+          $ref: '#/components/schemas/Contact'
+        branchAdminId:
+          type: string
+          format: objectId
+          example: "5f8a6d0d7e87a12345678901"
+        branchAdminEmail:
+          type: string
+          format: email
+          example: "admin@example.com"
+        branchAdminFirstName:
+          type: string
+          example: "John"
+        branchAdminLastName:
+          type: string
+          example: "Doe"
+        status:
+          type: string
+          enum: [active, inactive]
+
+    Branch:
+      type: object
+      properties:
+        _id:
+          type: string
+          format: objectId
+          example: "5f8a6d0d7e87a12345678901"
+        name:
+          type: string
+          example: "Downtown Branch"
+        organization:
+          type: string
+          format: objectId
+          example: "5f8a6d0d7e87a12345678902"
+        uniqueCode:
+          type: string
+          example: "BRDT123"
+        address:
+          $ref: '#/components/schemas/Address'
+        contact:
+          $ref: '#/components/schemas/Contact'
+        branchAdmin:
+          type: object
+          properties:
+            _id:
+              type: string
+              format: objectId
+              example: "5f8a6d0d7e87a12345678903"
+            firstName:
+              type: string
+              example: "John"
+            lastName:
+              type: string
+              example: "Doe"
+            email:
+              type: string
+              format: email
+              example: "admin@example.com"
+        status:
+          type: string
+          enum: [active, inactive]
+          example: "active"
+        metadata:
+          type: object
+          properties:
+            employeeCount:
+              type: integer
+              example: 15
+            departmentCount:
+              type: integer
+              example: 3
+            geofenceCount:
+              type: integer
+              example: 2
+            createdBy:
+              type: object
+              properties:
+                _id:
+                  type: string
+                  format: objectId
+                  example: "5f8a6d0d7e87a12345678904"
+                firstName:
+                  type: string
+                  example: "Admin"
+                lastName:
+                  type: string
+                  example: "User"
+            lastModifiedBy:
+              type: object
+              properties:
+                _id:
+                  type: string
+                  format: objectId
+                  example: "5f8a6d0d7e87a12345678904"
+                firstName:
+                  type: string
+                  example: "Admin"
+                lastName:
+                  type: string
+                  example: "User"
+        createdAt:
+          type: string
+          format: date-time
+          example: "2023-01-01T00:00:00.000Z"
+        updatedAt:
+          type: string
+          format: date-time
+          example: "2023-02-01T00:00:00.000Z"
+
+    AssignEmployeeInput:
+      type: object
+      properties:
+        employeeId:
+          type: string
+          format: objectId
+          example: "5f8a6d0d7e87a12345678905"
+      required:
+        - employeeId
+
+    Employee:
+      type: object
+      properties:
+        _id:
+          type: string
+          format: objectId
+          example: "5f8a6d0d7e87a12345678905"
+        user:
+          type: object
+          properties:
+            _id:
+              type: string
+              format: objectId
+              example: "5f8a6d0d7e87a12345678906"
+            firstName:
+              type: string
+              example: "Jane"
+            lastName:
+              type: string
+              example: "Smith"
+            email:
+              type: string
+              format: email
+              example: "jane.smith@example.com"
+        employeeId:
+          type: string
+          example: "EMP001"
+        branch:
+          type: string
+          format: objectId
+          example: "5f8a6d0d7e87a12345678901"
+        organization:
+          type: string
+          format: objectId
+          example: "5f8a6d0d7e87a12345678902"
+        employmentDetails:
+          type: object
+          properties:
+            department:
+              type: string
+              example: "Engineering"
+            position:
+              type: string
+              example: "Software Developer"
+        status:
+          type: string
+          enum: [active, inactive, on_leave, terminated]
+          example: "active"
+
+    Department:
+      type: object
+      properties:
+        _id:
+          type: string
+          format: objectId
+          example: "5f8a6d0d7e87a12345678907"
+        name:
+          type: string
+          example: "Engineering"
+        description:
+          type: string
+          example: "Software development department"
+        branch:
+          type: string
+          format: objectId
+          example: "5f8a6d0d7e87a12345678901"
+        organization:
+          type: string
+          format: objectId
+          example: "5f8a6d0d7e87a12345678902"
+        parentDepartment:
+          type: string
+          format: objectId
+          example: "5f8a6d0d7e87a12345678908"
+        manager:
+          type: string
+          format: objectId
+          example: "5f8a6d0d7e87a12345678909"
+
+    Geofence:
+      type: object
+      properties:
+        _id:
+          type: string
+          format: objectId
+          example: "5f8a6d0d7e87a12345678910"
+        name:
+          type: string
+          example: "Office Building"
+        branch:
+          type: string
+          format: objectId
+          example: "5f8a6d0d7e87a12345678901"
+        organization:
+          type: string
+          format: objectId
+          example: "5f8a6d0d7e87a12345678902"
+        location:
+          type: object
+          properties:
+            type:
+              type: string
+              enum: [Point]
+              example: "Point"
+            coordinates:
+              type: array
+              items:
+                type: number
+              example: [-122.4194, 37.7749]
+            address:
+              $ref: '#/components/schemas/Address'
+        radius:
+          type: number
+          example: 100
+        type:
+          type: string
+          enum: [office, site, warehouse, custom]
+          example: "office"
+        status:
+          type: string
+          enum: [active, inactive]
+          example: "active"
+
+    Pagination:
+      type: object
+      properties:
+        total:
+          type: integer
+          example: 50
+        page:
+          type: integer
+          example: 1
+        limit:
+          type: integer
+          example: 10
+        pages:
+          type: integer
+          example: 5
+
+  responses:
+    BadRequest:
+      description: Invalid request parameters
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                example: "error"
+              code:
+                type: string
+                example: "VALIDATION_ERROR"
+              message:
+                type: string
+                example: "Validation failed"
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    field:
+                      type: string
+                    message:
+                      type: string
+
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                example: "error"
+              code:
+                type: string
+                example: "UNAUTHORIZED"
+              message:
+                type: string
+                example: "Authentication required"
+
+    Forbidden:
+      description: Insufficient permissions
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                example: "error"
+              code:
+                type: string
+                example: "FORBIDDEN"
+              message:
+                type: string
+                example: "Insufficient permissions to perform this action"
+
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                example: "error"
+              code:
+                type: string
+                example: "NOT_FOUND"
+              message:
+                type: string
+                example: "Resource not found"
+
+    Conflict:
+      description: Resource conflict
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                example: "error"
+              code:
+                type: string
+                example: "CONFLICT"
+              message:
+                type: string
+                example: "Resource already exists or cannot be modified due to conflict"
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

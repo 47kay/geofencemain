@@ -1,7 +1,7 @@
-// routes/admin.routes.js
+// routes/v1/admin.routes.js
 const express = require('express');
-const adminController = require('../../../controllers/admin.controller');
-const { authenticate, authorize } = require('../../../middleware/auth.middleware');
+const adminController = require('../../controllers/admin.controller');
+const { authenticate, authorize } = require('../../middleware/auth.middleware');
 
 const router = express.Router();
 
@@ -25,6 +25,15 @@ router.post(
 router.post(
     '/platform-admins/complete-registration',
     adminController.completePlatformAdminRegistration
+);
+
+
+// Branch administration
+router.get(
+    '/branch-admin-options',
+    authenticate,
+    authorize(['superadmin', 'platform_admin']),
+    adminController.getBranchAdminOptions
 );
 
 module.exports = router;

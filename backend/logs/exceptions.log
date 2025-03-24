@@ -636,3 +636,631 @@ ReferenceError: geofenceSchema is not defined
     at Module.require (node:internal/modules/cjs/loader:1304:12)
     at require (node:internal/modules/helpers:123:16)
     at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/controllers/auth.controller.js:3:34)
+2025-03-20 11:56:39 error: uncaughtException: validate is not a function
+TypeError: validate is not a function
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/branch.routes.js:29:5)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:20:22)
+2025-03-20 11:57:14 error: uncaughtException: validate is not a function
+TypeError: validate is not a function
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/branch.routes.js:29:5)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:20:22)
+2025-03-20 13:18:01 error: uncaughtException: validate is not a function
+TypeError: validate is not a function
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/branch.routes.js:29:5)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:20:22)
+2025-03-20 21:37:32 error: uncaughtException: branchRoutes is not defined
+ReferenceError: branchRoutes is not defined
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:81:64)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/server.js:2:13)
+2025-03-20 21:38:02 error: uncaughtException: branchRoutes is not defined
+ReferenceError: branchRoutes is not defined
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:81:64)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/server.js:2:13)
+2025-03-20 21:40:27 error: uncaughtException: validate is not a function
+TypeError: validate is not a function
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/branch.routes.js:32:5)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:29:22)
+2025-03-20 21:42:02 error: uncaughtException: validate is not a function
+TypeError: validate is not a function
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/branch.routes.js:32:5)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:29:22)
+2025-03-20 21:48:53 error: uncaughtException: validate is not a function
+TypeError: validate is not a function
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/branch.routes.js:32:5)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:30:22)
+2025-03-20 21:49:54 error: uncaughtException: validate is not a function
+TypeError: validate is not a function
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/branch.routes.js:32:5)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:30:22)
+2025-03-21 11:36:14 error: uncaughtException: Cannot read properties of undefined (reading 'bind')
+TypeError: Cannot read properties of undefined (reading 'bind')
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/branch.routes.js:61:53)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:30:22)
+2025-03-21 11:45:11 error: uncaughtException: validate is not defined
+ReferenceError: validate is not defined
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/branch.routes.js:60:5)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:30:22)
+2025-03-21 11:46:29 error: uncaughtException: Schema is not defined
+ReferenceError: Schema is not defined
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/middleware/validation.middleware.js:373:33)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/auth.routes.js:4:39)
+2025-03-21 11:47:00 error: uncaughtException: Schema is not defined
+ReferenceError: Schema is not defined
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/middleware/validation.middleware.js:373:33)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/auth.routes.js:4:39)
+2025-03-21 11:47:21 error: uncaughtException: Schema is not defined
+ReferenceError: Schema is not defined
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/middleware/validation.middleware.js:373:33)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/auth.routes.js:4:39)
+2025-03-21 11:47:29 error: uncaughtException: Schema is not defined
+ReferenceError: Schema is not defined
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/middleware/validation.middleware.js:373:33)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/auth.routes.js:4:39)
+2025-03-21 11:48:27 error: uncaughtException: Schema is not defined
+ReferenceError: Schema is not defined
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/middleware/validation.middleware.js:373:33)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/auth.routes.js:4:39)
+2025-03-21 11:48:46 error: uncaughtException: Schema is not defined
+ReferenceError: Schema is not defined
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/middleware/validation.middleware.js:373:33)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/auth.routes.js:4:39)
+2025-03-21 11:49:19 error: uncaughtException: validate is not defined
+ReferenceError: validate is not defined
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/branch.routes.js:60:5)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:30:22)
+2025-03-21 11:50:32 error: uncaughtException: validate is not defined
+ReferenceError: validate is not defined
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/branch.routes.js:60:5)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:30:22)
+2025-03-21 11:51:02 error: uncaughtException: validate is not defined
+ReferenceError: validate is not defined
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/branch.routes.js:61:5)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:30:22)
+2025-03-21 12:09:25 error: uncaughtException: Cannot find module '../../middleware/validation'
+Require stack:
+- /home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/branch.routes.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/app.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/server.js
+Error: Cannot find module '../../middleware/validation'
+Require stack:
+- /home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/branch.routes.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/app.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1219:15)
+    at Module._load (node:internal/modules/cjs/loader:1045:27)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/branch.routes.js:6:22)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+2025-03-21 12:53:35 error: uncaughtException: branchRoutes is not defined
+ReferenceError: branchRoutes is not defined
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:90:64)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/server.js:2:13)
+2025-03-21 12:54:25 error: uncaughtException: branchRoutes is not defined
+ReferenceError: branchRoutes is not defined
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:90:64)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/server.js:2:13)
+2025-03-21 12:55:58 error: uncaughtException: branchRoutes is not defined
+ReferenceError: branchRoutes is not defined
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:90:64)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/server.js:2:13)
+2025-03-21 12:57:43 error: uncaughtException: branchRoutes is not defined
+ReferenceError: branchRoutes is not defined
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:90:64)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/server.js:2:13)
+2025-03-21 12:58:29 error: uncaughtException: Cannot find module './routes/systemAdmin/v1/admin.routes'
+Require stack:
+- /home/temitope/Desktop/work/geofencemain/backend/src/app.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/server.js
+Error: Cannot find module './routes/systemAdmin/v1/admin.routes'
+Require stack:
+- /home/temitope/Desktop/work/geofencemain/backend/src/app.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1219:15)
+    at Module._load (node:internal/modules/cjs/loader:1045:27)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:27:21)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+2025-03-21 12:58:44 error: uncaughtException: branchRoutes is not defined
+ReferenceError: branchRoutes is not defined
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:90:64)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/server.js:2:13)
+2025-03-21 13:02:15 error: uncaughtException: Cannot find module './routes/systemAdmin/v1/platform.routes'
+Require stack:
+- /home/temitope/Desktop/work/geofencemain/backend/src/app.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/server.js
+Error: Cannot find module './routes/systemAdmin/v1/platform.routes'
+Require stack:
+- /home/temitope/Desktop/work/geofencemain/backend/src/app.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1219:15)
+    at Module._load (node:internal/modules/cjs/loader:1045:27)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:26:24)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+2025-03-21 13:02:32 error: uncaughtException: Cannot find module './routes/systemAdmin/v1/platform.routes'
+Require stack:
+- /home/temitope/Desktop/work/geofencemain/backend/src/app.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/server.js
+Error: Cannot find module './routes/systemAdmin/v1/platform.routes'
+Require stack:
+- /home/temitope/Desktop/work/geofencemain/backend/src/app.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1219:15)
+    at Module._load (node:internal/modules/cjs/loader:1045:27)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:26:24)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+2025-03-21 13:03:10 error: uncaughtException: Cannot find module './routes/systemAdmin/v1/platform.routes'
+Require stack:
+- /home/temitope/Desktop/work/geofencemain/backend/src/app.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/server.js
+Error: Cannot find module './routes/systemAdmin/v1/platform.routes'
+Require stack:
+- /home/temitope/Desktop/work/geofencemain/backend/src/app.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1219:15)
+    at Module._load (node:internal/modules/cjs/loader:1045:27)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:26:24)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+2025-03-21 13:03:37 error: uncaughtException: Cannot find module './routes/systemAdmin/v1/platform.routes'
+Require stack:
+- /home/temitope/Desktop/work/geofencemain/backend/src/app.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/server.js
+Error: Cannot find module './routes/systemAdmin/v1/platform.routes'
+Require stack:
+- /home/temitope/Desktop/work/geofencemain/backend/src/app.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1219:15)
+    at Module._load (node:internal/modules/cjs/loader:1045:27)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:26:24)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+2025-03-21 13:06:17 error: uncaughtException: Cannot find module './routes/systemAdmin/v1/platform.routes'
+Require stack:
+- /home/temitope/Desktop/work/geofencemain/backend/src/app.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/server.js
+Error: Cannot find module './routes/systemAdmin/v1/platform.routes'
+Require stack:
+- /home/temitope/Desktop/work/geofencemain/backend/src/app.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1219:15)
+    at Module._load (node:internal/modules/cjs/loader:1045:27)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:26:24)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+2025-03-21 13:07:15 error: uncaughtException: branchRoutes is not defined
+ReferenceError: branchRoutes is not defined
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:90:64)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/server.js:2:13)
+2025-03-21 13:11:27 error: uncaughtException: branchRoutes is not defined
+ReferenceError: branchRoutes is not defined
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:90:64)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/server.js:2:13)
+2025-03-21 13:13:10 error: uncaughtException: branchRoutes is not defined
+ReferenceError: branchRoutes is not defined
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:90:64)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/server.js:2:13)
+2025-03-21 13:18:07 error: uncaughtException: branchRoutes is not defined
+ReferenceError: branchRoutes is not defined
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:90:64)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/server.js:2:13)
+2025-03-21 13:18:55 error: uncaughtException: branchRoutes is not defined
+ReferenceError: branchRoutes is not defined
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:90:64)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/server.js:2:13)
+2025-03-21 13:20:17 error: uncaughtException: branchRoutes is not defined
+ReferenceError: branchRoutes is not defined
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:90:64)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/server.js:2:13)
+2025-03-21 13:20:58 error: uncaughtException: branchRoutes is not defined
+ReferenceError: branchRoutes is not defined
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:90:64)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/server.js:2:13)
+2025-03-21 13:22:47 error: uncaughtException: branchRoutes is not defined
+ReferenceError: branchRoutes is not defined
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:90:64)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/server.js:2:13)
+2025-03-21 13:28:44 error: uncaughtException: Cannot find module '../../middleware/validation'
+Require stack:
+- /home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/branch.routes.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/app.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/server.js
+Error: Cannot find module '../../middleware/validation'
+Require stack:
+- /home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/branch.routes.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/app.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1219:15)
+    at Module._load (node:internal/modules/cjs/loader:1045:27)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/branch.routes.js:9:29)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+2025-03-21 13:38:40 error: uncaughtException: Cannot find module '../../middleware/validation'
+Require stack:
+- /home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/branch.routes.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/app.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/server.js
+Error: Cannot find module '../../middleware/validation'
+Require stack:
+- /home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/branch.routes.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/app.js
+- /home/temitope/Desktop/work/geofencemain/backend/src/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1219:15)
+    at Module._load (node:internal/modules/cjs/loader:1045:27)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/branch.routes.js:6:22)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+2025-03-21 13:39:44 error: uncaughtException: Route.post() requires a callback function but got a [object Undefined]
+Error: Route.post() requires a callback function but got a [object Undefined]
+    at Route.<computed> [as post] (/home/temitope/Desktop/work/geofencemain/backend/node_modules/express/lib/router/route.js:216:15)
+    at proto.<computed> [as post] (/home/temitope/Desktop/work/geofencemain/backend/node_modules/express/lib/router/index.js:521:19)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/branch.routes.js:67:8)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+2025-03-21 13:46:10 error: uncaughtException: Cannot read properties of undefined (reading 'bind')
+TypeError: Cannot read properties of undefined (reading 'bind')
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/branch.routes.js:37:57)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:29:22)
+2025-03-23 15:36:43 error: uncaughtException: Cannot read properties of undefined (reading 'bind')
+TypeError: Cannot read properties of undefined (reading 'bind')
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/branch.routes.js:78:58)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:29:22)
+2025-03-23 16:20:01 error: uncaughtException: Cannot read properties of undefined (reading 'bind')
+TypeError: Cannot read properties of undefined (reading 'bind')
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/branch.routes.js:83:56)
+    at Module._compile (node:internal/modules/cjs/loader:1467:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/app.js:29:22)
+2025-03-23 16:20:50 error: uncaughtException: Unexpected identifier 'Department'
+/home/temitope/Desktop/work/geofencemain/backend/src/controllers/branch.controller.js:426
+    const Department = require('../models/department.model');
+          ^^^^^^^^^^
+
+SyntaxError: Unexpected identifier 'Department'
+    at wrapSafe (node:internal/modules/cjs/loader:1383:18)
+    at Module._compile (node:internal/modules/cjs/loader:1412:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)
+    at Module.load (node:internal/modules/cjs/loader:1282:32)
+    at Module._load (node:internal/modules/cjs/loader:1098:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)
+    at Module.require (node:internal/modules/cjs/loader:1304:12)
+    at require (node:internal/modules/helpers:123:16)
+    at Object.<anonymous> (/home/temitope/Desktop/work/geofencemain/backend/src/routes/v1/branch.routes.js:3:26)

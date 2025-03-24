@@ -43,6 +43,11 @@ const geofenceSchema = new Schema({
     enum: ['office', 'site', 'warehouse', 'custom'],
     default: 'custom'
   },
+  branch: {
+    type: Schema.Types.ObjectId,
+    ref: 'Branch',
+    default: null
+  },
   schedule: {
     enabled: {
       type: Boolean,

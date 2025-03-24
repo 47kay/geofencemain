@@ -88,6 +88,11 @@ const employeeSchema = new Schema({
         type: [String],
         enum: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
       }
+    },
+    branch: {
+      type: Schema.Types.ObjectId,
+      ref: 'Organization.branches',
+      default: null
     }
   },
 

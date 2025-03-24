@@ -637,3 +637,124 @@
 2025-03-20 05:05:15 error: Failed to get geofences: Cannot read properties of undefined (reading 'geofenceService')
 2025-03-20 05:05:15 error: Error handling middleware:
 2025-03-20 05:11:11 error: Error handling middleware:
+2025-03-20 11:05:40 error: Error handling middleware:
+2025-03-20 11:05:40 error: Error handling middleware:
+2025-03-20 11:05:40 error: Error handling middleware:
+2025-03-20 11:05:50 error: Error handling middleware:
+2025-03-20 11:05:50 error: Error handling middleware:
+2025-03-20 11:07:30 error: Authentication error: No authorization token provided
+2025-03-20 11:07:30 error: Error handling middleware:
+2025-03-20 13:42:28 error: Error handling middleware:
+2025-03-20 18:44:24 error: Error handling middleware:
+2025-03-20 18:48:22 error: Error handling middleware:
+2025-03-20 18:48:25 error: Error handling middleware:
+2025-03-20 18:48:49 error: Error handling middleware:
+2025-03-20 18:50:01 error: Error handling middleware:
+2025-03-20 18:50:11 error: Error handling middleware:
+2025-03-20 19:01:29 error: Authentication error: No authorization token provided
+2025-03-20 19:01:29 error: Error handling middleware:
+2025-03-20 19:04:39 error: Error handling middleware:
+2025-03-20 19:06:16 error: Error handling middleware:
+2025-03-20 19:13:09 error: Error handling middleware:
+2025-03-20 19:22:19 error: Authentication error: No authorization token provided
+2025-03-20 19:22:19 error: Error handling middleware:
+2025-03-20 19:23:12 error: Failed to load branch routes:
+2025-03-20 19:24:11 error: Failed to load branch routes:
+2025-03-20 19:24:53 error: Failed to load branch routes:
+2025-03-20 19:26:05 error: Authentication error: No authorization token provided
+2025-03-20 19:26:05 error: Error handling middleware:
+2025-03-20 21:07:39 error: Failed to load branch routes:
+2025-03-20 21:07:55 error: Authentication error: No authorization token provided
+2025-03-20 21:07:55 error: Error handling middleware:
+2025-03-20 21:10:13 error: Authentication error: No authorization token provided
+2025-03-20 21:10:13 error: Error handling middleware:
+2025-03-20 21:14:27 error: Failed to load branch routes:
+2025-03-20 21:14:33 error: Authentication error: No authorization token provided
+2025-03-20 21:14:33 error: Error handling middleware:
+2025-03-20 21:16:21 error: Error handling middleware:
+2025-03-20 21:20:20 error: Failed to load branch routes:
+2025-03-20 21:20:28 error: Error handling middleware:
+2025-03-20 21:24:55 error: Failed to load branch routes:
+2025-03-20 21:25:23 error: Authentication error: No authorization token provided
+2025-03-20 21:25:23 error: Error handling middleware:
+2025-03-20 21:26:12 error: Error handling middleware:
+2025-03-20 21:31:04 error: Failed to load branch routes:
+2025-03-20 21:31:23 error: Error handling middleware:
+2025-03-20 21:35:49 error: Failed to load branch routes:
+2025-03-20 21:35:54 error: Error handling middleware:
+2025-03-20 21:37:47 error: Failed to load branch routes:
+2025-03-20 21:42:28 error: Error handling middleware:
+2025-03-20 21:50:15 error: Could not load branch routes from primary location:
+2025-03-20 21:50:15 error: Could not load branch routes from fallback location:
+2025-03-20 21:50:30 error: Error handling middleware:
+2025-03-20 21:52:21 error: Could not load branch routes from primary location:
+2025-03-20 21:52:21 error: Could not load branch routes from fallback location:
+2025-03-20 21:52:26 error: Error handling middleware:
+2025-03-20 21:56:03 error: Could not load branch routes from primary location:
+2025-03-20 21:56:03 error: Could not load branch routes from fallback location:
+2025-03-20 21:56:08 error: Error handling middleware:
+2025-03-20 21:56:22 error: Could not load branch routes from primary location:
+2025-03-20 21:56:22 error: Could not load branch routes from fallback location:
+2025-03-20 21:57:05 error: Could not load branch routes from primary location:
+2025-03-20 21:57:05 error: Could not load branch routes from fallback location:
+2025-03-20 21:57:23 error: Error handling middleware:
+2025-03-20 21:59:08 error: Could not load branch routes from primary location:
+2025-03-20 21:59:08 error: Could not load branch routes from fallback location:
+2025-03-20 22:00:20 error: Error handling middleware:
+2025-03-20 22:09:19 error: Error handling middleware:
+2025-03-20 22:09:47 error: Error handling middleware:
+2025-03-21 07:52:51 error: Error handling middleware:
+2025-03-21 07:58:52 error: Authentication error: No authorization token provided
+2025-03-21 07:58:52 error: Error handling middleware:
+2025-03-21 07:59:03 error: Authentication error: No authorization token provided
+2025-03-21 07:59:03 error: Error handling middleware:
+2025-03-21 07:59:52 error: Failed to get branches: Cannot read properties of undefined (reading 'branchService')
+2025-03-21 07:59:52 error: Error handling middleware:
+2025-03-21 08:00:00 error: Failed to create branch: Cannot read properties of undefined (reading 'branchService')
+2025-03-21 08:00:00 error: Error handling middleware:
+2025-03-21 08:04:47 error: Failed to create branch: Cannot read properties of undefined (reading 'branchService')
+2025-03-21 08:04:47 error: Error handling middleware:
+2025-03-21 08:06:56 error: Failed to create branch: Branch admin not found or not part of this organization
+2025-03-21 08:06:56 error: Error handling middleware:
+2025-03-21 08:18:04 error: Failed to get branch: Cast to ObjectId failed for value "BUBU511" (type string) at path "_id" for model "Branch"
+2025-03-21 08:18:04 error: Error handling middleware:
+2025-03-21 08:18:23 error: Failed to get branch: Branch not found
+2025-03-21 08:18:23 error: Error handling middleware:
+2025-03-21 08:19:01 error: Failed to get branch: Cast to ObjectId failed for value "BUBU511" (type string) at path "_id" for model "Branch"
+2025-03-21 08:19:01 error: Error handling middleware:
+2025-03-21 08:25:58 error: Failed to assign employee to branch: Cast to ObjectId failed for value "BUBU511" (type string) at path "_id" for model "Branch"
+2025-03-21 08:25:58 error: Error handling middleware:
+2025-03-21 12:30:40 error: MongoDB connection error: querySrv ETIMEOUT _mongodb._tcp.cluster0.erqidae.mongodb.net
+2025-03-21 12:35:42 error: Authentication error: No authorization token provided
+2025-03-21 12:35:42 error: Error handling middleware:
+2025-03-21 12:43:00 error: Failed to get branch: Cast to ObjectId failed for value "admin-options" (type string) at path "_id" for model "Branch"
+2025-03-21 12:43:00 error: Error handling middleware:
+2025-03-21 12:45:20 error: Failed to get branch admin options: Operation `users.find()` buffering timed out after 10000ms
+2025-03-21 12:45:20 error: Error handling middleware:
+2025-03-21 13:29:48 error: Failed to get branch: Cast to ObjectId failed for value "admin-options" (type string) at path "_id" for model "Branch"
+2025-03-21 13:29:48 error: Error handling middleware:
+2025-03-21 13:30:12 error: Failed to get branch: Cast to ObjectId failed for value "admin-options" (type string) at path "_id" for model "Branch"
+2025-03-21 13:30:12 error: Error handling middleware:
+2025-03-21 13:44:17 error: Failed to get branch: Cast to ObjectId failed for value "admin-options" (type string) at path "_id" for model "Branch"
+2025-03-21 13:44:17 error: Error handling middleware:
+2025-03-21 13:44:32 error: Failed to get branch: Cast to ObjectId failed for value "admin-options" (type string) at path "_id" for model "Branch"
+2025-03-21 13:44:32 error: Error handling middleware:
+2025-03-21 13:47:31 error: Failed to get branch: Cast to ObjectId failed for value "admin-options" (type string) at path "_id" for model "Branch"
+2025-03-21 13:47:31 error: Error handling middleware:
+2025-03-21 13:49:37 error: Platform admin access error: Platform administrator access required
+2025-03-21 13:49:37 error: Error handling middleware:
+2025-03-23 15:25:17 error: Authentication error: No authorization token provided
+2025-03-23 15:25:17 error: Error handling middleware:
+2025-03-23 15:26:51 error: Failed to get branch: Cast to ObjectId failed for value "BUBU511" (type string) at path "_id" for model "Branch"
+2025-03-23 15:26:51 error: Error handling middleware:
+2025-03-23 15:27:16 error: Failed to get branch: Branch not found
+2025-03-23 15:27:16 error: Error handling middleware:
+2025-03-23 15:28:40 error: Error handling middleware:
+2025-03-23 15:30:28 error: Failed to assign employee to branch: Employee not found
+2025-03-23 15:30:28 error: Error handling middleware:
+2025-03-23 15:30:46 error: Error handling middleware:
+2025-03-23 16:09:12 error: Error handling middleware:
+2025-03-23 16:09:36 error: Error handling middleware:
+2025-03-23 16:10:42 error: Failed to create department: Department is not defined
+2025-03-23 16:10:42 error: Error handling middleware:
+2025-03-23 16:17:46 error: Error handling middleware:
